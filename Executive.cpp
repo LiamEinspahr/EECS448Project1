@@ -342,4 +342,5 @@ void Executive::run()
 		round++;
 		WaitEnter();
 	}
+    WaitEnter();
 }
