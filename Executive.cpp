@@ -4,7 +4,39 @@
 #include "display.h"
 #include "Ship.h"
 #include <iostream>
+#include <limits>
 using namespace std;
+
+/**
+ * @brief Get an int from a user between the given bounds. Repeat until successful.
+ * 
+ * @param message A message to give the user before attempting.
+ * @param lowerBound The minimum bound which the user may input.
+ * @param upperBound The maximum bound the user may input.
+ * @return int 
+ */
+int getInt(string message, int lowerBound, int upperBound) {
+
+    bool inputSuccess;
+    int userInt = 0;
+    string boundMsg = " (" + std::to_string(lowerBound) + " : " + std::to_string(upperBound) + ")";
+    cout << message << boundMsg << ": ";
+
+    while (true) {
+        inputSuccess = cin >> userInt;
+        if (!inputSuccess) {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+        if (!inputSuccess || userInt < lowerBound || userInt > upperBound) {
+            cout << "Please enter a number in" << boundMsg << ":";
+        } else {
+            break;
+        }
+    }
+
+    return userInt;
+}
 
 int Executive::charToInt(char c) {return ((toupper(c) - 65));}
 
@@ -53,21 +85,7 @@ void Executive::run()
 	Ship shipofplayer1;
 	Ship shipofplayer2;
 
-
-	cout << "How many ships do you want to place in the grid (choose from 1 to 5)? ";
-	cin >> shipnum;
-
-	if (shipnum < 1 || shipnum > 5)
-	{
-		while (!(cin >> shipnum))
-		{
-			cout << "Invalid! Must be 1-5!: ";
-			cin.clear();
-			cin.ignore(123, '\n');
-		}
-		//cout << "Invaild number of ships!\n";
-		//goto chooseShipNum1;
-	}
+    shipnum = getInt("How many ships do you want to place in the grid?", 1, 5);
 
 	player1.SetNumShips(shipnum); //decalers number of ships for both players
 	shipofplayer1.setShipNumber(numShipCoords(shipnum));
