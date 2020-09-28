@@ -5,6 +5,7 @@
 #include "Ship.h"
 #include <iostream>
 #include <limits>
+#include <string>
 using namespace std;
 
 /**
@@ -13,7 +14,7 @@ using namespace std;
  * @param message A message to give the user before attempting.
  * @param lowerBound The minimum bound which the user may input.
  * @param upperBound The maximum bound the user may input.
- * @return int 
+ * @return int The integer the user selected.
  */
 int getInt(string message, int lowerBound, int upperBound) {
 
@@ -36,6 +37,84 @@ int getInt(string message, int lowerBound, int upperBound) {
     }
 
     return userInt;
+}
+
+/**
+ * @brief Get a char from a user between the given bounds. Repeat until successful. Only allows uppercase characters.
+ * 
+ * @param message A message to give the user before attempting.
+ * @param lowerBound The minimum character bound which the user may input.
+ * @param upperBound The maximum character bound the user may input.
+ * @return char The character the user selected.
+ */
+char getChar(string message, char lowerBound, char upperBound) {
+
+    string lowerStr(1, lowerBound);
+    string upperStr(1, upperBound);
+
+    bool inputSuccess;
+    char userChar = 0;
+    string boundMsg = " (" + lowerStr + " : " + upperStr + ")";
+    cout << message << boundMsg << ": ";
+
+    while (true) {
+        inputSuccess = cin >> userChar;
+        if (!inputSuccess) {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } else {
+            userChar = toupper(userChar);
+        }
+        if (!inputSuccess || userChar < lowerBound || userChar > upperBound) {
+            cout << "Please enter a character in" << boundMsg << ":";
+        } else {
+            break;
+        }
+    }
+
+    return userChar;
+}
+
+/**
+ * @brief Get a char from a user from the options in the given string. Repeat until successful.
+ * 
+ * @param message A message to give the user before attempting.
+ * @param options A string of characters for the user to choose between.
+ * @return char The character the user selected.
+ */
+char getCharInOptions(string message, string options) {
+
+    bool inputSuccess;
+    char userChar = 0;
+    string boundMsg = " (" + options + ")";
+    cout << message << boundMsg << ": ";
+
+    while (true) {
+        inputSuccess = cin >> userChar;
+        if (!inputSuccess) {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Please enter a character in" << boundMsg << ":";
+            continue;
+        } else {
+            userChar = toupper(userChar);
+        }
+
+        bool found = false;
+        for (int checkChar = 0; checkChar < static_cast<int>(options.length()); checkChar++) {
+            if (userChar == options[checkChar]) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            cout << "Please enter a character in" << boundMsg << ":";
+        } else {
+            break;
+        }
+    }
+
+    return userChar;
 }
 
 int Executive::charToInt(char c) {return ((toupper(c) - 65));}
@@ -90,66 +169,38 @@ void Executive::run()
 	player1.SetNumShips(shipnum); //decalers number of ships for both players
 	shipofplayer1.setShipNumber(numShipCoords(shipnum));
 
-	for (int i = 1; i <= shipnum; i++)
+    cout << "Player 1\n";
+
+	for (int currentShip = 1; currentShip <= shipnum; currentShip++)
 	{
-		chooseShipPosition1:
+		while (true) {
 
 			//blank Board
 			display.friendlyBoard(player1.my_ships.m_board);
 			char direction = 'u'; //default direction is up
 
-			if (i == 1)
+			if (currentShip == 1)
 			{
-				cout << "\nPlayer 1, Where do you want to place 1X" << i << " on the grid (row(1-9) col(A-I))? ";
-				while(!(cin >> row)||row < 1 || row > 9)
-				{
-					cout << "Invalid input! Row must be 1-9!: ";
-					cin.clear();
-					cin.ignore(123, '\n');
-				}
-				cout << "Now enter a column A-I: ";
-				cin >> c_col;
-				cout << "\n";
-				while(!validColumn(c_col))
-				{
-					cin >> c_col;
-				}
-				col = charToInt(c_col);
+                row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, 9);
+                c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', 'I');
 			}
 			else
 			{
-				cout << "\nChoose a pivot coordinate for 1X" << i << " ship on the grid (row(1-9) col(A-I)): ";
-				while (!(cin >> row)||row < 1 || row > 9)
-				{
-					cout << "Invalid input! Row must be 1-9!: ";
-					cin.clear();
-					cin.ignore(123, '\n');
-				}
-				cout << "Now enter a column A-I: ";
-				cin >> c_col;
-				while (!validColumn(c_col))
-				{
-					cin >> c_col;
-				}
-
-			chooseShipDirection1:
-				cout << "Up, Down, Left, or Right from pivot? (U, D, L, R): ";
-				cin >> direction;
+                row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
+                c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
+                direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R): ", "UDLR");
 			}
 			col = charToInt(c_col); // convert char to int
 			row--; // decrement row by 1 for indexing array
 			direction = toupper(direction);
 
-			if (direction != 'U' && direction != 'D' && direction != 'L' && direction != 'R')
-			{
-				cout << "Invalid direction input!\n";
-				goto chooseShipDirection1;
-			}
-			if (!player1.PlaceShip(i, row, col, direction))
+			if (!player1.PlaceShip(currentShip, row, col, direction))
 			{
 				cout << "Ship could not be placed there. \n";
-				goto chooseShipPosition1;
-			}
+			} else {
+                break;
+            }
+        }
 	}
 
 	//print last time so player can see 1x5 ship placed
@@ -158,71 +209,41 @@ void Executive::run()
 	cout <<" Switch to Player 2 Setting!\n";
 	WaitEnter();
 
-	//cout << "Player 2, how many ships do you want to place in the grid (choose from 1 to 5)? ";
-	//cin >> shipnum;
-	player2.SetNumShips(shipnum);
-	shipofplayer2.setShipNumber(numShipCoords(shipnum));
+    cout << "Player 2\n";
 
-	for (int i = 1; i <= shipnum; i++)
+	for (int currentShip = 1; currentShip <= shipnum; currentShip++)
 	{
-		chooseShipPosition2:
+		while (true) {
 
+			//blank Board
 			display.friendlyBoard(player2.my_ships.m_board);
-			char direction = 'u';
+			char direction = 'u'; //default direction is up
 
-			if (i == 1)
+			if (currentShip == 1)
 			{
-				cout << "\nPlayer 2, Where do you want to place 1X" << i << " on the grid (row(1-9) col(A-I))? ";
-				while (!(cin >> row)||row < 1 || row > 9)
-				{
-					cout << "Invalid input! Row must be 1-9!: ";
-					cin.clear();
-					cin.ignore(123, '\n');
-				}
-				cout << "Now enter a column A-I: ";
-				cin >> c_col;
-				cout << "\n";
-				while (!validColumn(c_col))
-				{
-					cin >> c_col;
-				}
-				col = charToInt(c_col);
+                row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, 9);
+                c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', 'I');
 			}
 			else
 			{
-				cout << "\nChoose a pivot coordinate for 1X" << i << " ship on the grid (row(1-9) col(A-I)): ";
-				while (!(cin >> row)||row < 1 || row > 9)
-				{
-					cout << "Invalid input! Row must be 1-9!: ";
-					cin.clear();
-					cin.ignore(123, '\n');
-				}
-				cout << "Now enter a column A-I: ";
-				cin >> c_col;
-				while (!validColumn(c_col))
-				{
-					cin >> c_col;
-				}
-			chooseShipDirection2:
-				cout << "Up, Down, Left, or Right from pivot? (U, D, L, R): ";
-				cin >> direction;
+                row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
+                c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
+                direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R): ", "UDLR");
 			}
-			col = charToInt(c_col);
-			row--;
+			col = charToInt(c_col); // convert char to int
+			row--; // decrement row by 1 for indexing array
 			direction = toupper(direction);
 
-			if (direction != 'U' && direction != 'D' && direction != 'L' && direction != 'R')
-			{
-				cout << "Invalid direction input!\n";
-				goto chooseShipDirection2;
-			}
-			if (!player2.PlaceShip(i, row, col, direction))
+			if (!player2.PlaceShip(currentShip, row, col, direction))
 			{
 				cout << "Ship could not be placed there. \n";
-				goto chooseShipPosition2;
-			}
+			} else {
+                break;
+            }
+        }
 	}
 
+	//print last time so player can see 1x5 ship placed
 	display.friendlyBoard(player2.my_ships.m_board);
 	WaitEnter();
 
