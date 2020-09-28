@@ -231,22 +231,10 @@ void Executive::run()
 			display.matchFrame(1, player1.enemy_ships.m_board, player1.my_ships.m_board);
 
 			chooseFire1:
-			cout << "\nChoose the coordinate that you want to fire (row(1 - 9) col(A - I)): ";
-			while (!(cin >> row) || row < 1 || row > 9)
-			{
-				// cout <<"row = "<<row<<'\n';
-				cout << "Invalid! Must be 1-9!: ";
-				cin.clear();
-				cin.ignore(123, '\n');
-			}
-			cin >> c_col;
-			while (!validColumn(c_col))
-			{
-				cin >> c_col;
-			}
+			row = getInt("Input the row into which you wish to fire", 1, 9);
+            c_col = getChar("Input the column into which you wish to fire", 'A', 'I');
 			col = charToInt(c_col);
 			row --;
-
 
 			if (player2.CheckHit(row, col))
 			{
@@ -285,18 +273,8 @@ void Executive::run()
 			display.matchFrame(2, player2.enemy_ships.m_board, player2.my_ships.m_board);
 
 			chooseFire2:
-			cout << "\nChoose the coordinate that you want to fire (row(1 - 9) col(A - I)): ";
-			while (!(cin >> row) || row < 1 || row > 9)
-			{
-				cout << "Invalid! Must be 1-9!: ";
-				cin.clear();
-				cin.ignore(123, '\n');
-			}
-			cin >> c_col;
-			while (!validColumn(c_col))
-			{
-				cin >> c_col;
-			}
+            row = getInt("Input the row into which you wish to fire", 1, 9);
+            c_col = getChar("Input the column into which you wish to fire", 'A', 'I');
 			col = charToInt(c_col);
 			row --;
 
