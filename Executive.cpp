@@ -56,23 +56,28 @@ void Executive::run()
 
 	cout << "Would you like to play normal Battleship or BattleshipXL? (N/X)";
 	cin >> x;
-	cout << "How many ships do you want to place in the grid (choose from 1 to 10)? ";
-	cin >> shipnum;
+	if(x == 'X') {
+		cout << "How many ships do you want to place in the grid (choose from 1 to 10)? ";
+		cin >> shipnum;
+	}
+	else {
+		cout << "How many ships do you want to place in the grid (choose from 1 to 5)? ";
+		cin >> shipnum;	
+	}
 	player1.SetNumShips(shipnum); //decalers number of ships for both players
 	shipofplayer1.setShipNumber(numShipCoords(shipnum));
 
-
-	if (shipnum < 1 || shipnum > 10)
-	{
-		while (!(cin >> shipnum))
+		if (shipnum < 1 || shipnum > 10)
 		{
-			cout << "Invalid! Must be 1-10!: ";
-			cin.clear();
-			cin.ignore(123, '\n');
+			while (!(cin >> shipnum))
+			{
+				cout << "Invalid! Must be 1-10!: ";
+				cin.clear();
+				cin.ignore(123, '\n');
+			}
+			//cout << "Invaild number of ships!\n";
+			//goto chooseShipNum1;
 		}
-		//cout << "Invaild number of ships!\n";
-		//goto chooseShipNum1;
-	}
 
 	for (int i = 1; i <= shipnum; i++)
 	{
