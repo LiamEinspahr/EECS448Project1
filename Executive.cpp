@@ -165,7 +165,15 @@ void Executive::run()
 	Ship shipofplayer1;
 	Ship shipofplayer2;
 
-    shipnum = getInt("How many ships do you want to place in the grid?", 1, 5);
+    int maxShips = 5;
+
+	char gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "NX");
+    if (gamemode == 'X') {
+        maxShips = 10;
+    }
+
+
+    shipnum = getInt("How many ships do you want to place in the grid?", 1, maxShips);
 
 	shipofplayer1.setShipNumber(numShipCoords(shipnum));
 	shipofplayer2.setShipNumber(numShipCoords(shipnum));

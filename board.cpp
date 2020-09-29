@@ -2,6 +2,14 @@
 
 Board::Board()
 {
+	Board(false);
+}
+Board::Board(bool big)
+{
+	if(big) {
+		numRows = 20;
+		numCols = 20;
+	}
 	for(int i=0; i<numRows; i++)
 	{
 		for(int j=0; j<numCols; j++)
@@ -23,7 +31,7 @@ void Board::printBoard()
 			if(i == 0 && j == 0)
 			{
 				cout << "  ";
-				for(char c = 'A'; c <= 'I'; c++)
+				for(char c = 'A'; c <= 'A' + numCols; c++)
 				{
 					cout << c << " ";
 				}
