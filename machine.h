@@ -1,7 +1,6 @@
 #ifndef MACHINE_H
 #define MACHINE_H
 
-#include "Executive.cpp"
 
 #include<iostream>
 using namespace std;
@@ -21,8 +20,17 @@ class machine
 
         char getRandomDirection();
 
+        void setGameMode(char foo);
+
+        char getGameMode();
+
+        void setDifficultyLevel(char foo);
+
+        char getDifficultyLevel();
+
     private:
-        Executive exec;
+        char gamemode;
+        char difficultyLevel;
     
 };
 #endif

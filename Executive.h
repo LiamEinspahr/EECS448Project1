@@ -53,15 +53,11 @@ public:
  	**/
   	int numShipCoords(int shipNum);
 
-	char getGameMode();
-	char getDifficultyLevel();
 
 	
 
-private:
+//private:
 
-	char gamemode;
-	char difficultyLevel;
 
 };
 #endif // EXECUTIVE_H

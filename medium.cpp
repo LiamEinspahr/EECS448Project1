@@ -1,6 +1,6 @@
 //MEDIUM CPP
 
-#include "board.h"
+
 #include "medium.h"
 
 Medium::Medium(){
@@ -37,13 +37,46 @@ int Medium:: getCol(){
     return(col);
 }
 
-void Medium::solve(){
-    
+void Medium::solve(Player &currentPlayer, Player &otherPlayer, Ship &currentShip, Ship &otherShip){
+
+    if(!attackShip){
+
+        while(true){
+
+            row = machine.randomNum();
+            col = machine.randomChar();
+            row --;
+
+            if (otherPlayer.CheckHit(row, col))
+            {
+                otherShip.setHit();
+                currentPlayer.UpdateEnemyBoard(row, col, true);
+                if (otherShip.isSunk()){
+                    cout << "The machine Wins!\n";
+                }
+                break;
+            }
+            else if(otherPlayer.my_ships.getValue(row, col) == 'X' || currentPlayer.enemy_ships.getValue(row, col) == 'O')
+            {
+                cout << " ";
+            }
+            else
+            {
+                currentPlayer.UpdateEnemyBoard(row, col, false);
+                otherPlayer.my_ships.updateBoard(row, col, 'O');
+                break;
+            }
+        }
+        
+    }
+    else if (attackShip){
+
+    }
 }
 
-bool Medium::move(int row, int col){
-
-}
+/*bool Medium::Coordinates(int row, int col){
+    if()
+}*/
 
 bool Medium:: isValidMove(int row, char col){
 

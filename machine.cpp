@@ -5,12 +5,28 @@ machine::machine(){
     
 }
 
+void machine::setGameMode(char foo){
+    gamemode = foo;
+}
+
+char machine::getGameMode(){
+    return(gamemode);
+}
+
+void machine::setDifficultyLevel(char foo){
+    difficultyLevel = foo;
+}
+
+char machine::getDifficultyLevel(){
+    return(difficultyLevel);
+}
+
 int machine::charToInt(char c) {return ((toupper(c) - 65));}
 
 int machine::randomNum(){
 	//add more conditions if they choose the xl board
 	int randInt;
-	if(exec.getGameMode() == 'X'){
+	if(gamemode == 'X'){
 		randInt = (rand() % 20) + 1;
 	}
 	else{
@@ -25,7 +41,7 @@ int machine::randomChar(){
     int charInt;
 	srand (time(NULL));  
 
-	if(exec.getGameMode() == 'X'){
+	if(gamemode == 'X'){
 		r = rand() % 20;   
     	c = 'a' + r;
     	charInt = charToInt(c);

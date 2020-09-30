@@ -3,8 +3,7 @@
 #include "player.h"
 #include "display.h"
 #include "Ship.h"
-#include "AI.h"
-#include "AI.cpp"
+#include "machine.h"
 #include <iostream>
 #include <limits>
 #include <string>
@@ -157,13 +156,6 @@ bool Executive::validColumn(char c)
 	}
 }
 
-char Executive::getGameMode(){
-	return(gamemode);
-}
-
-char Executive::getDifficultyLevel(){
-	return(difficultyLevel);
-}
 
 void Executive::run()
 {
@@ -178,16 +170,18 @@ void Executive::run()
 	Ship shipofplayer1;
 	Ship shipofplayer2;
 
-	AI ai;
+	machine machine;
 
     int maxShips = 5;
 
-	difficultyLevel = getCharInOptions("What level of difficulty do you want to play: Easy, Medium, Hard?", "E,M,H");
+	char diff = getCharInOptions("What level of difficulty do you want to play: Easy, Medium, Hard?", "E,M,H");
+	machine.setDifficultyLevel(diff);
 
-	gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "N,X");
+	char gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "N,X");
     if (gamemode == 'X') {
         maxShips = 10;
     }
+	machine.setGameMode(gamemode);
 
 
     shipnum = getInt("How many ships do you want to place in the grid?", 1, maxShips);
@@ -236,8 +230,11 @@ void Executive::run()
 	//print last time so player can see 1x5 ship placed
 	display.friendlyBoard(currentPlayer->my_ships.m_board);
 
-	cout <<"Press Enter to play!\n";
-	WaitEnter();
+
+	cin.ignore();
+	cout << "Press Enter to play!";
+	cin.get();
+	for (int i = 0; i <= 50; i++) cout << endl;
 
 	//AI places ships:
 
@@ -250,14 +247,14 @@ void Executive::run()
 			char direction;
 			if (currentShip == 1)
 			{
-				row = ai.randomNum();
-				c_col = ai.randomChar();
+				row = machine.randomNum();
+				c_col = machine.randomChar();
 			}
 			else
 			{
-				row = ai.randomNum();
-				c_col = ai.randomChar();
-				direction = ai.getRandomDirection();
+				row = machine.randomNum();
+				c_col = machine.randomChar();
+				direction = machine.getRandomDirection();
 			}
 			row--; 
 			direction = toupper(direction);
@@ -268,6 +265,7 @@ void Executive::run()
 			} 
 		}
 		
+		
 	}
 
 
@@ -275,7 +273,7 @@ void Executive::run()
 
 
  //      Playing part
-	cout << "\nNow play battleship!\n";
+//cout << "\nNow play battleship!\n";
 
 	int round = 0;
 
@@ -336,15 +334,20 @@ void Executive::run()
         }
 		else{
 
-			if(difficultyLevel == 'E'){
+			if(machine.getDifficultyLevel() == 'E'){
 				//call easy methods
+				cout<<"pretend AI easy level shot\n";
 
 			}
-			else if (difficultyLevel == 'M'){
+			else if (machine.getDifficultyLevel() == 'M'){
 				//call medium methods
+				cout<<"pretend AI medium level shot\n";
+			
 			}
 			else{
 				//call hard methods
+				cout<<"pretend AI hard level shot\n";
+
 			}
 		round++;
 		}
