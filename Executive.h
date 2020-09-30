@@ -53,5 +53,12 @@ public:
  	**/
   	int numShipCoords(int shipNum);
 
+	int randomNum();
+	
+	int randomChar();
+
+private:
+	char gamemode;
+
 };
 #endif // EXECUTIVE_H
