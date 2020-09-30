@@ -1,6 +1,8 @@
 #include "display.h"
 #include <iostream>
 
+using namespace std;
+
 Display::Display()
 {
 	//board elements
@@ -31,72 +33,72 @@ Display::~Display()
 void Display::matchFrame(int playerID, char enemyBrd[][9], char friendlyBrd[][9]) const
 {
 	enemyBoard(enemyBrd, playerID);
-	std::cout << m_borderSpace;
+	cout << m_borderSpace;
 	friendlyBoard(friendlyBrd);
 }
 
 void Display::enemyBoard(char board[][9], int playerID) const
 {
-	std::string playeriBanner = m_playeriBanner;
-	std::string enemyBanner = m_enemyBanner;
-	std::string rowiLabel = m_rowiLabel;
+	string playeriBanner = m_playeriBanner;
+	string enemyBanner = m_enemyBanner;
+	string rowiLabel = m_rowiLabel;
 
-	playeriBanner.replace(24, 1, std::to_string(playerID));
+	playeriBanner.replace(24, 1, to_string(playerID));
 
-	std::cout << m_borderSpace;
-	std::cout << playeriBanner;
-	std::cout << enemyBanner;
-	std::cout << m_colLabel;
-	std::cout << m_borderLineTop;
+	cout << m_borderSpace;
+	cout << playeriBanner;
+	cout << enemyBanner;
+	cout << m_colLabel;
+	cout << m_borderLineTop;
 
 	for(int i = 0; i < 9; i++)
 	{
-		rowiLabel.replace(2, 1, std::to_string(i+1));
+		rowiLabel.replace(2, 1, to_string(i+1));
 
 		for(int j = 0; j < 9; j++)
 		{
 			if(board[i][j] == 'X')
 			{
-				rowiLabel.replace(4*j+6, 1, std::string(1, board[i][j]));
+				rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));
 			}
 			else if(board[i][j] == 'O')
 			{
-				rowiLabel.replace(4*j+6, 1, std::string(1, board[i][j]));
+				rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));
 			}
 		}
 
-		std::cout << rowiLabel;
+		cout << rowiLabel;
 		rowiLabel = m_rowiLabel;
 
 		if(i < 8)
 		{
-			std::cout << m_gridLine;
+			cout << m_gridLine;
 		}
 		else
 		{
-			std::cout << m_borderLineBottom;
+			cout << m_borderLineBottom;
 		}
 	}
 }
 
 void Display::friendlyBoard(char board[][9]) const
 {
-	std::string rowiLabel = m_rowiLabel;
+	string rowiLabel = m_rowiLabel;
 
-	std::cout << m_friendlyBanner;
-	std::cout << m_colLabel;
-	std::cout << m_borderLineTop;
+	cout << m_friendlyBanner;
+	cout << m_colLabel;
+	cout << m_borderLineTop;
 
 	for(int i = 0; i < 9; i++)
 	{
-		rowiLabel.replace(2, 1, std::to_string(i+1));
+		rowiLabel.replace(2, 1, to_string(i+1));
 
 		for(int j = 0; j < 9; j++)
 		{
 			if(board[i][j] == 'X')
 			{
 				rowiLabel.replace(4*j+5, 1, "(");
-				rowiLabel.replace(4*j+6, 1, std::string(1, board[i][j]));
+				rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));
 				rowiLabel.replace(4*j+7, 1, ")");
 			}
 			else if(board[i][j] == 'S')
@@ -106,36 +108,36 @@ void Display::friendlyBoard(char board[][9]) const
 			}
 			else if(board[i][j] == 'O')
 			{
-				rowiLabel.replace(4*j+6, 1, std::string(1, board[i][j]));
+				rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));
 			}
 		}
 
-		std::cout << rowiLabel;
+		cout << rowiLabel;
 		rowiLabel = m_rowiLabel;
 
 		if(i < 8)
 		{
-			std::cout << m_gridLine;
+			cout << m_gridLine;
 		}
 		else
 		{
-			std::cout << m_borderLineBottom;
+			cout << m_borderLineBottom;
 		}
 	}
-	std::cout << m_borderSpace;
+	cout << m_borderSpace;
 }
 
 void Display::hit() const
 {
-	std::cout << m_hit0;
-	std::cout << m_hit1;
-	std::cout << m_hit2;
-	std::cout << m_hit3;
-	std::cout << m_hit4;
-	std::cout << m_hit5;
+	cout << m_hit0;
+	cout << m_hit1;
+	cout << m_hit2;
+	cout << m_hit3;
+	cout << m_hit4;
+	cout << m_hit5;
 }
 
 void Display::miss() const
 {
-	std::cout << m_miss;
+	cout << m_miss;
 }

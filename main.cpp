@@ -2,18 +2,20 @@
 #include <string>
 #include "Executive.h"
 
+using namespace std;
+
 int main(){
 
-	std::string horizontal_bar = "-----------------------------------------------------------------------\n";
-	std::string battleship_text = " 		            BATTLESHIP          			  \n";
+	string horizontal_bar = "-----------------------------------------------------------------------\n";
+	string battleship_text = " 		            BATTLESHIP          			  \n";
 
-	for (int i = 0; i < 3; i++) std::cout << endl;
-	std::cout << horizontal_bar;
-	for (int i = 1; i <= 1; i++) std::cout << endl;
-	std::cout << battleship_text;
-	for (int i = 1; i <= 1; i++) std::cout << endl;
-	std::cout << horizontal_bar;
-	for (int i = 0; i < 3; i++) std::cout << endl;
+	for (int i = 0; i < 3; i++) cout << endl;
+	cout << horizontal_bar;
+	for (int i = 1; i <= 1; i++) cout << endl;
+	cout << battleship_text;
+	for (int i = 1; i <= 1; i++) cout << endl;
+	cout << horizontal_bar;
+	for (int i = 0; i < 3; i++) cout << endl;
 
 	Executive exec;
 	exec.run();
