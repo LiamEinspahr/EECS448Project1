@@ -87,6 +87,25 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
         }
         else return false;
     }
+    /*
+    else if (direction == 'v')
+    {
+        if(9 - col >= 3) {
+            if(9-row >= 3) 
+            {
+                for (int i = row; i < row + 3; i++)
+                {
+                    if (my_ships.getValue(i, col) != '-') return false;
+                }
+                for (int i = row; i < row + 3; i++)
+                {
+                    my_ships.updateBoard(i, col, 'S');
+                }
+            }
+        }
+        else return false;
+    }
+    */
     return true;
 
 }
