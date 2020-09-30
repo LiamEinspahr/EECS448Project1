@@ -8,28 +8,30 @@
 
 #include <string>
 
+using namespace std;
+
 class Display
 {
 	private:
 	//board elements
-	std::string m_borderSpace;
-	std::string m_playeriBanner;
-	std::string m_enemyBanner;
-	std::string m_colLabel;
-	std::string m_borderLineTop;
-	std::string m_rowiLabel;
-	std::string m_gridLine;
-	std::string m_borderLineBottom;
-	std::string m_friendlyBanner;
+	string m_borderSpace;
+	string m_playeriBanner;
+	string m_enemyBanner;
+	string m_colLabel;
+	string m_borderLineTop;
+	string m_rowiLabel;
+	string m_gridLine;
+	string m_borderLineBottom;
+	string m_friendlyBanner;
 
 	//shot feed-back elements
-	std::string m_hit0;
-	std::string m_hit1;
-	std::string m_hit2;
-	std::string m_hit3;
-	std::string m_hit4;
-	std::string m_hit5;
-	std::string m_miss;
+	string m_hit0;
+	string m_hit1;
+	string m_hit2;
+	string m_hit3;
+	string m_hit4;
+	string m_hit5;
+	string m_miss;
 
 	/**
 	 * @pre: board must use 'X' and 'O' to denote hits and misses, respectively.

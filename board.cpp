@@ -1,18 +1,12 @@
 #include "board.h"
 
-Board:: Board()
+Board::Board()
 {
-	for(int i=0; i<numRows; i++)
-	{
-		for(int j=0; j<numCols; j++)
-		{
-			m_board[i][j] = '-';
-		}
-	}
+	Board(false);
 }
-Board:: Board(bool big)
+Board::Board(bool big)
 {
-	if(big = true) {
+	if(big) {
 		numRows = 20;
 		numCols = 20;
 	}
@@ -39,7 +33,7 @@ void Board::printBoard(bool big)
 			if(i == 0 && j == 0)
 			{
 				cout << "  ";
-				for(char c = 'A'; c <= 'I'; c++)
+				for(char c = 'A'; c <= 'A' + numCols; c++)
 				{
 					cout << c << " ";
 				}
