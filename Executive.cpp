@@ -167,96 +167,6 @@ void Executive::run()
 	char c_col; // char version of the column
 	Ship shipofplayer1;
 	Ship shipofplayer2;
-<<<<<<< HEAD
-	char x;
-
-	cout << "Would you like to play normal Battleship or BattleshipXL? (N/X)";
-	cin >> x;
-	if(x == 'X') {
-		cout << "How many ships do you want to place in the grid (choose from 1 to 10)? ";
-		cin >> shipnum;
-	}
-	else {
-		cout << "How many ships do you want to place in the grid (choose from 1 to 5)? ";
-		cin >> shipnum;	
-	}
-	player1.SetNumShips(shipnum); //decalers number of ships for both players
-	shipofplayer1.setShipNumber(numShipCoords(shipnum));
-
-		if (shipnum < 1 || shipnum > 10)
-		{
-			while (!(cin >> shipnum))
-			{
-				cout << "Invalid! Must be 1-10!: ";
-				cin.clear();
-				cin.ignore(123, '\n');
-			}
-			//cout << "Invaild number of ships!\n";
-			//goto chooseShipNum1;
-		}
-
-	for (int i = 1; i <= shipnum; i++)
-	{
-		chooseShipPosition1:
-
-			//blank Board
-			display.friendlyBoard(player1.my_ships.m_board);
-			char direction = 'u'; //default direction is up
-
-			if (i == 1)
-			{
-				cout << "\nPlayer 1, Where do you want to place 1X" << i << " on the grid (row(1-9) col(A-I))? ";
-				while(!(cin >> row)||row < 1 || row > 9)
-				{
-					cout << "Invalid input! Row must be 1-9!: ";
-					cin.clear();
-					cin.ignore(123, '\n');
-				}
-				cout << "Now enter a column A-I: ";
-				cin >> c_col;
-				cout << "\n";
-				while(!validColumn(c_col))
-				{
-					cin >> c_col;
-				}
-				col = charToInt(c_col);
-			}
-			else
-			{
-				cout << "\nChoose a pivot coordinate for 1X" << i << " ship on the grid (row(1-9) col(A-I)): ";
-				while (!(cin >> row)||row < 1 || row > 9)
-				{
-					cout << "Invalid input! Row must be 1-9!: ";
-					cin.clear();
-					cin.ignore(123, '\n');
-				}
-				cout << "Now enter a column A-I: ";
-				cin >> c_col;
-				while (!validColumn(c_col))
-				{
-					cin >> c_col;
-				}
-
-			chooseShipDirection1:
-				cout << "Up, Down, Left, or Right from pivot? (U, D, L, R): ";
-				cin >> direction;
-			}
-			col = charToInt(c_col); // convert char to int
-			row--; // decrement row by 1 for indexing array
-			direction = toupper(direction);
-
-			if (direction != 'U' && direction != 'D' && direction != 'L' && direction != 'R')
-			{
-				cout << "Invalid direction input!\n";
-				goto chooseShipDirection1;
-			}
-			if (!player1.PlaceShip(i, row, col, direction))
-			{
-				cout << "Ship could not be placed there. \n";
-				goto chooseShipPosition1;
-			}
-	}
-=======
 
     int maxShips = 5;
 
@@ -264,7 +174,6 @@ void Executive::run()
     if (gamemode == 'X') {
         maxShips = 10;
     }
->>>>>>> 418190cbe3b187eacd4ede9214390d4a56f9b002
 
 
     shipnum = getInt("How many ships do you want to place in the grid?", 1, maxShips);
