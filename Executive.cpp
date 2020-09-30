@@ -24,7 +24,8 @@ int getInt(string message, int lowerBound, int upperBound) {
     cout << message << boundMsg << ": ";
 
     while (true) {
-        inputSuccess = cin >> userInt;
+        cin >> userInt;
+        inputSuccess = !cin.fail();
         if (!inputSuccess) {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -58,7 +59,8 @@ char getChar(string message, char lowerBound, char upperBound) {
     cout << message << boundMsg << ": ";
 
     while (true) {
-        inputSuccess = cin >> userChar;
+        cin >> userChar;
+        inputSuccess = !cin.fail();
         if (!inputSuccess) {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -90,7 +92,8 @@ char getCharInOptions(string message, string options) {
     cout << message << boundMsg << ": ";
 
     while (true) {
-        inputSuccess = cin >> userChar;
+        cin >> userChar;
+        inputSuccess = !cin.fail();
         if (!inputSuccess) {
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
