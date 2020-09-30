@@ -117,6 +117,8 @@ char getCharInOptions(string message, string options) {
     return userChar;
 }
 
+
+
 int Executive::charToInt(char c) {return ((toupper(c) - 65));}
 
 int Executive::numShipCoords(int shipNum)
@@ -152,6 +154,37 @@ bool Executive::validColumn(char c)
 	}
 }
 
+int Executive::randomChar(){
+	char c;
+    int r;
+    int charInt;
+	srand (time(NULL));  
+
+	if(gamemode == 'X'){
+		r = rand() % 20;   
+    	c = 'a' + r;
+    	charInt = charToInt(c);
+	}
+	else{
+		r = rand() % 9;   
+    	c = 'a' + r;
+    	charInt = charToInt(c);
+	}
+	return(charInt);
+}
+
+int Executive::randomNum(){
+	//add more conditions if they choose the xl board
+	int randInt;
+	if(gamemode == 'X'){
+		randInt = (rand() % 20) + 1;
+	}
+	else{
+		randInt = (rand() % 9) + 1;
+	}
+    return(randInt);
+}
+
 void Executive::run()
 {
 	int shipnum = 0;
@@ -167,7 +200,7 @@ void Executive::run()
 
     int maxShips = 5;
 
-	char gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "NX");
+	gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "N,X");
     if (gamemode == 'X') {
         maxShips = 10;
     }
