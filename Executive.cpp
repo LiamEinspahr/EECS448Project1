@@ -3,6 +3,7 @@
 #include "player.h"
 #include "display.h"
 #include "Ship.h"
+#include "Medium.h"
 #include <iostream>
 using namespace std;
 
@@ -52,10 +53,14 @@ void Executive::run()
 	char c_col; // char version of the column
 	Ship shipofplayer1;
 	Ship shipofplayer2;
+	Medium medium;
 	char x;
+	char diff;
 
 	cout << "Would you like to play normal Battleship or BattleshipXL? (N/X)";
 	cin >> x;
+	cout<< "What level of difficulty do you want: Easy, Medium, Hard (E,M,H)?  \n";
+	cin>> diff;
 	cout << "How many ships do you want to place in the grid (choose from 1 to 10)? ";
 	cin >> shipnum;
 
@@ -146,6 +151,8 @@ void Executive::run()
 	//cin >> shipnum;
 	player2.SetNumShips(shipnum);
 	shipofplayer2.setShipNumber(numShipCoords(shipnum));
+
+	//AI BEGINS------------------------------
 
 	for (int i = 1; i <= shipnum; i++)
 	{
@@ -278,8 +285,58 @@ void Executive::run()
 			//Print boards before fire
 			display.matchFrame(2, player2.enemy_ships.m_board, player2.my_ships.m_board);
 
+//-------need to update below --------------
 			chooseFire2:
-			cout << "\nChoose the coordinate that you want to fire (row(1 - 9) col(A - I)): ";
+			//cout << "\nChoose the coordinate that you want to fire (row(1 - 9) col(A - I)): ";
+			if(diff == 'M'){
+				 //check if we have coordinates that hit a ship
+				 row = medium.getRow();
+				 col = medium.getCol();
+				 if(row == 0){
+					 row = medium.randomNum();
+					 col = medium.randomChar();
+
+					 if(player1.CheckHit(row,col)){
+						display.hit();
+						shipofplayer1.setHit();
+						player2.UpdateEnemyBoard(row, col, true);
+						if (shipofplayer1.isSunk()){
+							cout << "Player 2 wins!\n";
+							break;
+						}
+					 }
+				 }
+				 else{
+					 /*check to see 
+					 1. if your previous row and col was a hit
+					 	a) if so, start recursing
+					 2. if previous row and col was NOT a hit then pick another random point
+					 
+					 */
+				 }
+				 else if (player1.CheckHit(row,col)){ //you have a hit
+					 medium.solve(); //recurse to find next coordinates
+				 }
+				else if(playr1.my_ships.getValue(row, col) == 'X') //if you have already hit that coordinate
+				{
+					//cout <<player2.my_ships.getValue(row, col);
+					cout << "\n\nYou've already hit that spot!\n";
+					goto chooseFire2;
+				}
+				else if(player2.enemy_ships.getValue(row, col) == 'O')
+				{
+					cout <<"\n\nYou've already fire this point!\n";
+					goto chooseFire2;
+				}
+				else
+				{
+					display.miss();
+					player2.UpdateEnemyBoard(row, col, false);
+					player1.my_ships.updateBoard(row, col, 'O');
+				}
+			}
+
+
 			while (!(cin >> row) || row < 1 || row > 9)
 			{
 				cout << "Invalid! Must be 1-9!: ";
@@ -293,7 +350,7 @@ void Executive::run()
 			}
 			col = charToInt(c_col);
 			row --;
-
+		
 			if (player1.CheckHit(row, col))
 			{
 				display.hit();
