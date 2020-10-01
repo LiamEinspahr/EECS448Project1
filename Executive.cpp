@@ -1,4 +1,3 @@
-
 #include "Executive.h"
 #include "player.h"
 #include "display.h"
@@ -11,7 +10,7 @@ using namespace std;
 
 /**
  * @brief Get an int from a user between the given bounds. Repeat until successful.
- * 
+ *
  * @param message A message to give the user before attempting.
  * @param lowerBound The minimum bound which the user may input.
  * @param upperBound The maximum bound the user may input.
@@ -43,7 +42,7 @@ int getInt(string message, int lowerBound, int upperBound) {
 
 /**
  * @brief Get a char from a user between the given bounds. Repeat until successful. Only allows uppercase characters.
- * 
+ *
  * @param message A message to give the user before attempting.
  * @param lowerBound The minimum character bound which the user may input.
  * @param upperBound The maximum character bound the user may input.
@@ -80,7 +79,7 @@ char getChar(string message, char lowerBound, char upperBound) {
 
 /**
  * @brief Get a char from a user from the options in the given string. Repeat until successful.
- * 
+ *
  * @param message A message to give the user before attempting.
  * @param options A string of characters for the user to choose between.
  * @return char The character the user selected.
@@ -215,6 +214,7 @@ void Executive::run()
 				direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R): ", "UDLR");
 			}
 			col = charToInt(c_col); // convert char to int
+      //cout<<"THIS IS YOUR COL: "<< col <<'\n';
 			row--; // decrement row by 1 for indexing array
 			direction = toupper(direction);
 
@@ -256,16 +256,16 @@ void Executive::run()
 				c_col = machine.randomChar();
 				direction = machine.getRandomDirection();
 			}
-			row--; 
+			row--;
 			direction = toupper(direction);
 
 			if (currentPlayer->PlaceShip(currentShip, row, col, direction))
 			{
 				break;
-			} 
+			}
 		}
-		
-		
+
+
 	}
 
 
@@ -342,7 +342,7 @@ void Executive::run()
 			else if (machine.getDifficultyLevel() == 'M'){
 				//call medium methods
 				cout<<"pretend AI medium level shot\n";
-			
+
 			}
 			else{
 				//call hard methods
@@ -351,10 +351,10 @@ void Executive::run()
 			}
 		round++;
 		}
-	
-        
+
+
 		/*---------------test code-----------------------------------------
-		
+
         cout << "Player " << playerNum << "'s turn!\n";
         cout << "You have been hit " << currentShip->getHit() << " times\n";
 
@@ -389,10 +389,10 @@ void Executive::run()
                 break;
             }
         }
-		
+
 		round++;
 		WaitEnter();
 		//---------------test code-----------------------------------------*/
 	}
-	
+
 }
