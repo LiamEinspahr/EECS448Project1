@@ -16,8 +16,5 @@ player.o: player.h player.cpp board.o
 display.o: display.h display.cpp
 	g++ -g -std=c++11 -Wall -c display.cpp
 
-Ship.o: Ship.h Ship.cpp
-	g++ -g -std=c++11 -Wall -c Ship.cpp
-
 clean:
 	rm *.o Battleship
