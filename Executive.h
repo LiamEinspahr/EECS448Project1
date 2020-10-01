@@ -53,5 +53,11 @@ public:
  	**/
   	int numShipCoords(int shipNum);
 
+
+	
+
+//private:
+
+
 };
 #endif // EXECUTIVE_H
