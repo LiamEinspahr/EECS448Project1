@@ -87,8 +87,7 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
         }
         else return false;
     }
-    /*
-    else if (direction == 'v')
+    else if (direction == 'v') // L-shaped ship
     {
         if(9 - col >= 3) {
             if(9-row >= 3) 
@@ -101,11 +100,18 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
                 {
                     my_ships.updateBoard(i, col, 'S');
                 }
+                for (int j = col; j < col + 3; j++) // make sure no ships have already been placed in each spot
+                {
+                    if (my_ships.getValue(row, j) != '-') return false; // fails to place if something is already there
+                }
+                for (int j = col; j < col + 3; j++)
+                {
+                    my_ships.updateBoard(row, j, 'S'); // if not returned by now, place ship
+                }
             }
         }
         else return false;
     }
-    */
     return true;
 
 }

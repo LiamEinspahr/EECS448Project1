@@ -191,7 +191,7 @@ void Executive::run()
 
                 //blank Board
                 display.friendlyBoard(currentPlayer->my_ships.m_board);
-                char direction = 'u'; //default direction is up
+                char direction = 'U'; //default direction is up
 
                 if (currentShip == 1)
                 {
