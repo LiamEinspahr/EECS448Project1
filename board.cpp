@@ -1,9 +1,7 @@
 #include "board.h"
 
-Board::Board()
-{
-	Board(false);
-}
+Board::Board() : Board(false) {}
+
 Board::Board(bool big)
 {
 	if(big) {
