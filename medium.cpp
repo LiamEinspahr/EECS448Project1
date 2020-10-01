@@ -53,7 +53,15 @@ void Medium::solve(Player &currentPlayer, Player &otherPlayer, Ship &currentShip
                 currentPlayer.UpdateEnemyBoard(row, col, true);
                 if (otherShip.isSunk()){
                     cout << "The machine Wins!\n";
+                    break;
                 }
+                //if that singular ship isnt sunk then:
+                    //attackShip = true; 
+                    //hitRow = row; 
+                    //hitCol = col;
+                    //break;
+                //else if that singular ship is sunk then:
+                    //break;
                 break;
             }
             else if(otherPlayer.my_ships.getValue(row, col) == 'X' || currentPlayer.enemy_ships.getValue(row, col) == 'O')
@@ -70,6 +78,13 @@ void Medium::solve(Player &currentPlayer, Player &otherPlayer, Ship &currentShip
         
     }
     else if (attackShip){
+        /*
+
+            if singular ship IS sunk then:
+                attackShip = false; 
+                
+
+        */
 
     }
 }
