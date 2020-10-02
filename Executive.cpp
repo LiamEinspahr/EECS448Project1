@@ -252,9 +252,6 @@ void Executive::run()
 
     if (!humanOpponent) {
         //blank Board
-        display.friendlyBoard(currentPlayer->my_ships);
-        char direction = 'u'; //default direction is up
-
 
         cin.ignore();
         cout << "Press Enter to play!";
@@ -263,11 +260,6 @@ void Executive::run()
 
 
         //AI places ships:
-
-        //print last time so player can see 1x5 ship placed
-        display.friendlyBoard(currentPlayer->my_ships);
-
-
 
         for (int currentShip = 1; currentShip <= shipnum; currentShip++)
         {
@@ -288,7 +280,7 @@ void Executive::run()
                 row--; 
                 direction = toupper(direction);
 
-                if (currentPlayer->PlaceShip(currentShip, row, col, direction))
+                if (player2.PlaceShip(currentShip, row, col, direction))
                 {
                     break;
                 } 
@@ -363,8 +355,8 @@ void Executive::run()
                     break;
                 }
             }
-            round++;
-            WaitEnter();
         }
+        round++;
+        WaitEnter();
 	}
 }
