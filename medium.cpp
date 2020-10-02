@@ -29,8 +29,6 @@ void Medium::guessSpot(int row, int col){
 }
 
 bool Medium::move(int row, int col){
-    
-    //somehow markspace;
   
     if(checkCoords(row-1,col)){ 
         if(otherPlayer.my_ships.getValue(row-1, col) == 'X'){
@@ -75,10 +73,11 @@ bool Medium::move(int row, int col){
 void Medium::solve(Player &currentPlayer1, Player &otherPlayer1){
     currentPlayer = currentPlayer1;
     otherPlayer = otherPlayer1;
+    cout<<"here med 79\n";
     if(!attackShip){
         row = machine.randomNum();
         col = machine.randomChar();
-        
+        cout<<"here med 79\n";
         //check to see if you have already guess that spot before
         while(true){
             if(otherPlayer.my_ships.getValue(row, col) == 'X' || currentPlayer.enemy_ships.getValue(row, col) == 'O'){
