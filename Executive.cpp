@@ -210,13 +210,8 @@ void Executive::run()
             while (true) {
 
                 //blank Board
-<<<<<<< HEAD
                 display.friendlyBoard(currentPlayer->my_ships.m_board);
                 char direction = 'U'; //default direction is up
-=======
-                display.friendlyBoard(currentPlayer->my_ships);
-                char direction = 'u'; //default direction is up
->>>>>>> master
 
                 if (currentShip == 1)
                 {
@@ -227,11 +222,7 @@ void Executive::run()
                 {
                     row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
                     c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
-<<<<<<< HEAD
-                    direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, v): ", "UDLRv");
-=======
                     direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, v, n): ", "UDLRvn");
->>>>>>> master
                 }
                 col = charToInt(c_col); // convert char to int
                 row--; // decrement row by 1 for indexing array
