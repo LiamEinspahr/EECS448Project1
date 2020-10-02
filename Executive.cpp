@@ -230,7 +230,7 @@ void Executive::run()
 
         for (int currentShip = 1; currentShip <= shipnum; currentShip++)
         {
-            while (true) {
+/*            while (true) {
 
                 //blank Board
                 display.friendlyBoard(currentPlayer->my_ships);
@@ -258,7 +258,7 @@ void Executive::run()
                     break;
                 }
             }
-        }
+        }*/
 
                 //blank regular Board
                 if(big == false) {
@@ -282,7 +282,7 @@ void Executive::run()
                 row--; // decrement row by 1 for indexing array
                 direction = toupper(direction);
 
-                if (!currentPlayer->PlaceShip(big, currentShip, row, col, direction))
+                if (!currentPlayer->PlaceShip(currentShip, row, col, direction))
                 {
                     cout << "Ship could not be placed there. \n";
                 } else {
@@ -291,7 +291,7 @@ void Executive::run()
             }
             //blank XL Board
             else {
-              display.friendlyBoard(currentPlayer->my_ships.m_boardXL);
+              display.friendlyBoard(currentPlayer->my_ships); //used to be my_ships.m_boardXL
 
               char direction = 'u'; //default direction is up
 
@@ -310,7 +310,7 @@ void Executive::run()
               row--; // decrement row by 1 for indexing array
               direction = toupper(direction);
 
-              if (!currentPlayer->PlaceShip(big, currentShip, row, col, direction))
+              if (!currentPlayer->PlaceShip(currentShip, row, col, direction))
               {
                   cout << "Ship could not be placed there. \n";
               } else {
@@ -324,18 +324,20 @@ void Executive::run()
             WaitEnter();
 
         //print last time so player can see 1x5 ship placed
-        display.friendlyBoard(currentPlayer->my_ships.m_boardXL);
-	cin.ignore();
-	cout << "Press Enter to play!";
-	cin.get();
-	for (int i = 0; i <= 50; i++) cout << endl;
-            currentPlayer = &player2;
-        } else {
+        display.friendlyBoard(currentPlayer->my_ships);
+	       cin.ignore();
+	        cout << "Press Enter to play!";
+	         cin.get();
+	          for (int i = 0; i <= 50; i++) {cout << endl;}
+              currentPlayer = &player2;
+        }
+        else {
             break;
         }
-    }
 
-    if (!humanOpponent) {
+
+    if(!humanOpponent)
+    {
         //blank Board
         display.friendlyBoard(currentPlayer->my_ships);
         char direction = 'u'; //default direction is up
@@ -378,16 +380,16 @@ void Executive::run()
                     break;
                 }
             }
-
-
         }
+      }
     }
+
 	int round = 0;
 
     currentPlayer = &player1;
     Player* otherPlayer = &player2;
 
-	while (!player1.my_ships.allShipsSunk() && !player2.my_ships.allShipsSunk())
+	while(!player1.my_ships.allShipsSunk() && !player2.my_ships.allShipsSunk())
 	{
         if (round % 2) {
             currentPlayer = &player2;
@@ -409,6 +411,7 @@ void Executive::run()
 				cout<<"pretend AI medium level shot\n";
 
 			}
+      }
 			else{
 				//call hard methods
 				cout<<"pretend AI hard level shot\n";
@@ -500,4 +503,4 @@ bool Executive::checkForBig()
             WaitEnter();
         }
 	}
-}
+}*/

@@ -1,6 +1,7 @@
 //Player.cpp
 
-#include "player.h"
+#include "Executive.h"
+#include "board.h"
 #include <iostream>
 
 Player::Player() {
@@ -154,5 +155,8 @@ bool Player::CheckHit(int row, int col)
 
   bool Player::checkPlayerBig()
   {
+    Executive exec;
+    bool big = exec.checkForBig();
+    return big;
 
   }

@@ -53,10 +53,13 @@ public:
  	**/
   	int numShipCoords(int shipNum);
 
+	bool checkForBig();
 
-	
 
-//private:
+
+
+private:
+	bool big;
 
 
 };

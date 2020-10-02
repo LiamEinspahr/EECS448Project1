@@ -1,10 +1,14 @@
 #include "display.h"
+#include "Executive.h"
 #include <iostream>
 
 using namespace std;
 
-Display::Display(bool big)
+Display::Display()
 {
+	Executive exec;
+	bool big = exec.checkForBig();
+
 	if(big){
 		m_borderSpace = "\n\n";
 		m_playeriBanner = "                 PLAYER i\n\n\n";

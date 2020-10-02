@@ -10,8 +10,8 @@ class Player
 		~Player();  	    // Destructor;
 		Board my_ships;
 		Board enemy_ships;
-		Board my_shipsXL(true);
-		Board enemy_shipsXL(true);
+		Board my_shipsXL = Board(true);
+		Board enemy_shipsXL = Board(true);
 
 
 		/**
