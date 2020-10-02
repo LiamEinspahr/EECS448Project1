@@ -116,8 +116,15 @@ void Medium::solve(Player &currentPlayer1, Player &otherPlayer1){
             for(int i = 0; i < value; i++){
                 hitGuess[i] = new int[2];
             } 
+
+            if(move(row,col)){
+                row = hitGuess[tracking][0];
+                col = hitGuess[tracking][1];
+                tracking++;
+                guessSpot(row,col);
+            }
         }
-        
+
         row = hitGuess[tracking][0];
         col = hitGuess[tracking][1];
         tracking++;
