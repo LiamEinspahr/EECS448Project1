@@ -114,7 +114,7 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
         else return false;
     }
 
-    else if (direction == 'v') // L-shaped ship
+    else if (direction == 'n') // L-shaped ship
     {
         if(9 - col >= 2) {
             if(9-row >= 3) 
