@@ -199,12 +199,14 @@ void Executive::run()
 
     if (gamemode == 'X') {
         maxShips = 10;
-        big = true;
+        m_big = true;
     }
     else
     {
-      big = false;
+      m_big = false;
     }
+
+    bool big = m_big;
 
     bool humanOpponent = false;
 
@@ -317,7 +319,7 @@ void Executive::run()
                   break;
               }
             }
-            }
+
         }
         if (humanOpponent) {
             cout <<"Switch to next Player!\n";
@@ -419,10 +421,11 @@ void Executive::run()
 			}
 		round++;
 		}
+  }
 
 bool Executive::checkForBig()
 {
-  return big;
+  return m_big;
 }
 
 
