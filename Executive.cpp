@@ -253,7 +253,7 @@ void Executive::run()
     if (!humanOpponent) {
         //blank Board
         display.friendlyBoard(currentPlayer->my_ships);
-        char direction = 'u'; //default direction is up
+        char direction = 'U'; //default direction is up
 
 
         cin.ignore();
