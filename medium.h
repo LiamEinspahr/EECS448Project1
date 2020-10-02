@@ -29,7 +29,7 @@ class Medium{
         int hitRow;
         int hitCol;
         bool attackShip = false;
-        machine machine;
+        Machine machine;
         Player currentPlayer;
         Player otherPlayer;
         Display display;

@@ -5,12 +5,12 @@
 #include<iostream>
 using namespace std;
 
-class machine
+class Machine
 {
 
     public:
 
-        machine();
+        Machine();
 
         int charToInt(char c);
 

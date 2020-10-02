@@ -175,7 +175,7 @@ void Executive::run()
 	int row, col;
 	char c_col; // char version of the column
 
-	machine machine;
+	Machine machine;
 
     int maxShips = 5;
 
