@@ -1,3 +1,4 @@
+
 prog: main.o board.o player.o Executive.o display.o Ship.o machine.o
 	g++ -g -std=c++11 -Wall main.o board.o player.o Executive.o display.o Ship.o machine.o -o Battleship
 
@@ -21,6 +22,7 @@ Ship.o: Ship.h Ship.cpp
 
 machine.o: machine.h machine.cpp
 	g++ -g -std=c++11 -Wall -c machine.cpp
+
 
 clean:
 	rm *.o Battleship

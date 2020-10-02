@@ -25,7 +25,9 @@ class Board
 		* @post: updates the board with whatever value is passed in
 		* @param: int row: row to update, int col: column to update, char c: character to update row/col with
  		**/
-		void updateBoard(int row, int col, char c); // Function to update board
+		void updateBoard(int row, int col, char c, int shipsize=0); // Function to update board
+
+        void updateNumShips(int numships); // Update number of ships on board
 
 		/**
  		* @pre: function to return the value at some coordinates
@@ -34,12 +36,22 @@ class Board
 		* @return: returns the character at the specified value
  		**/
 		char getValue(int row, int col); // gets value at coordinates
+		int getShipNum(int row, int col); // gets shipnum at coordinates
+        bool shipNumIsSunk(int shipNum); // Check if a shipnum has sunk
+        bool shipIsSunk(int row, int col); // Check if a ship at a location has sunk
+        bool allShipsSunk(); // Check if all ships have sunk
 
 		char m_board[9][9];  
+		int m_board_ships[9][9];  
+        int getNumRows(); // Return numRows
+        int getNumCols(); // Return numCols
+
+        int getNumHits(); // Get the number of hits on my ships
 
 	private:  
 		int numRows = 9;
 		int numCols = 9;  // Letters (A-I)
+        int numShips = 5;
 };
 
 
