@@ -10,7 +10,7 @@ using namespace std;
 
 /**
  * @brief Get an int from a user between the given bounds. Repeat until successful.
- * 
+ *
  * @param message A message to give the user before attempting.
  * @param lowerBound The minimum bound which the user may input.
  * @param upperBound The maximum bound the user may input.
@@ -42,7 +42,7 @@ int getInt(string message, int lowerBound, int upperBound) {
 
 /**
  * @brief Get a char from a user between the given bounds. Repeat until successful. Only allows uppercase characters.
- * 
+ *
  * @param message A message to give the user before attempting.
  * @param lowerBound The minimum character bound which the user may input.
  * @param upperBound The maximum character bound the user may input.
@@ -79,7 +79,7 @@ char getChar(string message, char lowerBound, char upperBound) {
 
 /**
  * @brief Get a char from a user from the options in the given string. Repeat until successful.
- * 
+ *
  * @param message A message to give the user before attempting.
  * @param options A string of characters for the user to choose between.
  * @return char The character the user selected.
@@ -142,17 +142,30 @@ void Executive::WaitEnter()
 	for (int i = 0; i <= 50; i++) cout << endl;
 }
 
-bool Executive::validColumn(char c)
+bool Executive::validColumn(bool big, char c)
 {
-	if (!isalpha(c) || (toupper(c) < 65 || toupper(c) > 73))
+  if(big){
+	if (!isalpha(c) || (toupper(c) < 65 || toupper(c) > 84))
 	{
-		cout << "Invalid input! Column must be A-I!: ";
+		cout << "Invalid input! Column must be A-T!: ";
 		return false;
 	}
 	else
 	{
 		return true;
 	}
+  }
+  else{
+    if (!isalpha(c) || (toupper(c) < 65 || toupper(c) > 73))
+  	{
+  		cout << "Invalid input! Column must be A-I!: ";
+  		return false;
+  	}
+  	else
+  	{
+  		return true;
+  	}
+  }
 }
 
 void Executive::run()
@@ -171,8 +184,14 @@ void Executive::run()
     int maxShips = 5;
 
 	char gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "NX");
+    bool big;
     if (gamemode == 'X') {
         maxShips = 10;
+        big = true;
+    }
+    else
+    {
+      big = false;
     }
 
 
@@ -189,8 +208,11 @@ void Executive::run()
         {
             while (true) {
 
-                //blank Board
+                //blank regular Board
+                if(big == false) {
+
                 display.friendlyBoard(currentPlayer->my_ships.m_board);
+
                 char direction = 'u'; //default direction is up
 
                 if (currentShip == 1)
@@ -208,17 +230,46 @@ void Executive::run()
                 row--; // decrement row by 1 for indexing array
                 direction = toupper(direction);
 
-                if (!currentPlayer->PlaceShip(currentShip, row, col, direction))
+                if (!currentPlayer->PlaceShip(big, currentShip, row, col, direction))
                 {
                     cout << "Ship could not be placed there. \n";
                 } else {
                     break;
                 }
             }
+            //blank XL Board
+            else {
+              display.friendlyBoard(currentPlayer->my_ships.m_boardXL);
+
+              char direction = 'u'; //default direction is up
+
+              if (currentShip == 1)
+              {
+                  row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, 20);
+                  c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', 'T');
+              }
+              else
+              {
+                  row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 20);
+                  c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'T');
+                  direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R): ", "UDLR");
+              }
+              col = charToInt(c_col); // convert char to int
+              row--; // decrement row by 1 for indexing array
+              direction = toupper(direction);
+
+              if (!currentPlayer->PlaceShip(big, currentShip, row, col, direction))
+              {
+                  cout << "Ship could not be placed there. \n";
+              } else {
+                  break;
+              }
+            }
+            }
         }
 
         //print last time so player can see 1x5 ship placed
-        display.friendlyBoard(currentPlayer->my_ships.m_board);
+        display.friendlyBoard(currentPlayer->my_ships.m_boardXL);
 
         cout <<"Switch to next Player!\n";
         WaitEnter();
@@ -251,37 +302,48 @@ void Executive::run()
             otherShip = &shipofplayer2;
         }
         int playerNum = (round % 2) + 1;
-        
+
         cout << "Player " << playerNum << "'s turn!\n";
         cout << "You have been hit " << currentShip->getHit() << " times\n";
         //Print boards before fire
-        display.matchFrame(playerNum, currentPlayer->enemy_ships.m_board, currentPlayer->my_ships.m_board);
+        if(big) {
+        display.matchFrame(playerNum, currentPlayer->enemy_ships.m_boardXL, currentPlayer->my_ships.m_boardXL);
+        }
+        else {
+          display.matchFrame(playerNum, currentPlayer->enemy_ships.m_board, currentPlayer->my_ships.m_board);
+        }
 
         while (true) {
-            row = getInt("Input the row into which you wish to fire", 1, 9);
-            c_col = getChar("Input the column into which you wish to fire", 'A', 'I');
+            if(big) {
+            row = getInt("Input the row into which you wish to fire", 1, 20);
+            c_col = getChar("Input the column into which you wish to fire", 'A', 'T');
+            }
+            else {
+              row = getInt("Input the row into which you wish to fire", 1, 9);
+              c_col = getChar("Input the column into which you wish to fire", 'A', 'I');
+            }
             col = charToInt(c_col);
             row --;
 
-            if (otherPlayer->CheckHit(row, col))
+            if (otherPlayer->CheckHit(big, row, col))
             {
                 display.hit();
                 otherShip->setHit();
-                currentPlayer->UpdateEnemyBoard(row, col, true);
+                currentPlayer->UpdateEnemyBoard(big, row, col, true);
                 if (otherShip->isSunk()){
                     cout << "Player " << playerNum << " wins!\n";
                 }
                 break;
             }
-            else if(otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O')
+            else if(otherPlayer->my_ships.getValue(big, row, col) == 'X' || currentPlayer->enemy_ships.getValue(big, row, col) == 'O')
             {
                 cout << "\n\nYou've already fired at that spot!\n";
             }
             else
             {
                 display.miss();
-                currentPlayer->UpdateEnemyBoard(row, col, false);
-                otherPlayer->my_ships.updateBoard(row, col, 'O');
+                currentPlayer->UpdateEnemyBoard(big, row, col, false);
+                otherPlayer->my_ships.updateBoard(big, row, col, 'O');
                 break;
             }
         }

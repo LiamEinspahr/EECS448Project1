@@ -36,7 +36,7 @@ class Display
 	/**
 	 * @pre: board must use 'X' and 'O' to denote hits and misses, respectively.
 	 * @post: prints state of enemy board
-	 * @param: board, 9x9 array marked with 'X's and/or 'O's, 
+	 * @param: board, 9x9 array marked with 'X's and/or 'O's,
 	 * playerID: either 1 or 2 (to differentiate players)
 	 **/
 	//display state of enemy board
@@ -47,7 +47,7 @@ class Display
 	/**
 	 * @post: constructs display obj.
 	 **/
-	Display();
+	Display(bool big);
 
 	/**
 	 * @pre: none
@@ -66,7 +66,7 @@ class Display
 	/**
 	 * @pre: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively
 	 * @post: prints state of playerID's enemy board and their ships
-	 * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's, 
+	 * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's,
 	   friendlyBrd: 9x9 array marked with 'X's and/or 'S's
 	 **/
 	void matchFrame(int playerID, char enemyBrd[][9], char friendlyBrd[][9]) const;

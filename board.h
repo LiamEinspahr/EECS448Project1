@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-class Board 
+class Board
 {
 	public:
 		/**
@@ -33,13 +33,19 @@ class Board
 		* @param: int row: row to get value at, int col: column to get value at
 		* @return: returns the character at the specified value
  		**/
+
+		bool checkBig();
+
 		char getValue(int row, int col); // gets value at coordinates
 
-		char m_board[9][9];  
+		char m_board[9][9];
+		char m_boardXL[20][20];
 
-	private:  
-		int numRows = 9;
-		int numCols = 9;  // Letters (A-I)
+	private:
+		int numRows;// = 9;
+		int numCols;// = 9;  // Letters (A-I)
+		//int numRowsXL = 20;
+		//int numColsXL = 20; //Letters (A-T)
 };
 
 
