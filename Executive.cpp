@@ -252,6 +252,7 @@ void Executive::run()
     }
 
     if (!humanOpponent) {
+		//currentPlayer = &player2;
         //blank Board
         display.friendlyBoard(currentPlayer->my_ships);
         char direction = 'u'; //default direction is up
@@ -267,7 +268,7 @@ void Executive::run()
 
         //print last time so player can see 1x5 ship placed
         //display.friendlyBoard(currentPlayer->my_ships);
-
+		currentPlayer = &player2;
         for (int currentShip = 1; currentShip <= shipnum; currentShip++)
         {
             while(true)
@@ -291,6 +292,9 @@ void Executive::run()
                 {
                     break;
                 } 
+				else{
+					cout<<"having an issue\n";
+				}
             }   
         }
 		cout<<"AI PLACED SHIPS\n";
@@ -301,8 +305,14 @@ void Executive::run()
     Player* otherPlayer = &player2;
 	Medium medium; 
 
+	cout<<"hit exec 304\n";
+
+	cout<<"Player 1 ships sunk: "<<player1.my_ships.allShipsSunk()<<'\n';
+	cout<<"Player 2 ships sunk: "<<player2.my_ships.allShipsSunk()<<'\n';
+
 	while (!player1.my_ships.allShipsSunk() && !player2.my_ships.allShipsSunk())
 	{
+		cout<<"308\n";
         if (round % 2) {
             currentPlayer = &player2;
             otherPlayer = &player1;
@@ -313,6 +323,7 @@ void Executive::run()
         int playerNum = (round % 2) + 1;
 
         if (playerNum == 2 && !humanOpponent) {
+			cout<<"diff 318\n";
             if(machine.getDifficultyLevel() == 'E'){
 				//call easy methods
 				cout<<"pretend AI easy level shot\n";
@@ -330,7 +341,6 @@ void Executive::run()
 
 			}
         } else {
-
             cout << "Player " << playerNum << "'s turn!\n";
             cout << "You have been hit " << currentPlayer->my_ships.getNumHits() << " times\n";
             //Print boards before fire
