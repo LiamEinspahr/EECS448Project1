@@ -43,14 +43,14 @@ Display::Display(bool big)
 Display::~Display()
 {}
 
-void Display::matchFrame(int playerID, char enemyBrd[][9], char friendlyBrd[][9]) const
+void Display::matchFrame(int playerID, Board &enemyBrd, Board &friendlyBrd) const
 {
 	enemyBoard(enemyBrd, playerID);
 	cout << m_borderSpace;
 	friendlyBoard(friendlyBrd);
 }
 
-void Display::enemyBoard(char board[][9], int playerID) const
+void Display::enemyBoard(Board &board, int playerID) const
 {
 	string playeriBanner = m_playeriBanner;
 	string enemyBanner = m_enemyBanner;
@@ -64,19 +64,19 @@ void Display::enemyBoard(char board[][9], int playerID) const
 	cout << m_colLabel;
 	cout << m_borderLineTop;
 
-	for(int i = 0; i < 9; i++)
+	for(int i = 0; i < board.getNumRows(); i++)
 	{
 		rowiLabel.replace(2, 1, to_string(i+1));
 
-		for(int j = 0; j < 9; j++)
+		for(int j = 0; j < board.getNumCols(); j++)
 		{
-			if(board[i][j] == 'X')
+			if(board.getValue(i, j) == 'X')
 			{
-				rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));
+				rowiLabel.replace(4*j+6, 1, "X");
 			}
-			else if(board[i][j] == 'O')
+			else if(board.getValue(i, j) == 'O')
 			{
-				rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));
+				rowiLabel.replace(4*j+6, 1, "O");
 			}
 		}
 
@@ -94,7 +94,7 @@ void Display::enemyBoard(char board[][9], int playerID) const
 	}
 }
 
-void Display::friendlyBoard(char board[][9]) const
+void Display::friendlyBoard(Board &board) const
 {
 	string rowiLabel = m_rowiLabel;
 
@@ -102,26 +102,27 @@ void Display::friendlyBoard(char board[][9]) const
 	cout << m_colLabel;
 	cout << m_borderLineTop;
 
-	for(int i = 0; i < 9; i++)
+	for(int i = 0; i < board.getNumRows(); i++)
 	{
 		rowiLabel.replace(2, 1, to_string(i+1));
 
-		for(int j = 0; j < 9; j++)
+		for(int j = 0; j < board.getNumCols(); j++)
 		{
-			if(board[i][j] == 'X')
+			if(board.getValue(i, j) == 'X')
+			{
+				rowiLabel.replace(4*j+5, 1, ">");
+				rowiLabel.replace(4*j+6, 1, string(1, '0' + board.getShipNum(i, j)));
+				rowiLabel.replace(4*j+7, 1, "<");
+			}
+			else if(board.getValue(i, j) == 'S')
 			{
 				rowiLabel.replace(4*j+5, 1, "(");
-				rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));
+                rowiLabel.replace(4*j+6, 1, string(1, '0' + board.getShipNum(i, j)));
 				rowiLabel.replace(4*j+7, 1, ")");
 			}
-			else if(board[i][j] == 'S')
+			else if(board.getValue(i, j) == 'O')
 			{
-				rowiLabel.replace(4*j+5, 1, "(");
-				rowiLabel.replace(4*j+7, 1, ")");
-			}
-			else if(board[i][j] == 'O')
-			{
-				rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));
+				rowiLabel.replace(4*j+6, 1, "O");
 			}
 		}
 

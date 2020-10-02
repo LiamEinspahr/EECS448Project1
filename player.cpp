@@ -72,7 +72,7 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
             }
             for (int j = col; j < col + size; j++)
             {
-                my_ships.updateBoard(row, j, 'S'); // if not returned by now, place ship
+                my_ships.updateBoard(row, j, 'S', size); // if not returned by now, place ship
             }
         }
         else return false; // fails to place if not enoguh space
@@ -87,7 +87,7 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
             }
             for (int j = col; j >= col - size + 1; j--)
             {
-                my_ships.updateBoard(row, j, 'S');
+                my_ships.updateBoard(row, j, 'S', size);
             }
         }
         else return false;
@@ -102,7 +102,7 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
             }
             for (int i = row; i < row + size; i++)
             {
-                my_ships.updateBoard(i, col, 'S');
+                my_ships.updateBoard(i, col, 'S', size);
             }
         }
         else return false;
@@ -121,7 +121,7 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
             }
             for (int i = row; i >= row - size + 1; i--)
             {
-                my_ships.updateBoard(i, col, 'S');
+                my_ships.updateBoard(i, col, 'S', size);
             }
         }
         else return false;

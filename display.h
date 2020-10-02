@@ -7,6 +7,7 @@
 #define DISPLAY_H
 
 #include <string>
+#include "board.h"
 
 using namespace std;
 
@@ -40,7 +41,7 @@ class Display
 	 * playerID: either 1 or 2 (to differentiate players)
 	 **/
 	//display state of enemy board
-	void enemyBoard(char board[][9], int playerID) const;
+	void enemyBoard(Board &board, int playerID) const;
 
 	public:
 
@@ -61,7 +62,7 @@ class Display
 	 * @param: board, 9x9 array marked with 'X's and/or 'S's
 	 **/
 	//in-game visual elements
-	void friendlyBoard(char board[][9]) const;
+	void friendlyBoard(Board &board) const;
 
 	/**
 	 * @pre: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively
@@ -69,7 +70,7 @@ class Display
 	 * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's,
 	   friendlyBrd: 9x9 array marked with 'X's and/or 'S's
 	 **/
-	void matchFrame(int playerID, char enemyBrd[][9], char friendlyBrd[][9]) const;
+	void matchFrame(int playerID, Board &enemyBrd, Board &friendlyBrd) const;
 
 	/**
 	 * @post: prints hit message
