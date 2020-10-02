@@ -1,7 +1,7 @@
 #ifndef MACHINE_H
 #define MACHINE_H
 
-
+#include<ctime>
 #include<iostream>
 using namespace std;
 
