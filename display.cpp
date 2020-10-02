@@ -4,10 +4,8 @@
 
 using namespace std;
 
-Display::Display()
+Display::Display(bool big)
 {
-	Executive exec;
-	bool big = exec.checkForBig();
 
 	if(big){
 		m_borderSpace = "\n\n";

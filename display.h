@@ -48,7 +48,7 @@ class Display
 	/**
 	 * @post: constructs display obj.
 	 **/
-	Display();
+	Display(bool big);
 
 	/**
 	 * @pre: none
