@@ -3,6 +3,7 @@
 #include "player.h"
 #include "display.h"
 #include "machine.h"
+#include "medium.h"
 #include <iostream>
 #include <limits>
 #include <string>
@@ -265,9 +266,7 @@ void Executive::run()
         //AI places ships:
 
         //print last time so player can see 1x5 ship placed
-        display.friendlyBoard(currentPlayer->my_ships);
-
-
+        //display.friendlyBoard(currentPlayer->my_ships);
 
         for (int currentShip = 1; currentShip <= shipnum; currentShip++)
         {
@@ -292,15 +291,15 @@ void Executive::run()
                 {
                     break;
                 } 
-            }
-            
-            
+            }   
         }
+		cout<<"AI PLACED SHIPS\n";
     }
 	int round = 0;
 
     currentPlayer = &player1;
     Player* otherPlayer = &player2;
+	Medium medium; 
 
 	while (!player1.my_ships.allShipsSunk() && !player2.my_ships.allShipsSunk())
 	{
@@ -320,8 +319,9 @@ void Executive::run()
 
 			}
 			else if (machine.getDifficultyLevel() == 'M'){
-				//call medium methods
-				cout<<"pretend AI medium level shot\n";
+				cout<<"ARE WE GETTING HERE?\n";
+				medium.solve(player1, player2);
+				cout<<"this is after sovle\n";
 			
 			}
 			else{
