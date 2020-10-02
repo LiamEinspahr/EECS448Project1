@@ -1,5 +1,6 @@
 
 #include "machine.h"
+#include <ctime>
 
 machine::machine(){
     
