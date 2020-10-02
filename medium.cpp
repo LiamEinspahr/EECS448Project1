@@ -32,8 +32,8 @@ bool Medium::move(int row, int col){
   
     if(checkCoords(row-1,col)){ 
         if(otherPlayer.my_ships.getValue(row-1, col) == 'X'){
-            hitGuess[hits][row-1];
-            hitGuess[hits][col];
+            hitGuess[hits][0] = row -1;
+            hitGuess[hits][1] = col;
             hits++;
             move(row-1,col);
             return true;
@@ -41,8 +41,8 @@ bool Medium::move(int row, int col){
     }
     if(checkCoords(row,col+1)){ 
         if(otherPlayer.my_ships.getValue(row, col+1) == 'X'){
-            hitGuess[hits][row];
-            hitGuess[hits][col+1];
+            hitGuess[hits][0] = row;
+            hitGuess[hits][1] = col+1;
             hits++;
             move(row,col+1);
             return true;
@@ -50,8 +50,8 @@ bool Medium::move(int row, int col){
     }
     if(checkCoords(row+1,col)){ 
         if(otherPlayer.my_ships.getValue(row+1, col) == 'X'){
-            hitGuess[hits][row+1];
-            hitGuess[hits][col];
+            hitGuess[hits][0] = row + 1;
+            hitGuess[hits][1] = col;
             hits++;
             move(row+1,col);
             return true;
@@ -59,8 +59,8 @@ bool Medium::move(int row, int col){
     }
     if(checkCoords(row,col-1)){ 
         if(otherPlayer.my_ships.getValue(row, col-1) == 'X'){
-            hitGuess[hits][row];
-            hitGuess[hits][col-1];
+            hitGuess[hits][0] = row;
+            hitGuess[hits][1] = col - 1;
             hits++;
             move(row,col-1);
             return true;
@@ -73,11 +73,11 @@ bool Medium::move(int row, int col){
 void Medium::solve(Player &currentPlayer1, Player &otherPlayer1){
     currentPlayer = currentPlayer1;
     otherPlayer = otherPlayer1;
-    cout<<"here med 79\n";
+    //cout<<"here med 79\n";
     if(!attackShip){
         row = machine.randomNum();
         col = machine.randomChar();
-        cout<<"here med 79\n";
+        //cout<<"here med 79\n";
         //check to see if you have already guess that spot before
         while(true){
             if(otherPlayer.my_ships.getValue(row, col) == 'X' || currentPlayer.enemy_ships.getValue(row, col) == 'O'){
