@@ -1,5 +1,5 @@
-prog: main.o board.o player.o Executive.o display.o Ship.o
-	g++ -g -std=c++11 -Wall main.o board.o player.o Executive.o display.o Ship.o -o Battleship
+prog: main.o board.o player.o aiEasy.o Executive.o display.o Ship.o
+	g++ -g -std=c++11 -Wall main.o board.o player.o aiEasy.o Executive.o display.o Ship.o -o Battleship
 
 main.o: main.cpp Executive.o
 	g++ -g -std=c++11 -Wall -c main.cpp
@@ -12,6 +12,9 @@ board.o: board.h board.cpp
 
 player.o: player.h player.cpp board.o
 	g++ -g -std=c++11 -Wall -c player.cpp
+
+aiEasy.o: aiEasy.h aiEasy.cpp board.o
+	g++ -g -std=c++11 -Wall -c aiEasy.cpp
 
 display.o: display.h display.cpp
 	g++ -g -std=c++11 -Wall -c display.cpp

@@ -218,18 +218,8 @@ void Executive::run()
 		else
 		{
 			chooseFire2:
-			for(int i=0;i<9;i++){
-				for(int j=0;j<9;j++){
-					if(player1.CheckHit(row, col)){
-						row =i;
-						col=j;
-						break;
-					}
-				}
-			}
-		//	row =rand()%9;
-		//	col =rand()%9;
-
+			row =rand()%9;
+			col =rand()%9;
 			if (player1.CheckHit(row, col))
 			{
 				shipofplayer1.setHit();
