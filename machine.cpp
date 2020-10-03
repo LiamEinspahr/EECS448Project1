@@ -29,10 +29,10 @@ int Machine::randomNum(){
     //srand (time(NULL)); 
 	int randInt;
 	if(gamemode == 'X'){
-		randInt = (rand() % 20) + 1;
+		randInt = (rand() % 20);
 	}
 	else{
-		randInt = (rand() % 9) + 1;
+		randInt = (rand() % 9);
 	}
     randInt--;
     return(randInt);
@@ -46,12 +46,12 @@ int Machine::randomChar(){
 
 	if(gamemode == 'X'){
 		r = rand() % 20;   
-    	c = 'a' + r;
+    	c = 'a' + r-1;
     	charInt = charToInt(c);
 	}
 	else{
 		r = rand() % 9;   
-    	c = 'a' + r;
+    	c = 'a' + r-1;
     	charInt = charToInt(c);
 	}
 	return(charInt);
