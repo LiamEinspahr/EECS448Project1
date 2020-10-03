@@ -17,7 +17,7 @@ void Medium::guessSpot(int row, int col){
             if(otherPlayer.my_ships.shipIsSunk(row,col)){
                 hits = 0;
                 haveGuesses = false;
-                tracking = 0; 
+                tracking = 0;
                 attackShip = false;
             }
         }
@@ -29,8 +29,8 @@ void Medium::guessSpot(int row, int col){
 }
 
 bool Medium::move(int row, int col){
-  
-    if(checkCoords(row-1,col)){ 
+
+    if(checkCoords(row-1,col)){
         if(otherPlayer.my_ships.getValue(row-1, col) == 'X'){
             hitGuess[hits][0] = row -1;
             hitGuess[hits][1] = col;
@@ -39,7 +39,7 @@ bool Medium::move(int row, int col){
             return true;
         }
     }
-    if(checkCoords(row,col+1)){ 
+    if(checkCoords(row,col+1)){
         if(otherPlayer.my_ships.getValue(row, col+1) == 'X'){
             hitGuess[hits][0] = row;
             hitGuess[hits][1] = col+1;
@@ -48,7 +48,7 @@ bool Medium::move(int row, int col){
             return true;
         }
     }
-    if(checkCoords(row+1,col)){ 
+    if(checkCoords(row+1,col)){
         if(otherPlayer.my_ships.getValue(row+1, col) == 'X'){
             hitGuess[hits][0] = row + 1;
             hitGuess[hits][1] = col;
@@ -57,7 +57,7 @@ bool Medium::move(int row, int col){
             return true;
         }
     }
-    if(checkCoords(row,col-1)){ 
+    if(checkCoords(row,col-1)){
         if(otherPlayer.my_ships.getValue(row, col-1) == 'X'){
             hitGuess[hits][0] = row;
             hitGuess[hits][1] = col - 1;
@@ -97,7 +97,7 @@ void Medium::solve(Player &currentPlayer1, Player &otherPlayer1){
             else{
                 if(!(otherPlayer.my_ships.shipIsSunk(row,col))){
                     attackShip = true;
-                    hitRow = row; 
+                    hitRow = row;
                     hitCol = col;
                 }
             }
@@ -105,8 +105,8 @@ void Medium::solve(Player &currentPlayer1, Player &otherPlayer1){
         else{
             currentPlayer.UpdateEnemyBoard(row, col, false);
             otherPlayer.my_ships.updateBoard(row, col, 'O');
-        } 
-        
+        }
+
     }
     else{
         if(!haveGuesses){
@@ -115,7 +115,7 @@ void Medium::solve(Player &currentPlayer1, Player &otherPlayer1){
             hitGuess = new int*[value];
             for(int i = 0; i < value; i++){
                 hitGuess[i] = new int[2];
-            } 
+            }
 
             if(move(row,col)){
                 row = hitGuess[tracking][0];
@@ -129,7 +129,7 @@ void Medium::solve(Player &currentPlayer1, Player &otherPlayer1){
         col = hitGuess[tracking][1];
         tracking++;
         guessSpot(row,col);
-    }     
+    }
 }
 
 bool Medium::checkCoords(int row, int col){

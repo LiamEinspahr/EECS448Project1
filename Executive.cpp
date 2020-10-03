@@ -213,7 +213,7 @@ void Executive::run()
   int row, col;
   char c_col; // char version of the column
 
-  machine machine;
+  Machine machine;
 
   int maxShips = 5;
 
@@ -335,10 +335,6 @@ void Executive::run()
         else {
             currentPlayer = &player2;
         }
-        else
-        {
-            break;
-        }
 
     if (!humanOpponent)
     {
@@ -439,6 +435,9 @@ void Executive::run()
     WaitEnter();
 		}
   }
+}
+}
+
 
 bool Executive::checkForBig()
 {
