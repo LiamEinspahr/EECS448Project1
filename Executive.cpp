@@ -206,16 +206,16 @@ void Executive::run()
 
     int maxShips = 5;
 
+    bool humanOpponent = true;
     char gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "NX");
     if (gamemode == 'X')
     {
         maxShips = 10;
+    } else {
+        char humanInput = getCharInOptions("Would you like to play against a Human or AI?", "HA");
+        humanOpponent = humanInput == 'H';
     }
 
-    bool humanOpponent = false;
-
-    char humanInput = getCharInOptions("Would you like to play against a Human or AI?", "HA");
-    humanOpponent = humanInput == 'H';
     if (!humanOpponent)
     {
         char diff = getCharInOptions("What level of difficulty do you want to play: Easy, Medium, Hard?", "EMH");
