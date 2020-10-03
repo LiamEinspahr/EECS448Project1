@@ -6,8 +6,8 @@
 //#include "board.h"
 #include "player.h"
 #include "display.h"
-#include "Ship.h"
 #include "machine.h"
+#include "board.h"
 
 #include<iostream>
 using namespace std;
@@ -15,27 +15,32 @@ using namespace std;
 class Medium{
 
     public:
-        void solve(Player &currentPlayer, Player &otherPlayer, Ship &currentShip, Ship &otherShip); // calls recursive function but does not recurse itself
-        int getRow();
-        int getCol();
-        int randomNum();
-        int randomChar();
+        void solve(Player &currentPlayer, Player &otherPlayer); // calls recursive function but does not recurse itself
         Medium();
 
     private:
         
-        bool isValidMove(int row, char col);
-        bool Coordinates(int row, int col); // recursive function
-        int charToInt(char c);
+        bool checkCoords(int row, int col); // recursive function
+        void guessSpot(int row, int col);
+        bool move(int row, int col);
+
         int row;
         int col;
         int hitRow;
         int hitCol;
         bool attackShip = false;
-        machine machine;
-        Player player;
+        Machine machine;
+        Player currentPlayer;
+        Player otherPlayer;
         Display display;
-        Ship ship;
+        Board board;
+
+        int hits = 0; 
+        int** hitGuess;
+        bool haveGuesses = false;
+        int tracking = 0;
+
+        
 
 };
 #endif
