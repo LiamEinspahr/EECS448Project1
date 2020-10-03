@@ -139,14 +139,9 @@ void Medium::solve(Player &currentPlayer1, Player &otherPlayer1){
         //cout<<"other player enemey ships value at row col: "<<otherPlayer->enemy_ships.getValue(row,col)<<'\n';
         //cout<<"other player myships value at row col: "<<otherPlayer->my_ships.getValue(row,col)<<'\n';
         //cout<<"current player myships ships value at row col: "<<currentPlayer->my_ships.getValue(row, col)<<'\n';
-        while(true){
-            if(currentPlayer->enemy_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O'){//change to current play enermy ships
-                row = machine.randomNum();
-                col = machine.randomChar();
-            }
-            else{
-                break;
-            }
+        while(currentPlayer->enemy_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O'){
+            row = machine.randomNum();
+            col = machine.randomChar();
         }
 
         if (otherPlayer->CheckHit(row, col)){
