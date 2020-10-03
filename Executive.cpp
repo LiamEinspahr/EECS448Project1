@@ -320,7 +320,6 @@ void Executive::run()
 				 // decrement row by 1 for indexing array
 				direction = toupper(direction);
 
-<<<<<<< HEAD
 				if (currentPlayer->PlaceShipAI(currentShip, row, col, direction))
 				{
 					break;
@@ -331,40 +330,6 @@ void Executive::run()
 	}
 
 	int round = 0;
-=======
-        for (int currentShip = 1; currentShip <= shipnum; currentShip++)
-        {
-            while (true)
-            {
-                char direction;
-                if (currentShip == 1)
-                {
-                    row = machine.randomNum();
-                    c_col = machine.randomChar();
-                }
-                else
-                {
-                    row = machine.randomNum();
-                    c_col = machine.randomChar();
-                    direction = machine.getRandomDirection();
-                }
-                row--;
-                direction = toupper(direction);
-
-                if (player2.PlaceShip(currentShip, row, col, direction))
-                {
-                    break;
-                }
-                else
-                {
-                    cout << "having an issue\n";
-                }
-            }
-        }
-        cout << "AI PLACED SHIPS\n";
-    }
-    int round = 0;
->>>>>>> 8f35467b2e7eb5a7c44a6d6f52e2810bca11f9af
 
 	cout<<"AI Board with ships placed:\n";
 	display.friendlyBoard(currentPlayer->my_ships);
