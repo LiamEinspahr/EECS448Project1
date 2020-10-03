@@ -26,6 +26,7 @@ class Board
 		* @param: int row: row to update, int col: column to update, char c: character to update row/col with
  		**/
 		void updateBoard(int row, int col, char c, int shipsize=0); // Function to update board
+	
 
         void updateNumShips(int numships); // Update number of ships on board
 
