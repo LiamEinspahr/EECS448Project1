@@ -235,9 +235,6 @@ void Executive::run()
            enemy_ships_p1 = player1.enemy_shipsXL;
            my_ships_p2 = player2.my_shipsXL;
            enemy_ships_p2 = player2.enemy_shipsXL;
-    } else {
-        char humanInput = getCharInOptions("Would you like to play against a Human or AI?", "HA");
-        humanOpponent = humanInput == 'H';
     }
     else
     {
@@ -247,6 +244,9 @@ void Executive::run()
          my_ships_p2 = player2.my_ships;
          enemy_ships_p2 = player2.enemy_ships;
     }
+
+    char humanInput = getCharInOptions("Would you like to play against a Human or AI?", "HA");
+    humanOpponent = humanInput == 'H';
 
     bool big = m_big;
 
@@ -406,6 +406,7 @@ void Executive::run()
 					break;
 				}
 			}
+      }
 		}
 
 	}
@@ -416,19 +417,17 @@ void Executive::run()
 	display.friendlyBoard(currentPlayer->my_ships);
 
 
-                if (player2.PlaceShip(currentShip, row, col, direction))
+                /*if (player2.PlaceShip(currentShip, row, col, direction))
                 {
                     break;
                 }
                 else
                 {
                     cout << "having an issue\n";
-                }
-            }
-        }
+                }*/
+
+
         cout << "AI PLACED SHIPS\n";
-    }
-    int round = 0;
 
     currentPlayer = &player1;
     Player *otherPlayer = &player2;
@@ -471,7 +470,7 @@ void Executive::run()
 				cout<<"pretend AI medium level shot\n";
 
 			}
-      }
+    }
 			else{
 				//call hard methods
 				cout<<"pretend AI hard level shot\n";
@@ -496,7 +495,7 @@ void Executive::run()
     WaitEnter();
 		}
   }
-}
+
 
 
 

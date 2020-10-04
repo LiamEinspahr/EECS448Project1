@@ -111,6 +111,17 @@ char Board::getValue(int row, int col)
 	}
 }
 
+void Board::setValue(int row, int col, char input)
+{
+	bool big = checkBig();
+	if(big) {
+	m_boardXL[row][col] = input;
+	}
+	else {
+	m_board[row][col] = input;
+	}
+}
+
 bool Board::checkBig()
 {
 	if(numRows == 20)

@@ -75,11 +75,11 @@ void Display::enemyBoard(Board &board, int playerID) const
 		{
 			if(board.getValue(i, j) == 'X')
 			{
-				rowiLabel.replace(4*j+6, 1, "X");
+				rowiLabel.replace(4*j+6, 1, std::string(1, board.getValue(i,j)));
 			}
 			else if(board.getValue(i, j) == 'O')
 			{
-				rowiLabel.replace(4*j+6, 1, "O");
+				rowiLabel.replace(4*j+6, 1, std::string(1, board.getValue(i,j)));
 			}
 		}
 
@@ -120,19 +120,19 @@ void Display::friendlyBoard(Board &board) const
 		{
 			if(board.getValue(i, j) == 'X')
 			{
-				rowiLabel.replace(4*j+5, 1, ">");
-				rowiLabel.replace(4*j+6, 1, string(1, '0' + board.getShipNum(i, j)));
-				rowiLabel.replace(4*j+7, 1, "<");
+				rowiLabel.replace(4*j+5, 1, "(");
+				rowiLabel.replace(4*j+6, 1, std::string(1, board.getValue(i,j)));//'0' + board.getShipNum(i, j)));
+				rowiLabel.replace(4*j+7, 1, ")");
 			}
 			else if(board.getValue(i, j) == 'S')
 			{
 				rowiLabel.replace(4*j+5, 1, "(");
-                rowiLabel.replace(4*j+6, 1, string(1, '0' + board.getShipNum(i, j)));
+                //rowiLabel.replace(4*j+6, 1, string(1, board[i][j]));//'0' + board.getShipNum(i, j)));
 				rowiLabel.replace(4*j+7, 1, ")");
 			}
 			else if(board.getValue(i, j) == 'O')
 			{
-				rowiLabel.replace(4*j+6, 1, "O");
+				rowiLabel.replace(4*j+6, 1, std::string(1, board.getValue(i,j)));
 			}
 		}
 
