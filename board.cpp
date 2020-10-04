@@ -40,6 +40,11 @@ Board::~Board() {}
 void Board::printBoard()
 {
 	bool big = checkBig();
+	if(big)
+	{
+		numRows = 20;
+		numCols = 20;
+	}
 	int sideNum = 1;
 	for(int i=0; i<numRows; i++)
 	{
