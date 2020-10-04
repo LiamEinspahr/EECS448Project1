@@ -265,13 +265,13 @@ void Executive::run()
 				{
 					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, numRows);
                     c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'A' + numCols - 1);
-                    direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, N): ", "UDLRN");
+                    direction = getCharInOptions("Up, Down, Left, Right, or in n-shape from pivot?: ", "UDLRN");
 				}
 				else if(currentShip == 7) 
 				{
 					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, numRows);
                     c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'A' + numCols - 1);
-                    direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, V): ", "UDLRV");
+                    direction = getCharInOptions("Up, Down, Left, Right, or in V-shape from pivot?: ", "UDLRV");
 				}
                 else
                 {
