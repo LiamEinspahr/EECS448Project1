@@ -225,6 +225,7 @@ void Executive::run()
   char diff = getCharInOptions("What level of difficulty do you want to play: Easy, Medium, Hard?", "EMH");
 	machine.setDifficultyLevel(diff);
 
+    bool humanOpponent = true;
     char gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "NX");
     if (gamemode == 'X')
     {
@@ -234,6 +235,9 @@ void Executive::run()
            enemy_ships_p1 = player1.enemy_shipsXL;
            my_ships_p2 = player2.my_shipsXL;
            enemy_ships_p2 = player2.enemy_shipsXL;
+    } else {
+        char humanInput = getCharInOptions("Would you like to play against a Human or AI?", "HA");
+        humanOpponent = humanInput == 'H';
     }
     else
     {
@@ -255,10 +259,6 @@ void Executive::run()
 
 	Display display = Display(big);
 
-    bool humanOpponent = false;
-
-    char humanInput = getCharInOptions("Would you like to play against a Human or AI?", "HA");
-    humanOpponent = humanInput == 'H';
     if (!humanOpponent)
     {
         char diff = getCharInOptions("What level of difficulty do you want to play: Easy, Medium, Hard?", "EMH");
@@ -378,28 +378,45 @@ void Executive::run()
         for (int i = 0; i <= 50; i++)
             cout << endl;
 
-        //AI places ships:
 
-        for (int currentShip = 1; currentShip <= shipnum; currentShip++)
-        {
-            while (true)
-            {
-                char direction;
-                if (currentShip == 1)
-                {
-                    row = machine.randomNum();
-                    c_col = machine.randomChar();
-                }
-                else
-                {
-                    row = machine.randomNum();
-                    c_col = machine.randomChar();
-                    direction = machine.getRandomDirection();
-                }
-                row--;
-                direction = toupper(direction);
+	currentPlayer = &player2;
+	for (int currentShip = 1; currentShip <= shipnum; currentShip++)
+		{
+			while (true) {
 
-                if (currentPlayer->PlaceShip(currentShip, row, col, direction))
+				//blank Board
+				char direction = 'u'; //default direction is up
+
+				if (currentShip == 1)
+				{
+					row = machine.randomNum();
+					c_col = machine.randomChar();
+				}
+				else
+				{
+					row = machine.randomNum();
+					c_col = machine.randomChar();
+					direction = machine.getRandomDirection();
+				}
+				 // decrement row by 1 for indexing array
+				direction = toupper(direction);
+
+				if (currentPlayer->PlaceShipAI(currentShip, row, col, direction))
+				{
+					break;
+				}
+			}
+		}
+
+	}
+
+	int round = 0;
+
+	cout<<"AI Board with ships placed:\n";
+	display.friendlyBoard(currentPlayer->my_ships);
+
+
+                if (player2.PlaceShip(currentShip, row, col, direction))
                 {
                     break;
                 }
@@ -437,12 +454,15 @@ void Executive::run()
         }
         int playerNum = (round % 2) + 1;
 
+
         if (playerNum == 2 && !humanOpponent)
-        {
-            cout << "diff 318\n";
-            if (machine.getDifficultyLevel() == 'E')
-            {
-                row = machine.randomNum();
+		{
+			//cout<<"diff 318\n";
+            if(machine.getDifficultyLevel() == 'E')
+			{
+				//call easy methods
+				cout<<"pretend AI easy level shot\n";
+				row = machine.randomNum();
                 col = machine.randomChar();
 
 			}
@@ -529,9 +549,10 @@ bool Executive::checkForBig()
                     otherPlayer->my_ships.updateBoard(row, col, 'O');
                 }
             }
-        }
-        else
-        {
+			round++;
+		}
+
+		else {
             cout << "Player " << playerNum << "'s turn!\n";
             cout << "You have been hit " << currentPlayer->my_ships.getNumHits() << " times\n";
             //Print boards before fire
@@ -578,6 +599,8 @@ bool Executive::checkForBig()
                 otherPlayer->my_ships.updateBoard(row, col, 'O');
                 break;
             }
+			round++;
+        	WaitEnter();
         }
 	}
 }*/
