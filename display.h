@@ -34,6 +34,8 @@ class Display
 	string m_hit5;
 	string m_miss;
 
+	bool m_big;
+
 	/**
 	 * @pre: board must use 'X' and 'O' to denote hits and misses, respectively.
 	 * @post: prints state of enemy board
@@ -41,7 +43,8 @@ class Display
 	 * playerID: either 1 or 2 (to differentiate players)
 	 **/
 	//display state of enemy board
-	void enemyBoard(Board &board, int playerID) const;
+	void enemyBoard(char board[][9], int playerID) const;
+	void enemyBoardXL(char board[][20], int playerID) const;
 
 	public:
 
@@ -62,7 +65,9 @@ class Display
 	 * @param: board, 9x9 array marked with 'X's and/or 'S's
 	 **/
 	//in-game visual elements
-	void friendlyBoard(Board &board) const;
+	void friendlyBoard(char board[][9]) const;
+
+	void friendlyBoardXL(char board[][20]) const;
 
 	/**
 	 * @pre: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively
@@ -70,8 +75,8 @@ class Display
 	 * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's,
 	   friendlyBrd: 9x9 array marked with 'X's and/or 'S's
 	 **/
-	void matchFrame(int playerID, Board &enemyBrd, Board &friendlyBrd) const;
-
+	void matchFrame(int playerID, char enemyBrd[][9], char friendlyBrd[][9]) const;
+	void matchFrameXL(int playerID, char enemyBrd[][20], char friendlyBrd[][20]) const;
 	/**
 	 * @post: prints hit message
 	 **/

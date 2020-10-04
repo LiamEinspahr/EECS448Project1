@@ -8,8 +8,8 @@ class Player
 	public:
 		Player();   	    // Constructor
 		~Player();  	    // Destructor;
-		Board my_ships;
-		Board enemy_ships;
+		Board my_ships = Board(false);
+		Board enemy_ships = Board(false);
 		Board my_shipsXL = Board(true);
 		Board enemy_shipsXL = Board(true);
 
@@ -29,7 +29,7 @@ class Player
 		* @return: returns whether the placement was successful or not
  		**/
 		bool PlaceShip(int size, int row, int col, char direction); // will try to place a ship with upper left point at row, col; returns false if it cant
-
+		bool PlaceShipAI(int size, int row, int col, char direction);
 
 		/**
  		* @pre: None

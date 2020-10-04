@@ -23,6 +23,7 @@ class Medium{
         bool checkCoords(int row, int col); // recursive function
         void guessSpot(int row, int col);
         bool move(int row, int col);
+        bool notInArray(int row, int col);
 
         int row;
         int col;
@@ -30,8 +31,8 @@ class Medium{
         int hitCol;
         bool attackShip = false;
         Machine machine;
-        Player currentPlayer;
-        Player otherPlayer;
+        Player* currentPlayer;
+        Player* otherPlayer;
         //Display display;
         Board board;
 
@@ -39,6 +40,8 @@ class Medium{
         int** hitGuess;
         bool haveGuesses = false;
         int tracking = 0;
+        int shipKey;
+        int value;
 
 
 

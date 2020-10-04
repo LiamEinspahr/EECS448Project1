@@ -16,7 +16,7 @@ Board::Board(bool big)
 					for(int j=0; j<numCols; j++)
 					{
 						m_boardXL[i][j] = '-';
-						//m_board_ships[i][j] = 0;
+						m_board_shipsXL[i][j] = 0;
 					}
 				}
 	}
@@ -40,6 +40,11 @@ Board::~Board() {}
 void Board::printBoard()
 {
 	bool big = checkBig();
+	if(big)
+	{
+		numRows = 20;
+		numCols = 20;
+	}
 	int sideNum = 1;
 	for(int i=0; i<numRows; i++)
 	{
@@ -48,7 +53,7 @@ void Board::printBoard()
 			if(i == 0 && j == 0)
 			{
 				cout << "  ";
-				for(char c = 'A'; c <= 'A' + numCols; c++)
+				for(char c = 'A'; c <= 'A' + numCols - 1; c++)
 				{
 					cout << c << " ";
 				}
@@ -76,13 +81,17 @@ void Board::updateBoard(int row, int col, char c, int shipnum)
 {
 	bool big = checkBig();
 	if(big) {
-	m_boardXL[row][col] = c;
+		if(c == 'S') {
+			m_board_shipsXL[row][col] = shipnum;
+			m_boardXL[row][col] = c;
+		}
 	}
 	else {
     if (c == 'S') {
         m_board_ships[row][col] = shipnum;
+				m_board[row][col] = c;
     }
-	m_board[row][col] = c;
+
 	}
 }
 
@@ -99,6 +108,17 @@ char Board::getValue(int row, int col)
 	}
 	else {
 	return m_board[row][col];
+	}
+}
+
+void Board::setValue(int row, int col, char input)
+{
+	bool big = checkBig();
+	if(big) {
+	m_boardXL[row][col] = input;
+	}
+	else {
+	m_board[row][col] = input;
 	}
 }
 

@@ -27,6 +27,7 @@ class Board
  		**/
 		void updateBoard(int row, int col, char c, int shipsize=0); // Function to update board
 
+
         void updateNumShips(int numships); // Update number of ships on board
 
 		/**
@@ -39,6 +40,7 @@ class Board
 		bool checkBig();
 
 		char getValue(int row, int col); // gets value at coordinates
+		void setValue(int row, int col, char input); //sets value at coordinates
 		int getShipNum(int row, int col); // gets shipnum at coordinates
         bool shipNumIsSunk(int shipNum); // Check if a shipnum has sunk
         bool shipIsSunk(int row, int col); // Check if a ship at a location has sunk
@@ -47,6 +49,10 @@ class Board
 		char m_board[9][9];
 		char m_boardXL[20][20];
 		int m_board_ships[9][9];
+		int m_board_shipsXL[20][20];
+
+	//	Board* m_board_ptr = &m_board;
+	//	Board* m_boardXL_ptr = &m_boardXL;
     		int getNumRows(); // Return numRows
         int getNumCols(); // Return numCols
 

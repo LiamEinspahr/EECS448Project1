@@ -26,6 +26,7 @@ int Machine::charToInt(char c) {return ((toupper(c) - 65));}
 
 int Machine::randomNum(){
 	//add more conditions if they choose the xl board
+    //srand (time(NULL)); 
 	int randInt;
 	if(gamemode == 'X'){
 		randInt = (rand() % 20);
@@ -33,6 +34,7 @@ int Machine::randomNum(){
 	else{
 		randInt = (rand() % 9);
 	}
+    randInt--;
     return(randInt);
 }
 
