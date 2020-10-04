@@ -6,12 +6,10 @@
 class Player
 {
 	public:
-		Player();   	    // Constructor
+		Player(bool big);   	    // Constructor
 		~Player();  	    // Destructor;
-		Board my_ships = Board(false);
-		Board enemy_ships = Board(false);
-		Board my_shipsXL = Board(true);
-		Board enemy_shipsXL = Board(true);
+		Board my_ships;
+		Board enemy_ships;
 
 
 		/**
@@ -66,8 +64,6 @@ class Player
 		* @param: row: which row to check; col: which column to check; hit: whether there was a hit or miss
  		**/
 		void UpdateEnemyBoard(int row, int col, bool hit);
-
-		bool checkPlayerBig();
 
 	private:
 		int numShips;

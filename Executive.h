@@ -53,14 +53,5 @@ public:
  	**/
   	int numShipCoords(int shipNum);
 
-		bool checkForBig();
-
-
-
-
-private:
-	bool m_big;
-
-
 };
 #endif // EXECUTIVE_H

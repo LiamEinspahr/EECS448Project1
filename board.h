@@ -10,9 +10,10 @@ class Board
 		/**
  		* @pre: initializes a blank 9x9 board with '-' values
  		**/
-	 	Board();				//Constructor
-		Board(bool big);   	    // Constructor
+		Board();   	    // Constructor
 		~Board();  	    // Destructor
+
+        void setBig();
 
 		/**
  		* @pre: function to print a board, used as a test
@@ -36,12 +37,9 @@ class Board
 		* @param: int row: row to get value at, int col: column to get value at
 		* @return: returns the character at the specified value
  		**/
-
-		bool checkBig();
-
 		char getValue(int row, int col); // gets value at coordinates
-		void setValue(int row, int col, char input); //sets value at coordinates
-		int getShipNum(int row, int col); // gets shipnum at coordinates
+        bool checkBig();
+        int getShipNum(int row, int col); // gets shipnum at coordinates
         bool shipNumIsSunk(int shipNum); // Check if a shipnum has sunk
         bool shipIsSunk(int row, int col); // Check if a ship at a location has sunk
         bool allShipsSunk(); // Check if all ships have sunk
@@ -50,19 +48,14 @@ class Board
 		char m_boardXL[20][20];
 		int m_board_ships[9][9];
 		int m_board_shipsXL[20][20];
-
-	//	Board* m_board_ptr = &m_board;
-	//	Board* m_boardXL_ptr = &m_boardXL;
-    		int getNumRows(); // Return numRows
+        int getNumRows(); // Return numRows
         int getNumCols(); // Return numCols
 
         int getNumHits(); // Get the number of hits on my ships
 
 	private:
-		int numRows;// = 9;
-		int numCols;// = 9;  // Letters (A-I)
-		//int numRowsXL = 20;
-		//int numColsXL = 20; //Letters (A-T)
+		int numRows = 9;
+		int numCols = 9;  // Letters (A-I)
         int numShips = 5;
 };
 

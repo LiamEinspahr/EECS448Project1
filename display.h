@@ -34,8 +34,6 @@ class Display
 	string m_hit5;
 	string m_miss;
 
-	bool m_big;
-
 	/**
 	 * @pre: board must use 'X' and 'O' to denote hits and misses, respectively.
 	 * @post: prints state of enemy board
@@ -43,48 +41,45 @@ class Display
 	 * playerID: either 1 or 2 (to differentiate players)
 	 **/
 	//display state of enemy board
-	void enemyBoard(char board[][9], int playerID) const;
-	void enemyBoardXL(char board[][20], int playerID) const;
+	void enemyBoard(Board &board, int playerID) const;
 
 	public:
 
-	/**
-	 * @post: constructs display obj.
-	 **/
-	Display(bool big);
+        /**
+         * @post: constructs display obj.
+         **/
+        Display(bool big);
+        /**
+         * @pre: board must use 'X' and 'S' to denote hits and ships, respectively.
+         * @post: prints state of player's ships
+         * @param: board, 9x9 array marked with 'X's and/or 'S's
+         **/
+        //in-game visual elements
+        void friendlyBoard(Board &board) const;
 
-	/**
-	 * @pre: none
-	 * @post: none
-	 **/
-	~Display();
+        /**
+         * @pre: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively
+         * @post: prints state of playerID's enemy board and their ships
+         * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's, 
+         friendlyBrd: 9x9 array marked with 'X's and/or 'S's
+        **/
+        void matchFrame(int playerID, Board &enemyBrd, Board &friendlyBrd) const;
 
-	/**
-	 * @pre: board must use 'X' and 'S' to denote hits and ships, respectively.
-	 * @post: prints state of player's ships
-	 * @param: board, 9x9 array marked with 'X's and/or 'S's
-	 **/
-	//in-game visual elements
-	void friendlyBoard(char board[][9]) const;
+        /**
+         * @post: prints hit message
+         **/
+        void hit() const;
 
-	void friendlyBoardXL(char board[][20]) const;
+        /**
+         * @post: prints miss message
+         **/
+        void miss() const;
+       /**
+         * @pre: none
+         * @post: none
+         **/
+        ~Display();
+ 
 
-	/**
-	 * @pre: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively
-	 * @post: prints state of playerID's enemy board and their ships
-	 * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's,
-	   friendlyBrd: 9x9 array marked with 'X's and/or 'S's
-	 **/
-	void matchFrame(int playerID, char enemyBrd[][9], char friendlyBrd[][9]) const;
-	void matchFrameXL(int playerID, char enemyBrd[][20], char friendlyBrd[][20]) const;
-	/**
-	 * @post: prints hit message
-	 **/
-	void hit() const;
-
-	/**
-	 * @post: prints miss message
-	 **/
-	void miss() const;
 };
 #endif

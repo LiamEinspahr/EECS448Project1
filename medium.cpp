@@ -2,7 +2,7 @@
 
 #include "medium.h"
 
-Medium::Medium(){
+Medium::Medium() {
     row = 0;
     col = 0;
 }

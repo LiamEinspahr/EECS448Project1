@@ -5,9 +5,7 @@
 
 //#include "board.h"
 #include "player.h"
-#include "display.h"
 #include "machine.h"
-#include "board.h"
 
 #include<iostream>
 using namespace std;
@@ -33,8 +31,6 @@ class Medium{
         Machine machine;
         Player* currentPlayer;
         Player* otherPlayer;
-        //Display display;
-        Board board;
 
         int hits = 0;
         int** hitGuess;

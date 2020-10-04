@@ -1,50 +1,36 @@
 #include "board.h"
 
+
 Board::Board()
 {
-Board(false);
+    numShips = 10;
+    for(int i=0; i<20; i++)
+    {
+        for(int j=0; j<20; j++)
+        {
+            m_boardXL[i][j] = '-';
+            m_board_shipsXL[i][j] = 0;
+        }
+    }
+    for(int i=0; i<9; i++)
+    {
+        for(int j=0; j<9; j++)
+        {
+            m_board[i][j] = '-';
+            m_board_ships[i][j] = 0;
+        }
+    }
 }
 
-Board::Board(bool big)
-{
-	if(big) {
-		numRows = 20;
-		numCols = 20;
-        numShips = 10;
-				for(int i=0; i<numRows; i++)
-				{
-					for(int j=0; j<numCols; j++)
-					{
-						m_boardXL[i][j] = '-';
-						m_board_shipsXL[i][j] = 0;
-					}
-				}
-	}
-	else {
-			numRows = 9;
-			numCols = 9;
-			for(int i=0; i<numRows; i++)
-			{
-				for(int j=0; j<numCols; j++)
-				{
-					m_board[i][j] = '-';
-					m_board_ships[i][j] = 0;
-				}
-			}
-		}
-
-	}
+void Board::setBig() {
+    numRows = 20;
+    numCols = 20;
+}
 
 Board::~Board() {}
 
 void Board::printBoard()
 {
-	bool big = checkBig();
-	if(big)
-	{
-		numRows = 20;
-		numCols = 20;
-	}
 	int sideNum = 1;
 	for(int i=0; i<numRows; i++)
 	{
@@ -63,9 +49,9 @@ void Board::printBoard()
 			{
 				cout << sideNum << " ";
 			}
-			if(big)
+			if(checkBig())
 			{
-			cout << m_boardXL[i][j] << " ";
+			    cout << m_boardXL[i][j] << " ";
 			}
 			else
 			{
@@ -79,20 +65,17 @@ void Board::printBoard()
 
 void Board::updateBoard(int row, int col, char c, int shipnum)
 {
-	bool big = checkBig();
-	if(big) {
-		if(c == 'S') {
-			m_board_shipsXL[row][col] = shipnum;
-			m_boardXL[row][col] = c;
-		}
-	}
-	else {
-    if (c == 'S') {
-        m_board_ships[row][col] = shipnum;
-				m_board[row][col] = c;
+    if (checkBig()) {
+        if (c == 'S') {
+            m_board_shipsXL[row][col] = shipnum;
+        }
+        m_boardXL[row][col] = c;
+    } else {
+        if (c == 'S') {
+            m_board_ships[row][col] = shipnum;
+        }
+        m_board[row][col] = c;
     }
-
-	}
 }
 
 void Board::updateNumShips(int numships)
@@ -102,57 +85,48 @@ void Board::updateNumShips(int numships)
 
 char Board::getValue(int row, int col)
 {
-	bool big = checkBig();
-	if(big) {
-	return m_boardXL[row][col];
-	}
-	else {
-	return m_board[row][col];
-	}
-}
-
-void Board::setValue(int row, int col, char input)
-{
-	bool big = checkBig();
-	if(big) {
-	m_boardXL[row][col] = input;
-	}
-	else {
-	m_board[row][col] = input;
-	}
-}
-
-bool Board::checkBig()
-{
-	if(numRows == 20)
-	{
-		return true;
-	}
-	else { return false; }
+	if (checkBig()) {
+        return m_boardXL[row][col];
+    } else {
+        return m_board[row][col];
+    }
 }
 
 int Board::getShipNum(int row, int col)
 {
-	return m_board_ships[row][col];
+    if (checkBig()) {
+        return m_board_shipsXL[row][col];
+    } else {
+        return m_board_ships[row][col];
+    }
 }
 
 bool Board::shipNumIsSunk(int shipNum)
 {
     for (int row=0; row < numRows; row++) {
         for (int col=0; col < numCols; col++) {
-            if (m_board_ships[row][col] == shipNum && m_board[row][col] == 'S') {
-                // Part of ship remains
-                return false;
+            if (checkBig()) {
+                if (m_board_shipsXL[row][col] == shipNum && m_boardXL[row][col] == 'S') {
+                    // Part of ship remains
+                    return false;
+                }
+            } else {
+                if (m_board_ships[row][col] == shipNum && m_board[row][col] == 'S') {
+                    // Part of ship remains
+                    return false;
+                }
             }
         }
     }
 
     return true;
 }
+
 bool Board::shipIsSunk(int row, int col)
 {
     return shipNumIsSunk(getShipNum(row, col));
 }
+
 bool Board::allShipsSunk()
 {
     for (int shipnum = 1; shipnum <= numShips; shipnum++) {
@@ -175,10 +149,14 @@ int Board::getNumHits() {
     int hits = 0;
     for (int row=0; row < numRows; row++) {
         for (int col=0; col < numCols; col++) {
-            if (m_board[row][col] == 'X') {
+            if ((!checkBig() && m_board[row][col] == 'X') || (checkBig() && m_boardXL[row][col] == 'X'))  {
                 hits++;
             }
         }
     }
     return hits;
+}
+
+bool Board::checkBig() {
+    return numRows == 20;
 }
