@@ -1,33 +1,30 @@
 #include "board.h"
 
 
-Board::Board(bool big)
+Board::Board()
 {
-	if(big) {
-		numRows = 20;
-		numCols = 20;
-        numShips = 10;
-        for(int i=0; i<numRows; i++)
+    numShips = 10;
+    for(int i=0; i<20; i++)
+    {
+        for(int j=0; j<20; j++)
         {
-            for(int j=0; j<numCols; j++)
-            {
-                m_boardXL[i][j] = '-';
-                m_board_shipsXL[i][j] = 0;
-            }
-        }
-	}
-	else {
-        numRows = 9;
-        numCols = 9;
-        for(int i=0; i<numRows; i++)
-        {
-            for(int j=0; j<numCols; j++)
-            {
-                m_board[i][j] = '-';
-                m_board_ships[i][j] = 0;
-            }
+            m_boardXL[i][j] = '-';
+            m_board_shipsXL[i][j] = 0;
         }
     }
+    for(int i=0; i<9; i++)
+    {
+        for(int j=0; j<9; j++)
+        {
+            m_board[i][j] = '-';
+            m_board_ships[i][j] = 0;
+        }
+    }
+}
+
+void Board::setBig() {
+    numRows = 20;
+    numCols = 20;
 }
 
 Board::~Board() {}

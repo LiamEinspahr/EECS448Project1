@@ -8,8 +8,8 @@ class Player
 	public:
 		Player(bool big);   	    // Constructor
 		~Player();  	    // Destructor;
-		Board *my_ships;
-		Board *enemy_ships;
+		Board my_ships;
+		Board enemy_ships;
 
 
 		/**

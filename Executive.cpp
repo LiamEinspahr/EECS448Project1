@@ -206,11 +206,16 @@ void Executive::run()
 
     int maxShips = 5;
 
+    int numRows = 9;
+    int numCols = 9;
+
     bool humanOpponent = true;
     bool big = false;
     char gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "NX");
     if (gamemode == 'X')
     {
+        numRows = 20;
+        numCols = 20;
         maxShips = 10;
         big = true;
     } else {
@@ -232,10 +237,10 @@ void Executive::run()
 
     shipnum = getInt("How many ships do you want to place in the grid?", 1, maxShips);
 
-    player1.my_ships->updateNumShips(shipnum);
-    player1.enemy_ships->updateNumShips(shipnum);
-    player2.my_ships->updateNumShips(shipnum);
-    player2.enemy_ships->updateNumShips(shipnum);
+    player1.my_ships.updateNumShips(shipnum);
+    player1.enemy_ships.updateNumShips(shipnum);
+    player2.my_ships.updateNumShips(shipnum);
+    player2.enemy_ships.updateNumShips(shipnum);
 
     Player *currentPlayer = &player1;
     for (int currentPlayerNum = 1; currentPlayerNum <= 2; currentPlayerNum++)
@@ -248,30 +253,30 @@ void Executive::run()
             {
 
                 //blank Board
-                display.friendlyBoard(*currentPlayer->my_ships);
+                display.friendlyBoard(currentPlayer->my_ships);
                 char direction = 'U'; //default direction is up
 
                 if (currentShip == 1)
                 {
-                    row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, 9);
-                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', 'I');
+                    row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, numRows);
+                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', 'A' + numCols - 1);
                 }
 				else if (currentShip == 5) 
 				{
-					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
-                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
+					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, numRows);
+                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'A' + numCols - 1);
                     direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, N): ", "UDLRN");
 				}
 				else if(currentShip == 7) 
 				{
-					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
-                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
+					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, numRows);
+                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'A' + numCols - 1);
                     direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, V): ", "UDLRV");
 				}
                 else
                 {
-                    row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
-                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
+                    row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, numRows);
+                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'A' + numCols - 1);
                     direction = getCharInOptions("Up, Down, Left, or Right from pivot?", "UDLR");
                 }
                 col = charToInt(c_col); // convert char to int
@@ -290,7 +295,7 @@ void Executive::run()
         }
 
         //print last time so player can see 1x5 ship placed
-        display.friendlyBoard(*currentPlayer->my_ships);
+        display.friendlyBoard(currentPlayer->my_ships);
 
         if (humanOpponent)
         {
@@ -351,7 +356,7 @@ void Executive::run()
 	int round = 0;
 
 	cout<<"AI Board with ships placed:\n";
-	display.friendlyBoard(*currentPlayer->my_ships);
+	display.friendlyBoard(currentPlayer->my_ships);
 
 
 
@@ -359,7 +364,7 @@ void Executive::run()
     Player *otherPlayer = &player2;
     Medium medium;
 
-	while (!player1.my_ships->allShipsSunk() && !player2.my_ships->allShipsSunk())
+	while (!player1.my_ships.allShipsSunk() && !player2.my_ships.allShipsSunk())
 	{
         if (round % 2) {
 
@@ -384,7 +389,7 @@ void Executive::run()
 				row = machine.randomNum();
                 col = machine.randomChar();
 
-                while (otherPlayer->my_ships->getValue(row, col) == 'X' || currentPlayer->enemy_ships->getValue(row, col) == 'O')
+                while (otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O')
                 {
                     row = machine.randomNum();
                     col = machine.randomChar();
@@ -393,7 +398,7 @@ void Executive::run()
                 if (otherPlayer->CheckHit(row, col))
                 {
                     currentPlayer->UpdateEnemyBoard(row, col, true);
-                    if (otherPlayer->my_ships->allShipsSunk())
+                    if (otherPlayer->my_ships.allShipsSunk())
                     {
                         cout << "The Machine wins!\n";
                     }
@@ -401,7 +406,7 @@ void Executive::run()
                 else
                 {
                     currentPlayer->UpdateEnemyBoard(row, col, false);
-                    otherPlayer->my_ships->updateBoard(row, col, 'O');
+                    otherPlayer->my_ships.updateBoard(row, col, 'O');
                 }
 
 			}
@@ -414,17 +419,17 @@ void Executive::run()
 			{
 				//call hard methods
 				//cout<<"pretend AI hard level shot\n";
-				for (int i = 0; i < 81; i++) 
+				for (int i = 0; i < numRows*numCols; i++) 
 				{
-                    row = i / 9;
-                    col = i % 9;
+                    row = i / numRows;
+                    col = i % numCols;
                     if(player1.CheckHit(row, col))
 					{
                         break;
                     }
                 }
             
-                while (otherPlayer->my_ships->getValue(row, col) == 'X' || currentPlayer->enemy_ships->getValue(row, col) == 'O')
+                while (otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O')
                 {
                     row = machine.randomNum();
                     col = machine.randomChar();
@@ -433,7 +438,7 @@ void Executive::run()
                 if (otherPlayer->CheckHit(row, col))
                 {
                     currentPlayer->UpdateEnemyBoard(row, col, true);
-                    if (otherPlayer->my_ships->allShipsSunk())
+                    if (otherPlayer->my_ships.allShipsSunk())
                     {
                         cout << "The Machine wins!\n";
                     }
@@ -441,7 +446,7 @@ void Executive::run()
                 else
                 {
                     currentPlayer->UpdateEnemyBoard(row, col, false);
-                    otherPlayer->my_ships->updateBoard(row, col, 'O');
+                    otherPlayer->my_ships.updateBoard(row, col, 'O');
                 }
             }
 			round++;
@@ -449,14 +454,14 @@ void Executive::run()
 			
 		else {
             cout << "Player " << playerNum << "'s turn!\n";
-            cout << "You have been hit " << currentPlayer->my_ships->getNumHits() << " times\n";
+            cout << "You have been hit " << currentPlayer->my_ships.getNumHits() << " times\n";
             //Print boards before fire
-            display.matchFrame(playerNum, *currentPlayer->enemy_ships, *currentPlayer->my_ships);
+            display.matchFrame(playerNum, currentPlayer->enemy_ships, currentPlayer->my_ships);
 
             while (true)
             {
-                row = getInt("Input the row into which you wish to fire", 1, 9);
-                c_col = getChar("Input the column into which you wish to fire", 'A', 'I');
+                row = getInt("Input the row into which you wish to fire", 1, numRows);
+                c_col = getChar("Input the column into which you wish to fire", 'A', 'A' + numCols - 1);
                 col = charToInt(c_col);
                 row--;
 
@@ -464,13 +469,13 @@ void Executive::run()
                 {
                     display.hit();
                     currentPlayer->UpdateEnemyBoard(row, col, true);
-                    if (otherPlayer->my_ships->allShipsSunk())
+                    if (otherPlayer->my_ships.allShipsSunk())
                     {
                         cout << "Player " << playerNum << " wins!\n";
                     }
                     break;
                 }
-                else if (otherPlayer->my_ships->getValue(row, col) == 'X' || currentPlayer->enemy_ships->getValue(row, col) == 'O')
+                else if (otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O')
                 {
                     cout << "\n\nYou've already fired at that spot!\n";
                 }
@@ -478,7 +483,7 @@ void Executive::run()
                 {
                     display.miss();
                     currentPlayer->UpdateEnemyBoard(row, col, false);
-                    otherPlayer->my_ships->updateBoard(row, col, 'O');
+                    otherPlayer->my_ships.updateBoard(row, col, 'O');
                     break;
                 }
             }

@@ -9,11 +9,11 @@ Display::Display(bool big)
 		m_borderSpace = "\n\n";
 		m_playeriBanner = "                 PLAYER i\n\n\n";
 		m_enemyBanner =   "               SHOTS FIRED\n\n\n";
-		m_colLabel = "      A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T\n";
-		m_borderLineTop = "    +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+\n";
-		m_rowiLabel = "  i |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |\n";
-		m_gridLine = "    |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|\n";
-		m_borderLineBottom = "    +-------------------------------------------------------------------------------+";
+		m_colLabel = "       A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T\n";
+		m_borderLineTop = "     +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+\n";
+		m_rowiLabel = "  i  |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |\n";
+		m_gridLine = "     |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|\n";
+		m_borderLineBottom = "     +-------------------------------------------------------------------------------+";
 		m_friendlyBanner = "\n\n                YOUR SHIPS\n\n\n";
 	}
 	else {
@@ -21,11 +21,11 @@ Display::Display(bool big)
         m_borderSpace = "\n\n";
         m_playeriBanner = "                 PLAYER i\n\n\n";
         m_enemyBanner =   "               SHOTS FIRED\n\n\n";
-        m_colLabel = "      A   B   C   D   E   F   G   H   I\n";
-        m_borderLineTop = "    +---+---+---+---+---+---+---+---+---+\n";
-        m_rowiLabel = "  i |   |   |   |   |   |   |   |   |   |\n";
-        m_gridLine = "    |---+---+---+---+---+---+---+---+---|\n";
-        m_borderLineBottom = "    +-----------------------------------+";
+        m_colLabel = "       A   B   C   D   E   F   G   H   I\n";
+        m_borderLineTop = "     +---+---+---+---+---+---+---+---+---+\n";
+        m_rowiLabel = "  i  |   |   |   |   |   |   |   |   |   |\n";
+        m_gridLine = "     |---+---+---+---+---+---+---+---+---|\n";
+        m_borderLineBottom = "     +-----------------------------------+";
         m_friendlyBanner = "\n\n                YOUR SHIPS\n\n\n";
 	}
 	//shot-feedback elements
@@ -65,17 +65,21 @@ void Display::enemyBoard(Board &board, int playerID) const
 
 	for(int i = 0; i < board.getNumRows(); i++)
 	{
-		rowiLabel.replace(2, 1, to_string(i+1));
+        int numChars = 1;
+        if (i > 8) {
+            numChars = 2;
+        }
+		rowiLabel.replace(2, numChars, to_string(i+1));
 
 		for(int j = 0; j < board.getNumCols(); j++)
 		{
 			if(board.getValue(i, j) == 'X')
 			{
-				rowiLabel.replace(4*j+6, 1, "X");
+				rowiLabel.replace(4*j+7, 1, "X");
 			}
 			else if(board.getValue(i, j) == 'O')
 			{
-				rowiLabel.replace(4*j+6, 1, "O");
+				rowiLabel.replace(4*j+7, 1, "O");
 			}
 		}
 
@@ -103,25 +107,29 @@ void Display::friendlyBoard(Board &board) const
 
 	for(int i = 0; i < board.getNumRows(); i++)
 	{
-		rowiLabel.replace(2, 1, to_string(i+1));
+        int numChars = 1;
+        if (i > 8) {
+            numChars = 2;
+        }
+		rowiLabel.replace(2, numChars, to_string(i+1));
 
 		for(int j = 0; j < board.getNumCols(); j++)
 		{
 			if(board.getValue(i, j) == 'X')
 			{
-				rowiLabel.replace(4*j+5, 1, ">");
-				rowiLabel.replace(4*j+6, 1, string(1, '0' + board.getShipNum(i, j)));
-				rowiLabel.replace(4*j+7, 1, "<");
+				rowiLabel.replace(4*j+6, 1, ">");
+				rowiLabel.replace(4*j+7, 1, string(1, '0' + board.getShipNum(i, j)));
+				rowiLabel.replace(4*j+8, 1, "<");
 			}
 			else if(board.getValue(i, j) == 'S')
 			{
-				rowiLabel.replace(4*j+5, 1, "(");
-                rowiLabel.replace(4*j+6, 1, string(1, '0' + board.getShipNum(i, j)));
-				rowiLabel.replace(4*j+7, 1, ")");
+				rowiLabel.replace(4*j+6, 1, "(");
+                rowiLabel.replace(4*j+7, 1, string(1, '0' + board.getShipNum(i, j)));
+				rowiLabel.replace(4*j+8, 1, ")");
 			}
 			else if(board.getValue(i, j) == 'O')
 			{
-				rowiLabel.replace(4*j+6, 1, "O");
+				rowiLabel.replace(4*j+7, 1, "O");
 			}
 		}
 

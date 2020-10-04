@@ -4,37 +4,39 @@
 #include <iostream>
 
 Player::Player(bool big) {
-    *my_ships = Board(big);
-    *enemy_ships = Board(big);
+    if (big) {
+        my_ships.setBig();
+        enemy_ships.setBig();
+    }
 }
 
 Player::~Player() {}
 
 void Player::SetNumShips(int ships) {numShips = ships; }
 
-void Player::PrintMyShips() { my_ships->printBoard(); }
+void Player::PrintMyShips() { my_ships.printBoard(); }
 
-void Player::PrintEnemyShips() { enemy_ships->printBoard(); }
+void Player::PrintEnemyShips() { enemy_ships.printBoard(); }
 
 void Player::UpdateEnemyBoard(int row, int col, bool hit)
 {
-    if (hit) enemy_ships->updateBoard(row, col, 'X');
-    else enemy_ships->updateBoard(row, col, 'O');
+    if (hit) enemy_ships.updateBoard(row, col, 'X');
+    else enemy_ships.updateBoard(row, col, 'O');
 }
 
 bool Player::PlaceShip(int size, int row, int col, char direction)
 {
     if (direction == 'R') // try to place ship right of pivot coordinates row, col
     {
-        if (my_ships->getNumCols() - col >= size) // make sure there are enough indices to place ship
+        if (my_ships.getNumCols() - col >= size) // make sure there are enough indices to place ship
         {
             for (int j = col; j < col + size; j++) // make sure no ships have already been placed in each spot
             {
-                if (my_ships->getValue(row, j) != '-') return false; // fails to place if something is already there
+                if (my_ships.getValue(row, j) != '-') return false; // fails to place if something is already there
             }
             for (int j = col; j < col + size; j++)
             {
-                my_ships->updateBoard(row, j, 'S', size); // if not returned by now, place ship
+                my_ships.updateBoard(row, j, 'S', size); // if not returned by now, place ship
             }
         }
         else return false; // fails to place if not enoguh space
@@ -45,26 +47,26 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
         {
             for (int j = col; j >= col - size + 1; j--)
             {
-                if (my_ships->getValue(row, j) != '-') return false;
+                if (my_ships.getValue(row, j) != '-') return false;
             }
             for (int j = col; j >= col - size + 1; j--)
             {
-                my_ships->updateBoard(row, j, 'S', size);
+                my_ships.updateBoard(row, j, 'S', size);
             }
         }
         else return false;
     }
     else if (direction == 'D') // Down
     {
-        if (my_ships->getNumRows() - row >= size)
+        if (my_ships.getNumRows() - row >= size)
         {
             for (int i = row; i < row + size; i++)
             {
-                if (my_ships->getValue(i, col) != '-') return false;
+                if (my_ships.getValue(i, col) != '-') return false;
             }
             for (int i = row; i < row + size; i++)
             {
-                my_ships->updateBoard(i, col, 'S', size);
+                my_ships.updateBoard(i, col, 'S', size);
             }
         }
         else return false;
@@ -75,15 +77,15 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
         {
             for (int i = row; i >= row - size + 1; i--)
             {
-                if (my_ships->getValue(i, col) != '-')
+                if (my_ships.getValue(i, col) != '-')
                 {
-                    cout << "nope because " << my_ships->getValue(i, col);
+                    cout << "nope because " << my_ships.getValue(i, col);
                     return false;
                 }
             }
             for (int i = row; i >= row - size + 1; i--)
             {
-                my_ships->updateBoard(i, col, 'S', size);
+                my_ships.updateBoard(i, col, 'S', size);
             }
         }
         else return false;
@@ -91,23 +93,23 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
     
     else if (direction == 'V') // L-shaped ship
     {
-        if(my_ships->getNumRows()-row >= 4 && my_ships->getNumCols()-col>=4) 
+        if(my_ships.getNumRows()-row >= 4 && my_ships.getNumCols()-col>=4) 
         {
             for (int i = row; i < row + 4; i++)
             {
-                 if (my_ships->getValue(i, col) != '-') return false;
+                 if (my_ships.getValue(i, col) != '-') return false;
             }
             for (int i = row; i < row + 4; i++)
             {
-                my_ships->updateBoard(i, col, 'S', 7);
+                my_ships.updateBoard(i, col, 'S', 7);
             }
                         for (int j = col+1; j < col + 4; j++) // make sure no ships have already been placed in each spot
             {
-                if (my_ships->getValue(row, j) != '-') return false; // fails to place if something is already there
+                if (my_ships.getValue(row, j) != '-') return false; // fails to place if something is already there
             }
             for (int j = col+1; j < col + 4; j++)
             {
-                 my_ships->updateBoard(row, j, 'S', 7); // if not returned by now, place ship
+                 my_ships.updateBoard(row, j, 'S', 7); // if not returned by now, place ship
             }
         }
         else return false;
@@ -115,26 +117,26 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
 
     else if (direction == 'N') // L-shaped ship
     {
-        if(my_ships->getNumRows()-row >= 2 && my_ships->getNumCols()-col>=3) 
+        if(my_ships.getNumRows()-row >= 2 && my_ships.getNumCols()-col>=3) 
         {
             for (int i = row; i < row + 2; i++)
             {
-                 if (my_ships->getValue(i, col) != '-') return false;
+                 if (my_ships.getValue(i, col) != '-') return false;
             }
             for (int i = row; i < row + 2; i++)
             {
-                my_ships->updateBoard(i, col, 'S', 5);
+                my_ships.updateBoard(i, col, 'S', 5);
             }
             for (int j = col+1; j < col + 3; j++) // make sure no ships have already been placed in each spot
             {
-                if (my_ships->getValue(row, j) != '-') return false; // fails to place if something is already there
+                if (my_ships.getValue(row, j) != '-') return false; // fails to place if something is already there
             }
             for (int j = col+1; j < col + 3; j++)
             {
-                 my_ships->updateBoard(row, j, 'S', 5); // if not returned by now, place ship
+                 my_ships.updateBoard(row, j, 'S', 5); // if not returned by now, place ship
             }
-            if(my_ships->getValue(row+1, col+2) != '-') return false;
-            else my_ships->updateBoard(row+1, col+2, 'S', 5);
+            if(my_ships.getValue(row+1, col+2) != '-') return false;
+            else my_ships.updateBoard(row+1, col+2, 'S', 5);
         }
         else return false;
     }
@@ -147,15 +149,15 @@ bool Player::PlaceShipAI(int size, int row, int col, char direction)
 {
     if (direction == 'R') // try to place ship right of pivot coordinates row, col
     {
-        if (my_ships->getNumCols() - col >= size) // make sure there are enough indices to place ship
+        if (my_ships.getNumCols() - col >= size) // make sure there are enough indices to place ship
         {
             for (int j = col; j < col + size; j++) // make sure no ships have already been placed in each spot
             {
-                if (my_ships->getValue(row, j) != '-') return false; // fails to place if something is already there
+                if (my_ships.getValue(row, j) != '-') return false; // fails to place if something is already there
             }
             for (int j = col; j < col + size; j++)
             {
-                my_ships->updateBoard(row, j, 'S', size); // if not returned by now, place ship
+                my_ships.updateBoard(row, j, 'S', size); // if not returned by now, place ship
             }
         }
         else return false; // fails to place if not enoguh space
@@ -166,26 +168,26 @@ bool Player::PlaceShipAI(int size, int row, int col, char direction)
         {
             for (int j = col; j >= col - size + 1; j--)
             {
-                if (my_ships->getValue(row, j) != '-') return false;
+                if (my_ships.getValue(row, j) != '-') return false;
             }
             for (int j = col; j >= col - size + 1; j--)
             {
-                my_ships->updateBoard(row, j, 'S', size);
+                my_ships.updateBoard(row, j, 'S', size);
             }
         }
         else return false;
     }
     else if (direction == 'D') // Down
     {
-        if (my_ships->getNumRows() - row >= size)
+        if (my_ships.getNumRows() - row >= size)
         {
             for (int i = row; i < row + size; i++)
             {
-                if (my_ships->getValue(i, col) != '-') return false;
+                if (my_ships.getValue(i, col) != '-') return false;
             }
             for (int i = row; i < row + size; i++)
             {
-                my_ships->updateBoard(i, col, 'S', size);
+                my_ships.updateBoard(i, col, 'S', size);
             }
         }
         else return false;
@@ -196,15 +198,15 @@ bool Player::PlaceShipAI(int size, int row, int col, char direction)
         {
             for (int i = row; i >= row - size + 1; i--)
             {
-                if (my_ships->getValue(i, col) != '-')
+                if (my_ships.getValue(i, col) != '-')
                 {
-                    //cout << "nope because " << my_ships->getValue(i, col);
+                    //cout << "nope because " << my_ships.getValue(i, col);
                     return false;
                 }
             }
             for (int i = row; i >= row - size + 1; i--)
             {
-                my_ships->updateBoard(i, col, 'S', size);
+                my_ships.updateBoard(i, col, 'S', size);
             }
         }
         else return false;
@@ -215,11 +217,11 @@ bool Player::PlaceShipAI(int size, int row, int col, char direction)
 
 bool Player::CheckHit(int row, int col)
 {
-    if (row > my_ships->getNumRows() - 1 || row < 0 || col > my_ships->getNumCols() - 1 || col < 0 || my_ships->getValue(row, col) == 'X') return false;
+    if (row > my_ships.getNumRows() - 1 || row < 0 || col > my_ships.getNumCols() - 1 || col < 0 || my_ships.getValue(row, col) == 'X') return false;
 
-    if (my_ships->getValue(row, col) == 'S')
+    if (my_ships.getValue(row, col) == 'S')
     {
-        my_ships->updateBoard(row, col, 'X');
+        my_ships.updateBoard(row, col, 'X');
         return true;
     }
     return false;

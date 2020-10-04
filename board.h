@@ -10,8 +10,10 @@ class Board
 		/**
  		* @pre: initializes a blank 9x9 board with '-' values
  		**/
-		Board(bool big);   	    // Constructor
+		Board();   	    // Constructor
 		~Board();  	    // Destructor
+
+        void setBig();
 
 		/**
  		* @pre: function to print a board, used as a test
