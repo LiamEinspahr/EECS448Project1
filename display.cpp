@@ -12,11 +12,11 @@ Display::Display(bool big)
 		m_borderSpace = "\n\n";
 		m_playeriBanner = "                 PLAYER i\n\n\n";
 		m_enemyBanner =   "               SHOTS FIRED\n\n\n";
-		m_colLabel = "      A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S\n";
+		m_colLabel = "      A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T\n";
 		m_borderLineTop = "    +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+\n";
-		m_rowiLabel = "  i |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |    |\n";
-		m_gridLine = "    +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|\n";
-		m_borderLineBottom = "    +------------------------------------------------------------------------------+";
+		m_rowiLabel = "  i |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |\n";
+		m_gridLine = "    |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|\n";
+		m_borderLineBottom = "    +-------------------------------------------------------------------------------+";
 		m_friendlyBanner = "\n\n                YOUR SHIPS\n\n\n";
 	}
 	else {
@@ -27,7 +27,7 @@ Display::Display(bool big)
 	m_colLabel = "      A   B   C   D   E   F   G   H   I\n";
 	m_borderLineTop = "    +---+---+---+---+---+---+---+---+---+\n";
 	m_rowiLabel = "  i |   |   |   |   |   |   |   |   |   |\n";
-	m_gridLine = "    +---+---+---+---+---+---+---+---+---|\n";
+	m_gridLine = "    |---+---+---+---+---+---+---+---+---|\n";
 	m_borderLineBottom = "    +-----------------------------------+";
 	m_friendlyBanner = "\n\n                YOUR SHIPS\n\n\n";
 	}
@@ -107,7 +107,14 @@ void Display::friendlyBoard(Board &board) const
 
 	for(int i = 0; i < board.getNumRows(); i++)
 	{
+		if(i<9)
+		{
 		rowiLabel.replace(2, 1, to_string(i+1));
+		}
+		else
+		{
+			rowiLabel.replace(1, 2, to_string(i+1));
+		}
 
 		for(int j = 0; j < board.getNumCols(); j++)
 		{
@@ -132,7 +139,11 @@ void Display::friendlyBoard(Board &board) const
 		cout << rowiLabel;
 		rowiLabel = m_rowiLabel;
 
-		if(i < 8)
+		if((m_big) && (i < 19))
+		{
+			cout << m_gridLine;
+		}
+		else if((!m_big) && (i<8))
 		{
 			cout << m_gridLine;
 		}

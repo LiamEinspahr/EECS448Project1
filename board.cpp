@@ -16,7 +16,7 @@ Board::Board(bool big)
 					for(int j=0; j<numCols; j++)
 					{
 						m_boardXL[i][j] = '-';
-						//m_board_ships[i][j] = 0;
+						m_board_shipsXL[i][j] = 0;
 					}
 				}
 	}
@@ -76,13 +76,17 @@ void Board::updateBoard(int row, int col, char c, int shipnum)
 {
 	bool big = checkBig();
 	if(big) {
-	m_boardXL[row][col] = c;
+		if(c == 'S') {
+			m_board_shipsXL[row][col] = shipnum;
+			m_boardXL[row][col] = c;
+		}
 	}
 	else {
     if (c == 'S') {
         m_board_ships[row][col] = shipnum;
+				m_board[row][col] = c;
     }
-	m_board[row][col] = c;
+
 	}
 }
 

@@ -210,8 +210,6 @@ void Executive::run()
   Player player1;
   Player player2;
 
-
-
   int row, col;
   char c_col; // char version of the column
 
@@ -224,7 +222,7 @@ void Executive::run()
 
   int maxShips = 5;
 
-  char diff = getCharInOptions("What level of difficulty do you want to play: Easy, Medium, Hard?", "E,M,H");
+  char diff = getCharInOptions("What level of difficulty do you want to play: Easy, Medium, Hard?", "EMH");
 	machine.setDifficultyLevel(diff);
 
     char gamemode = getCharInOptions("Would you like to play normal Battleship or BattleshipXL?", "NX");
@@ -273,6 +271,20 @@ void Executive::run()
     my_ships_p2.updateNumShips(shipnum);
     enemy_ships_p2.updateNumShips(shipnum);
 
+    int maxRow;
+    char maxCol;
+
+    if(big)
+    {
+      maxRow = 20;
+      maxCol = 'T';
+    }
+    else
+    {
+      maxRow = 9;
+      maxCol = 'I';
+    }
+
     Player *currentPlayer = &player1;
     for (int currentPlayerNum = 1; currentPlayerNum <= 2; currentPlayerNum++)
     {
@@ -280,8 +292,7 @@ void Executive::run()
 
         for (int currentShip = 1; currentShip <= shipnum; currentShip++)
         {
-                //blank regular Board
-                if(big == false) {
+                //blank Board
                   if(currentPlayerNum==1){
                     display.friendlyBoard(my_ships_p1);
                   }
@@ -293,32 +304,33 @@ void Executive::run()
 
                 if (currentShip == 1)
                 {
-                    row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, 9);
-                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', 'I');
+                    row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, maxRow);
+                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', maxCol);
                 }
-				else if (currentShip == 5)
-				{
-					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
-                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
+				        else if (currentShip == 5)
+				        {
+					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, maxRow);
+                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', maxCol);
                     direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, N): ", "UDLRN");
-				}
-				else if(currentShip == 7)
-				{
-					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
-                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
+				        }
+				        else if(currentShip == 7)
+				        {
+					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, maxRow);
+                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', maxCol);
                     direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, V): ", "UDLRV");
-				}
+				        }
                 else
                 {
-                    row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
-                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
+                    row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, maxRow);
+                    c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', maxCol);
                     direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R): ", "UDLR");
                 }
+
                 col = charToInt(c_col); // convert char to int
                 row--;                  // decrement row by 1 for indexing array
                 direction = toupper(direction);
 
-                if (!currentPlayer->PlaceShip(currentShip, row, col, direction))
+                if (!(currentPlayer->PlaceShip(currentShip, row, col, direction)))
                 {
                     cout << "Ship could not be placed there. \n";
                 }
@@ -326,40 +338,6 @@ void Executive::run()
                 {
                     break;
                 }
-            }
-            //blank XL Board
-            else {
-              if(currentPlayerNum==1){
-                display.friendlyBoard(my_ships_p1); //used to be my_ships.m_boardXL
-              }
-              else if(currentPlayerNum==2){
-                display.friendlyBoard(my_ships_p2);
-              }
-
-
-              char direction = 'u'; //default direction is up
-
-              if (currentShip == 1)
-              {
-                  row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, 20);
-                  c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', 'T');
-              }
-              else
-              {
-                  row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 20);
-                  c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'T');
-                  direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R): ", "UDLR");
-              }
-              col = charToInt(c_col); // convert char to int
-              row--; // decrement row by 1 for indexing array
-              direction = toupper(direction);
-
-              if (!currentPlayer->PlaceShip(currentShip, row, col, direction))
-              {
-                  cout << "Ship could not be placed there. \n";
-              } else {
-                  break;
-              }
             }
 
         if (humanOpponent)
@@ -381,9 +359,9 @@ void Executive::run()
 	          for (int i = 0; i <= 50; i++) {cout << endl;}
               currentPlayer = &player2;
         }
-        else {
+        /*else {
             currentPlayer = &player2;
-        }
+        }*/
 
     if (!humanOpponent)
     {
@@ -495,7 +473,7 @@ void Executive::run()
 		}
   }
 }
-}
+
 
 
 bool Executive::checkForBig()
