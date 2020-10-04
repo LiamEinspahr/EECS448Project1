@@ -246,6 +246,8 @@ void Executive::run()
 
     bool big = m_big;
 
+    //my_ships_p1.printBoard();
+
     /*Board& my_ships_p1 = my_ref_p1;
     Board& my_ships_p2 = my_ref_p2;
     Board& enemy_ships_p1 = enemy_ref_p1;
@@ -334,9 +336,11 @@ void Executive::run()
                 {
                     cout << "Ship could not be placed there. \n";
                 }
+
                 else
                 {
-                    break;
+                    //bool placed = currentPlayer->PlaceShip(currentShip, row, col, direction);
+                    display.friendlyBoard(my_ships_p1);
                 }
             }
 
@@ -395,7 +399,7 @@ void Executive::run()
                 row--;
                 direction = toupper(direction);
 
-                if (player2.PlaceShip(currentShip, row, col, direction))
+                if (currentPlayer->PlaceShip(currentShip, row, col, direction))
                 {
                     break;
                 }
