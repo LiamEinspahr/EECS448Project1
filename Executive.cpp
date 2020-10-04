@@ -312,7 +312,6 @@ void Executive::run()
 
     if (!humanOpponent)
     {
-        //currentPlayer = &player2;
         //blank Board
 
         cin.ignore();
@@ -378,14 +377,10 @@ void Executive::run()
         }
         int playerNum = (round % 2) + 1;
 
-
         if (playerNum == 2 && !humanOpponent) 
 		{
-			//cout<<"diff 318\n";
             if(machine.getDifficultyLevel() == 'E')
 			{
-				//call easy methods
-				cout<<"pretend AI easy level shot\n";
 				row = machine.randomNum();
                 col = machine.randomChar();
 
@@ -413,12 +408,9 @@ void Executive::run()
 			else if (machine.getDifficultyLevel() == 'M')
 			{
 				medium.solve(player1, player2);
-				//break;
 			}
 			else
 			{
-				//call hard methods
-				//cout<<"pretend AI hard level shot\n";
 				for (int i = 0; i < numRows*numCols; i++) 
 				{
                     row = i / numRows;
@@ -428,26 +420,13 @@ void Executive::run()
                         break;
                     }
                 }
-            
-                while (otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O')
-                {
-                    row = machine.randomNum();
-                    col = machine.randomChar();
-                }
-
-                if (otherPlayer->CheckHit(row, col))
-                {
                     currentPlayer->UpdateEnemyBoard(row, col, true);
                     if (otherPlayer->my_ships.allShipsSunk())
                     {
                         cout << "The Machine wins!\n";
                     }
-                }
-                else
-                {
-                    currentPlayer->UpdateEnemyBoard(row, col, false);
-                    otherPlayer->my_ships.updateBoard(row, col, 'O');
-                }
+                
+                
             }
 			round++;
 		}
