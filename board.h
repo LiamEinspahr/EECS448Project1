@@ -47,6 +47,7 @@ class Board
 		char m_board[9][9];
 		char m_boardXL[20][20];
 		int m_board_ships[9][9];
+		int m_board_shipsXL[20][20];
     		int getNumRows(); // Return numRows
         int getNumCols(); // Return numCols
 

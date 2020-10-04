@@ -34,6 +34,8 @@ class Display
 	string m_hit5;
 	string m_miss;
 
+	bool m_big;
+
 	/**
 	 * @pre: board must use 'X' and 'O' to denote hits and misses, respectively.
 	 * @post: prints state of enemy board

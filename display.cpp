@@ -6,6 +6,7 @@ using namespace std;
 
 Display::Display(bool big)
 {
+	m_big = big;
 
 	if(big){
 		m_borderSpace = "\n\n";
@@ -85,11 +86,11 @@ void Display::enemyBoard(Board &board, int playerID) const
 		cout << rowiLabel;
 		rowiLabel = m_rowiLabel;
 
-		if(i < 8)
+		if((m_big==false)&&(i < 8))
 		{
 			cout << m_gridLine;
 		}
-		else
+		else if((m_big==true)&&(i<19))
 		{
 			cout << m_borderLineBottom;
 		}

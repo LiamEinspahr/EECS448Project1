@@ -210,10 +210,17 @@ void Executive::run()
   Player player1;
   Player player2;
 
+
+
   int row, col;
   char c_col; // char version of the column
 
   Machine machine;
+
+  Board& my_ships_p1 = player1.my_shipsXL;
+  Board& enemy_ships_p1 = player1.enemy_shipsXL;
+  Board& my_ships_p2 = player2.my_shipsXL;
+  Board& enemy_ships_p2 = player2.enemy_shipsXL;
 
   int maxShips = 5;
 
@@ -225,13 +232,26 @@ void Executive::run()
     {
         maxShips = 10;
         m_big = true;
+           my_ships_p1 = player1.my_shipsXL;
+           enemy_ships_p1 = player1.enemy_shipsXL;
+           my_ships_p2 = player2.my_shipsXL;
+           enemy_ships_p2 = player2.enemy_shipsXL;
     }
     else
     {
       m_big = false;
+         my_ships_p1 = player1.my_ships;
+         enemy_ships_p1 = player1.enemy_ships;
+         my_ships_p2 = player2.my_ships;
+         enemy_ships_p2 = player2.enemy_ships;
     }
 
     bool big = m_big;
+
+    /*Board& my_ships_p1 = my_ref_p1;
+    Board& my_ships_p2 = my_ref_p2;
+    Board& enemy_ships_p1 = enemy_ref_p1;
+    Board& enemy_ships_p2 = enemy_ref_p2;*/
 
 	Display display = Display(big);
 
@@ -248,10 +268,10 @@ void Executive::run()
 
     shipnum = getInt("How many ships do you want to place in the grid?", 1, maxShips);
 
-    player1.my_ships.updateNumShips(shipnum);
-    player1.enemy_ships.updateNumShips(shipnum);
-    player2.my_ships.updateNumShips(shipnum);
-    player2.enemy_ships.updateNumShips(shipnum);
+    my_ships_p1.updateNumShips(shipnum);
+    enemy_ships_p1.updateNumShips(shipnum);
+    my_ships_p2.updateNumShips(shipnum);
+    enemy_ships_p2.updateNumShips(shipnum);
 
     Player *currentPlayer = &player1;
     for (int currentPlayerNum = 1; currentPlayerNum <= 2; currentPlayerNum++)
@@ -262,8 +282,13 @@ void Executive::run()
         {
                 //blank regular Board
                 if(big == false) {
+                  if(currentPlayerNum==1){
+                    display.friendlyBoard(my_ships_p1);
+                  }
+                  if(currentPlayerNum==2){
+                    display.friendlyBoard(my_ships_p2);
+                  }
 
-                display.friendlyBoard(currentPlayer->my_ships);
                 char direction = 'U'; //default direction is up
 
                 if (currentShip == 1)
@@ -271,13 +296,13 @@ void Executive::run()
                     row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 1, 9);
                     c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship", 'A', 'I');
                 }
-				else if (currentShip == 5) 
+				else if (currentShip == 5)
 				{
 					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
                     c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
                     direction = getCharInOptions("Up, Down, Left, or Right from pivot? (U, D, L, R, N): ", "UDLRN");
 				}
-				else if(currentShip == 7) 
+				else if(currentShip == 7)
 				{
 					row = getInt("Input the row in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 1, 9);
                     c_col = getChar("Input the column in which you wish to place your 1x" + std::to_string(currentShip) + " ship's pivot point", 'A', 'I');
@@ -304,7 +329,13 @@ void Executive::run()
             }
             //blank XL Board
             else {
-              display.friendlyBoard(currentPlayer->my_ships); //used to be my_ships.m_boardXL
+              if(currentPlayerNum==1){
+                display.friendlyBoard(my_ships_p1); //used to be my_ships.m_boardXL
+              }
+              else if(currentPlayerNum==2){
+                display.friendlyBoard(my_ships_p2);
+              }
+
 
               char direction = 'u'; //default direction is up
 
@@ -337,7 +368,13 @@ void Executive::run()
             WaitEnter();
 
         //print last time so player can see 1x5 ship placed
-        display.friendlyBoard(currentPlayer->my_ships);
+        if(currentPlayerNum==1) {
+          display.friendlyBoard(my_ships_p1);
+        }
+        if(currentPlayerNum==2) {
+          display.friendlyBoard(my_ships_p2);
+        }
+
 	       cin.ignore();
 	        cout << "Press Enter to play!";
 	         cin.get();
@@ -400,10 +437,10 @@ void Executive::run()
 
     cout << "hit exec 304\n";
 
-    cout << "Player 1 ships sunk: " << player1.my_ships.allShipsSunk() << '\n';
-    cout << "Player 2 ships sunk: " << player2.my_ships.allShipsSunk() << '\n';
+    cout << "Player 1 ships sunk: " << my_ships_p1.allShipsSunk() << '\n';
+    cout << "Player 2 ships sunk: " << my_ships_p2.allShipsSunk() << '\n';
 
-    while (!player1.my_ships.allShipsSunk() && !player2.my_ships.allShipsSunk())
+    while (!my_ships_p1.allShipsSunk() && !my_ships_p2.allShipsSunk())
     {
         cout << "308\n";
         if (round % 2)
@@ -436,11 +473,21 @@ void Executive::run()
 			else{
 				//call hard methods
 				cout<<"pretend AI hard level shot\n";
-                while (otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O')
+        if(currentPlayerNum==1){
+                while (my_ships_p2.getValue(row, col) == 'X' || enemy_ships_p1.getValue(row, col) == 'O')
                 {
                     row = machine.randomNum();
                     col = machine.randomChar();
                 }
+        }
+        else
+        {
+          while (my_ships_p1.getValue(row, col) == 'X' || enemy_ships_p2.getValue(row, col) == 'O')
+          {
+              row = machine.randomNum();
+              col = machine.randomChar();
+          }
+        }
 
 			}
 		round++;
@@ -468,10 +515,10 @@ bool Executive::checkForBig()
 
         //Print boards before fire
         if(big) {
-        display.matchFrame(playerNum, currentPlayer->enemy_ships.m_boardXL, currentPlayer->my_ships.m_boardXL);
+        display.matchFrame(playerNum, currentPlayer->enemy_ships_ref.m_boardXL, currentPlayer->my_ships.m_boardXL);
         }
         else {
-          display.matchFrame(playerNum, currentPlayer->enemy_ships.m_board, currentPlayer->my_ships.m_board);
+          display.matchFrame(playerNum, currentPlayer->enemy_ships_ref.m_board, currentPlayer->my_ships.m_board);
         }
 
         while (true) {
@@ -506,7 +553,7 @@ bool Executive::checkForBig()
             cout << "Player " << playerNum << "'s turn!\n";
             cout << "You have been hit " << currentPlayer->my_ships.getNumHits() << " times\n";
             //Print boards before fire
-            display.matchFrame(playerNum, currentPlayer->enemy_ships, currentPlayer->my_ships);
+            display.matchFrame(playerNum, currentPlayer->enemy_ships_ref, currentPlayer->my_ships);
 
             while (true)
             {
@@ -525,7 +572,7 @@ bool Executive::checkForBig()
                     }
                     break;
                 }
-                else if (otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O')
+                else if (otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships_ref.getValue(row, col) == 'O')
                 {
                     cout << "\n\nYou've already fired at that spot!\n";
                 }
@@ -538,7 +585,7 @@ bool Executive::checkForBig()
                 }
                 break;
             }
-            else if(otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships.getValue(row, col) == 'O')
+            else if(otherPlayer->my_ships.getValue(row, col) == 'X' || currentPlayer->enemy_ships_ref.getValue(row, col) == 'O')
             {
                 cout << "\n\nYou've already fired at that spot!\n";
             }
