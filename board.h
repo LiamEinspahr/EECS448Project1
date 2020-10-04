@@ -10,7 +10,6 @@ class Board
 		/**
  		* @pre: initializes a blank 9x9 board with '-' values
  		**/
-	 	Board();				//Constructor
 		Board(bool big);   	    // Constructor
 		~Board();  	    // Destructor
 

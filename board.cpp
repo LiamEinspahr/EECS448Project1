@@ -1,6 +1,5 @@
 #include "board.h"
 
-Board::Board() : Board(false) {}
 
 Board::Board(bool big)
 {
@@ -18,19 +17,18 @@ Board::Board(bool big)
         }
 	}
 	else {
-			numRows = 9;
-			numCols = 9;
-			for(int i=0; i<numRows; i++)
-			{
-				for(int j=0; j<numCols; j++)
-				{
-					m_board[i][j] = '-';
-					m_board_ships[i][j] = 0;
-				}
-			}
-		}
-
-	}
+        numRows = 9;
+        numCols = 9;
+        for(int i=0; i<numRows; i++)
+        {
+            for(int j=0; j<numCols; j++)
+            {
+                m_board[i][j] = '-';
+                m_board_ships[i][j] = 0;
+            }
+        }
+    }
+}
 
 Board::~Board() {}
 
