@@ -2,41 +2,43 @@
 #include "machine.h"
 #include <ctime>
 
-machine::machine(){
+Machine::Machine(){
     
 }
 
-void machine::setGameMode(char foo){
+void Machine::setGameMode(char foo){
     gamemode = foo;
 }
 
-char machine::getGameMode(){
+char Machine::getGameMode(){
     return(gamemode);
 }
 
-void machine::setDifficultyLevel(char foo){
+void Machine::setDifficultyLevel(char foo){
     difficultyLevel = foo;
 }
 
-char machine::getDifficultyLevel(){
+char Machine::getDifficultyLevel(){
     return(difficultyLevel);
 }
 
-int machine::charToInt(char c) {return ((toupper(c) - 65));}
+int Machine::charToInt(char c) {return ((toupper(c) - 65));}
 
-int machine::randomNum(){
+int Machine::randomNum(){
 	//add more conditions if they choose the xl board
+    //srand (time(NULL)); 
 	int randInt;
 	if(gamemode == 'X'){
-		randInt = (rand() % 20) + 1;
+		randInt = (rand() % 20);
 	}
 	else{
-		randInt = (rand() % 9) + 1;
+		randInt = (rand() % 9);
 	}
+    randInt--;
     return(randInt);
 }
 
-int machine::randomChar(){
+int Machine::randomChar(){
 	char c;
     int r;
     int charInt;
@@ -44,18 +46,18 @@ int machine::randomChar(){
 
 	if(gamemode == 'X'){
 		r = rand() % 20;   
-    	c = 'a' + r;
+    	c = 'a' + r-1;
     	charInt = charToInt(c);
 	}
 	else{
 		r = rand() % 9;   
-    	c = 'a' + r;
+    	c = 'a' + r-1;
     	charInt = charToInt(c);
 	}
 	return(charInt);
 }
 
-char machine::getRandomDirection(){
+char Machine::getRandomDirection(){
 	srand (time(NULL));
 	char directionArray[4] = {'U','D','R','L'};
 	int position = rand() % 4;

@@ -27,7 +27,7 @@ class Player
 		* @return: returns whether the placement was successful or not
  		**/
 		bool PlaceShip(int size, int row, int col, char direction); // will try to place a ship with upper left point at row, col; returns false if it cant
-
+		bool PlaceShipAI(int size, int row, int col, char direction); 
 		
 		/**
  		* @pre: None
