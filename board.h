@@ -50,6 +50,9 @@ class Board
 		char m_boardXL[20][20];
 		int m_board_ships[9][9];
 		int m_board_shipsXL[20][20];
+
+	//	Board* m_board_ptr = &m_board;
+	//	Board* m_boardXL_ptr = &m_boardXL;
     		int getNumRows(); // Return numRows
         int getNumCols(); // Return numCols
 

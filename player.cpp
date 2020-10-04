@@ -70,7 +70,7 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
     my_board = &my_ships;
   }
 
-  my_board->printBoard();
+  //my_board->printBoard();
   /*for(int i = 0; i < 20; i++)
   {
     for(int j = 0; j < 20; j++)
@@ -86,7 +86,10 @@ bool Player::PlaceShip(int size, int row, int col, char direction)
         {
             for (int j = col; j < col + size; j++) // make sure no ships have already been placed in each spot
             {
-                if (my_board->getValue(row, j) != '-') return false; // fails to place if something is already there
+                if (my_board->getValue(row, j) != '-')
+                {
+                  return false;
+                }  // fails to place if something is already there
             }
             for (int j = col; j < col + size; j++)
             {

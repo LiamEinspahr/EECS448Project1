@@ -53,7 +53,7 @@ void Board::printBoard()
 			if(i == 0 && j == 0)
 			{
 				cout << "  ";
-				for(char c = 'A'; c <= 'A' + numCols; c++)
+				for(char c = 'A'; c <= 'A' + numCols - 1; c++)
 				{
 					cout << c << " ";
 				}
