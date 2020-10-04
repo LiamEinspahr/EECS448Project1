@@ -37,7 +37,7 @@ class Display
 	/**
 	 * @pre: board must use 'X' and 'O' to denote hits and misses, respectively.
 	 * @post: prints state of enemy board
-	 * @param: board, 9x9 array marked with 'X's and/or 'O's, 
+	 * @param: board, 9x9 array marked with 'X's and/or 'O's,
 	 * playerID: either 1 or 2 (to differentiate players)
 	 **/
 	//display state of enemy board
@@ -45,41 +45,41 @@ class Display
 
 	public:
 
-	/**
-	 * @post: constructs display obj.
-	 **/
-	Display();
+        /**
+         * @post: constructs display obj.
+         **/
+        Display(bool big);
+        /**
+         * @pre: board must use 'X' and 'S' to denote hits and ships, respectively.
+         * @post: prints state of player's ships
+         * @param: board, 9x9 array marked with 'X's and/or 'S's
+         **/
+        //in-game visual elements
+        void friendlyBoard(Board &board) const;
 
-	/**
-	 * @pre: none
-	 * @post: none
-	 **/
-	~Display();
+        /**
+         * @pre: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively
+         * @post: prints state of playerID's enemy board and their ships
+         * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's, 
+         friendlyBrd: 9x9 array marked with 'X's and/or 'S's
+        **/
+        void matchFrame(int playerID, Board &enemyBrd, Board &friendlyBrd) const;
 
-	/**
-	 * @pre: board must use 'X' and 'S' to denote hits and ships, respectively.
-	 * @post: prints state of player's ships
-	 * @param: board, 9x9 array marked with 'X's and/or 'S's
-	 **/
-	//in-game visual elements
-	void friendlyBoard(Board &board) const;
+        /**
+         * @post: prints hit message
+         **/
+        void hit() const;
 
-	/**
-	 * @pre: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively
-	 * @post: prints state of playerID's enemy board and their ships
-	 * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's, 
-	   friendlyBrd: 9x9 array marked with 'X's and/or 'S's
-	 **/
-	void matchFrame(int playerID, Board &enemyBrd, Board &friendlyBrd) const;
+        /**
+         * @post: prints miss message
+         **/
+        void miss() const;
+       /**
+         * @pre: none
+         * @post: none
+         **/
+        ~Display();
+ 
 
-	/**
-	 * @post: prints hit message
-	 **/
-	void hit() const;
-
-	/**
-	 * @post: prints miss message
-	 **/
-	void miss() const;
 };
 #endif

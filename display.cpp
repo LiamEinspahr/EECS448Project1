@@ -3,19 +3,31 @@
 
 using namespace std;
 
-Display::Display()
+Display::Display(bool big)
 {
-	//board elements
-	m_borderSpace = "\n\n";
-	m_playeriBanner = "                 PLAYER i\n\n\n";
-	m_enemyBanner =   "               SHOTS FIRED\n\n\n";
-	m_colLabel = "      A   B   C   D   E   F   G   H   I\n";
-	m_borderLineTop = "    +---+---+---+---+---+---+---+---+---+\n";
-	m_rowiLabel = "  i |   |   |   |   |   |   |   |   |   |\n";
-	m_gridLine = "    +---+---+---+---+---+---+---+---+---|\n";
-	m_borderLineBottom = "    +-----------------------------------+";
-	m_friendlyBanner = "\n\n                YOUR SHIPS\n\n\n";
-
+	if(big){
+		m_borderSpace = "\n\n";
+		m_playeriBanner = "                 PLAYER i\n\n\n";
+		m_enemyBanner =   "               SHOTS FIRED\n\n\n";
+		m_colLabel = "      A   B   C   D   E   F   G   H   I   J   K   L   M   N   O   P   Q   R   S   T\n";
+		m_borderLineTop = "    +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+\n";
+		m_rowiLabel = "  i |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |\n";
+		m_gridLine = "    |---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---|\n";
+		m_borderLineBottom = "    +-------------------------------------------------------------------------------+";
+		m_friendlyBanner = "\n\n                YOUR SHIPS\n\n\n";
+	}
+	else {
+	    //board elements
+        m_borderSpace = "\n\n";
+        m_playeriBanner = "                 PLAYER i\n\n\n";
+        m_enemyBanner =   "               SHOTS FIRED\n\n\n";
+        m_colLabel = "      A   B   C   D   E   F   G   H   I\n";
+        m_borderLineTop = "    +---+---+---+---+---+---+---+---+---+\n";
+        m_rowiLabel = "  i |   |   |   |   |   |   |   |   |   |\n";
+        m_gridLine = "    |---+---+---+---+---+---+---+---+---|\n";
+        m_borderLineBottom = "    +-----------------------------------+";
+        m_friendlyBanner = "\n\n                YOUR SHIPS\n\n\n";
+	}
 	//shot-feedback elements
 	m_hit0 = "\n            _           _       _\n";
 	m_hit1 = "             ',       ,'      ,'\n";
@@ -70,7 +82,7 @@ void Display::enemyBoard(Board &board, int playerID) const
 		cout << rowiLabel;
 		rowiLabel = m_rowiLabel;
 
-		if(i < 8)
+		if(i < board.getNumRows() - 1)
 		{
 			cout << m_gridLine;
 		}
@@ -116,7 +128,7 @@ void Display::friendlyBoard(Board &board) const
 		cout << rowiLabel;
 		rowiLabel = m_rowiLabel;
 
-		if(i < 8)
+		if(i < board.getNumRows() - 1)
 		{
 			cout << m_gridLine;
 		}

@@ -5,7 +5,6 @@
 
 //#include "board.h"
 #include "player.h"
-#include "display.h"
 #include "machine.h"
 #include "board.h"
 
@@ -19,7 +18,7 @@ class Medium{
         Medium();
 
     private:
-        
+
         bool checkCoords(int row, int col); // recursive function
         void guessSpot(int row, int col);
         bool move(int row, int col);
@@ -33,17 +32,16 @@ class Medium{
         Machine machine;
         Player* currentPlayer;
         Player* otherPlayer;
-        Display display;
         Board board;
 
-        int hits = 0; 
+        int hits = 0;
         int** hitGuess;
         bool haveGuesses = false;
         int tracking = 0;
         int shipKey;
         int value;
 
-        
+
 
 };
 #endif
