@@ -321,8 +321,8 @@ void Executive::run()
             cout << endl;
 
 		
-	currentPlayer = &player2;
-	for (int currentShip = 1; currentShip <= shipnum; currentShip++)
+        currentPlayer = &player2;
+        for (int currentShip = 1; currentShip <= shipnum; currentShip++)
 		{
 			while (true) {
 

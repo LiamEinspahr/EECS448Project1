@@ -14,70 +14,75 @@ using namespace std;
 class Display
 {
 	private:
-	//board elements
-	string m_borderSpace;
-	string m_playeriBanner;
-	string m_enemyBanner;
-	string m_colLabel;
-	string m_borderLineTop;
-	string m_rowiLabel;
-	string m_gridLine;
-	string m_borderLineBottom;
-	string m_friendlyBanner;
+        //board elements
+        string m_borderSpace;
+        string m_playeriBanner;
+        string m_enemyBanner;
+        string m_colLabel;
+        string m_borderLineTop;
+        string m_rowiLabel;
+        string m_gridLine;
+        string m_borderLineBottom;
+        string m_friendlyBanner;
 
-	//shot feed-back elements
-	string m_hit0;
-	string m_hit1;
-	string m_hit2;
-	string m_hit3;
-	string m_hit4;
-	string m_hit5;
-	string m_miss;
-
-	/**
-	 * @pre: board must use 'X' and 'O' to denote hits and misses, respectively.
-	 * @post: prints state of enemy board
-	 * @param: board, 9x9 array marked with 'X's and/or 'O's,
-	 * playerID: either 1 or 2 (to differentiate players)
-	 **/
-	//display state of enemy board
-	void enemyBoard(Board &board, int playerID) const;
+        //shot feed-back elements
+        string m_hit0;
+        string m_hit1;
+        string m_hit2;
+        string m_hit3;
+        string m_hit4;
+        string m_hit5;
+        string m_miss;
 
 	public:
 
         /**
-         * @post: constructs display obj.
-         **/
-        Display(bool big);
+         * @brief Display the enemy's board according to what is known by the player
+         * 
+         * @param board The board to display
+         * @param playerID The player to display
+         */
+        void enemyBoard(Board &board, int playerID) const;
+
         /**
-         * @pre: board must use 'X' and 'S' to denote hits and ships, respectively.
-         * @post: prints state of player's ships
-         * @param: board, 9x9 array marked with 'X's and/or 'S's
-         **/
-        //in-game visual elements
+         * @brief Construct a new Display
+         * 
+         * @param big The user has requested an XL board
+         */
+        Display(bool big);
+
+        /**
+         * @brief Display the player's ships and the enemy's shots
+         * 
+         * @param board The board to display
+         */
         void friendlyBoard(Board &board) const;
 
         /**
-         * @pre: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively
-         * @post: prints state of playerID's enemy board and their ships
-         * @param: playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's, 
-         friendlyBrd: 9x9 array marked with 'X's and/or 'S's
-        **/
+         * @brief Call both the friendlyBoard and the enemyBoard methods to display the current game state 
+         * 
+         * @param playerID The current player's ID
+         * @param enemyBrd The enemy player's board
+         * @param friendlyBrd The current player's board
+         */
         void matchFrame(int playerID, Board &enemyBrd, Board &friendlyBrd) const;
 
         /**
-         * @post: prints hit message
-         **/
+         * @brief Display the hit message
+         * 
+         */
         void hit() const;
 
         /**
-         * @post: prints miss message
-         **/
+         * @brief Display the miss message
+         * 
+         */
         void miss() const;
-       /**
-         * @pre: none
-         * @post: none
-         **/
+
+        /**
+         * @brief Destroy the Display
+         * 
+         */
         ~Display();
  
 

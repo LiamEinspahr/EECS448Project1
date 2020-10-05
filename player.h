@@ -6,63 +6,81 @@
 class Player
 {
 	public:
-		Player(bool big);   	    // Constructor
-		~Player();  	    // Destructor;
+        /**
+         * @brief Construct a new Player
+         * 
+         * @param big If the user has requested a XL board
+         */
+		Player(bool big);
+        /**
+         * @brief Destroy the Player
+         * 
+         */
+		~Player();
 		Board my_ships;
 		Board enemy_ships;
 
 
-		/**
- 		* @pre: Ships parameter must be Int between 1 & 5, inclusive
-		* @post: Both players will be limited to the ships parameter
-		* @param: int ships: how many ships each player will be able to place
- 		**/
-		void SetNumShips(int ships); // updates number of ships variable
+        /**
+         * @brief Set the number of ships per player
+         * 
+         * @param ships The number of ships per player
+         */
+		void SetNumShips(int ships);
 
 
-		/**
- 		* @pre: 'Row' and 'col' between 0 & 8 inclusive, 'direction' must be 'U', 'D', 'R', or 'L'
-		* @post: returns the value at a certain coordinate on the board
-		* @param: size: length of ship; row: starting row of pivot; col: starting col of pivot; direction: the orientation of the ship around the pivot
-		* @return: returns whether the placement was successful or not
- 		**/
+        /**
+         * @brief Attempt to place the ship at the given point
+         * 
+         * @param size The size of the ship
+         * @param row The row in which to place the ship
+         * @param col The column in which to place the ship
+         * @param direction The direction to face the ship
+         * @return true Placement succeded
+         * @return false Placement failed
+         */
 		bool PlaceShip(int size, int row, int col, char direction); // will try to place a ship with upper left point at row, col; returns false if it cant
-		bool PlaceShipAI(int size, int row, int col, char direction);
+        /**
+         * @brief Attempt to place the ship at the given point for the AI
+         * 
+         * @param size The size of the ship
+         * @param row The row in which to place the ship
+         * @param col The column in which to place the ship
+         * @param direction The direction to face the ship
+         * @return true Placement succeded
+         * @return false Placement failed
+         */
+        bool PlaceShipAI(int size, int row, int col, char direction);
 
-		/**
- 		* @pre: None
-		* @post: None
- 		**/
-		void PrintMyShips(); // prints board with players ships
+        /**
+         * @brief Print the player's board showing ships and enemy shots
+         * 
+         */
+		void PrintMyShips();
 
+        /**
+         * @brief Print the enemy's board hits and misses
+         * 
+         */
+		void PrintEnemyShips();
 
-		/**
- 		* @pre: None
-		* @post: None
- 		**/
-		void PrintEnemyShips(); // prints board with hits/misses of enemy ships
-
-
-		/**
- 		* @pre: None
-		* @post: my_ships & enemy_ships will be reverted to 9x9 boards with '-' in each index
- 		**/
-		void ClearBoards();
-
-
-		/**
- 		* @pre: 'row' & 'col' must be between 0 & 8, inclusive
-		* @post: None
-		* @param: row: which row to check; col: which column to check
-		* @return: returns true if a ship has been hit, false if not
- 		**/
+        /**
+         * @brief Check if a shot at the given coordinate hits a ship
+         * 
+         * @param row The row to check 
+         * @param col The column to check
+         * @return true The shot was a hit
+         * @return false The shot was a miss
+         */
 		bool CheckHit(int row, int col);
 
-		/**
- 		* @pre: row and col must be between 0 & 8, inclusive
-		* @post: enemy_ships member variable will be updated with new state
-		* @param: row: which row to check; col: which column to check; hit: whether there was a hit or miss
- 		**/
+        /**
+         * @brief Update the enemy board with a hit or miss at the given location
+         * 
+         * @param row The row to update
+         * @param col The column to update
+         * @param hit Whether the shot was a hit
+         */
 		void UpdateEnemyBoard(int row, int col, bool hit);
 
 	private:

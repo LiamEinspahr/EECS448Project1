@@ -11,46 +11,54 @@ class Executive
 {
 public:
 
-	Executive(){};		//Constructor
-	~Executive(){};		//Destructor
+    /**
+     * @brief Construct a new Executive to handle gameplay
+     * 
+     */
+	Executive(){};
+    /**
+     * @brief Destroy the Executive
+     * 
+     */
+	~Executive(){};
 
-	/**
- 	* @pre:	None
- 	* @post: function to hide player info when switch player1 to 2 or player2 to 1
- 	* @param: print 50 blank line when need to switch player
- 	**/
+    /**
+     * @brief Output several newlines to clear the terminal screen and then wait for enter 
+     * 
+     */
 	void WaitEnter();
 
 
-	/**
- 	* @post: run the program
-	* @param: play the Battleship game, the prog gets ship info from players
-	* 		  player will fire the enemy ship until there is a winner
- 	**/
+    /**
+     * @brief Run a game of battleship
+     * 
+     */
 	void run();
 
-	/**
- 	* @pre: input the correct char type
- 	* @post: convert letters to corresponding numbers
-	* @param: get the letter from the player, then use the formula to convert letter to numbers
-	* @return: return ((toupper(c) - 65))
- 	**/
+    /**
+     * @brief Convert a character to the int it represents
+     * 
+     * @param c The character to convert
+     * @return int The int which is represented by c
+     */
 	int charToInt(char c);
 
-	/**
- 	* @pre: input the correct char type
- 	* @post: verifying user input if it's within the range of A-I
-	* @param: get the letter from the player, then check the range
-	* @return: return true when the letter is within the range of A-I
- 	**/
+    /**
+     * @brief Check if a given column letter is valid
+     * 
+     * @param big Whether the current board is XL
+     * @param c The character to check
+     * @return true The character is a valid column
+     * @return false The character is not a valid column
+     */
 	bool validColumn(bool big, char c);
 
-	/**
- 	* @pre: input the correct int type
- 	* @post: add the number of grids occupied by all ships
-	* @param: get the ship number from the player, then calculate the number of grids occupied by the ship
-	* @return: return n, the number of grids occupied by all ships
- 	**/
+    /**
+     * @brief Calculate a termial to determine the number of ship coords based on the number of ships
+     * 
+     * @param shipNum The number of ships per player
+     * @return int The number of ship tiles per player
+     */
   	int numShipCoords(int shipNum);
 
 };
