@@ -34,7 +34,6 @@ int Machine::randomNum(){
 	else{
 		randInt = (rand() % 9);
 	}
-    randInt--;
     return(randInt);
 }
 
