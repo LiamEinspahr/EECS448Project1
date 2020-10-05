@@ -3,7 +3,7 @@
 #include <ctime>
 
 Machine::Machine(){
-    
+	srand (time(NULL));  
 }
 
 void Machine::setGameMode(char foo){
@@ -42,7 +42,6 @@ int Machine::randomChar(){
 	char c;
     int r;
     int charInt;
-	srand (time(NULL));  
 
 	if(gamemode == 'X'){
 		r = rand() % 20;   
@@ -58,7 +57,6 @@ int Machine::randomChar(){
 }
 
 char Machine::getRandomDirection(){
-	srand (time(NULL));
 	char directionArray[4] = {'U','D','R','L'};
 	int position = rand() % 4;
 	char randDirection = directionArray[position];

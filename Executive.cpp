@@ -332,17 +332,17 @@ void Executive::run()
 				if (currentShip == 1)
 				{
 					row = machine.randomNum();
-					c_col = machine.randomChar();
+					col = machine.randomChar();
 				}
 				else
 				{
 					row = machine.randomNum();
-					c_col = machine.randomChar();
+					col = machine.randomChar();
 					direction = machine.getRandomDirection();
 				}
 				 // decrement row by 1 for indexing array
 				direction = toupper(direction);
-
+                cout << "Attempting " << row << ", " << col << ", " << direction << " for " << currentShip << "\n";
 				if (currentPlayer->PlaceShipAI(currentShip, row, col, direction))
 				{
 					break;
@@ -420,11 +420,11 @@ void Executive::run()
                         break;
                     }
                 }
-                    currentPlayer->UpdateEnemyBoard(row, col, true);
-                    if (otherPlayer->my_ships.allShipsSunk())
-                    {
-                        cout << "The Machine wins!\n";
-                    }
+                currentPlayer->UpdateEnemyBoard(row, col, true);
+                if (otherPlayer->my_ships.allShipsSunk())
+                {
+                    cout << "The Machine wins!\n";
+                }
                 
                 
             }
