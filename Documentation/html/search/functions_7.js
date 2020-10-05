@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['issunk_87',['isSunk',['../class_ship.html#a34cbc315fd6d44a3cc0c03f34bc4db3c',1,'Ship']]]
+  ['hit_115',['hit',['../class_display.html#a497096f93f1f4312297b10a05accc67f',1,'Display']]]
 ];

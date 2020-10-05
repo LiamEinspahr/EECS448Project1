@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Battleship: player.h Source File</title>
+<title>Battleship: C:/Users/mathe/Documents/Code/EECS_448/EECS448Project1/player.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">player.h</div>  </div>
+<div class="title">C:/Users/mathe/Documents/Code/EECS_448/EECS448Project1/player.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="player_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PLAYER_H</span></div>
@@ -73,51 +73,46 @@ $(function() {
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_player.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player.html">Player</a></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8">Player</a>();           <span class="comment">// Constructor</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">~Player</a>();          <span class="comment">// Destructor;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_player.html#a958cf1b99a32ae670162f3646c7f191c">   11</a></span>&#160;        <a class="code" href="class_board.html">Board</a> <a class="code" href="class_player.html#a958cf1b99a32ae670162f3646c7f191c">my_ships</a>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_player.html#a4342847f2cc0caa6203405db279bda70">   12</a></span>&#160;        <a class="code" href="class_board.html">Board</a> <a class="code" href="class_player.html#a4342847f2cc0caa6203405db279bda70">enemy_ships</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a695c1ec79b9403ab66b1b73115853046">SetNumShips</a>(<span class="keywordtype">int</span> ships); <span class="comment">// updates number of ships variable</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_player.html#a0c44cf35a1cdf41213f61830f52e9c36">PlaceShip</a>(<span class="keywordtype">int</span> size, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">char</span> direction); <span class="comment">// will try to place a ship with upper left point at row, col; returns false if it cant</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="class_player.html#a14ec029cce0fa1472de56b9c68c60d02">Player</a>(<span class="keywordtype">bool</span> big);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">~Player</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_player.html#a958cf1b99a32ae670162f3646c7f191c">   20</a></span>&#160;        <a class="code" href="class_board.html">Board</a> <a class="code" href="class_player.html#a958cf1b99a32ae670162f3646c7f191c">my_ships</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_player.html#a4342847f2cc0caa6203405db279bda70">   21</a></span>&#160;        <a class="code" href="class_board.html">Board</a> <a class="code" href="class_player.html#a4342847f2cc0caa6203405db279bda70">enemy_ships</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a695c1ec79b9403ab66b1b73115853046">SetNumShips</a>(<span class="keywordtype">int</span> ships);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a93a20a5bdc7d0dce52901d7c4ada6e1b">PrintMyShips</a>(); <span class="comment">// prints board with players ships</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a52922e4d7fb6175c7819fe16dd6511d9">PrintEnemyShips</a>(); <span class="comment">// prints board with hits/misses of enemy ships</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_player.html#a178a6acb9c68fd2456ebb660f7bd5b0b">   50</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a178a6acb9c68fd2456ebb660f7bd5b0b">ClearBoards</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_player.html#a42596112a3df05c11d32c4980712766e">CheckHit</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#ac8f5b2eb8e47847cc989ee5bf014e078">UpdateEnemyBoard</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">bool</span> hit);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">int</span> numShips;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_player.html#a0c44cf35a1cdf41213f61830f52e9c36">PlaceShip</a>(<span class="keywordtype">int</span> size, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">char</span> direction); <span class="comment">// will try to place a ship with upper left point at row, col; returns false if it cant</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"></span>        <span class="keywordtype">bool</span> <a class="code" href="class_player.html#a55d64fee223634d0b220daae9ba9dc21">PlaceShipAI</a>(<span class="keywordtype">int</span> size, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">char</span> direction);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a93a20a5bdc7d0dce52901d7c4ada6e1b">PrintMyShips</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a52922e4d7fb6175c7819fe16dd6511d9">PrintEnemyShips</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_player.html#a42596112a3df05c11d32c4980712766e">CheckHit</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#ac8f5b2eb8e47847cc989ee5bf014e078">UpdateEnemyBoard</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keywordtype">bool</span> hit);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">int</span> numShips;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_player_html_a695c1ec79b9403ab66b1b73115853046"><div class="ttname"><a href="class_player.html#a695c1ec79b9403ab66b1b73115853046">Player::SetNumShips</a></div><div class="ttdeci">void SetNumShips(int ships)</div><div class="ttdef"><b>Definition:</b> player.cpp:12</div></div>
-<div class="ttc" id="aclass_player_html_a42596112a3df05c11d32c4980712766e"><div class="ttname"><a href="class_player.html#a42596112a3df05c11d32c4980712766e">Player::CheckHit</a></div><div class="ttdeci">bool CheckHit(int row, int col)</div><div class="ttdef"><b>Definition:</b> player.cpp:94</div></div>
-<div class="ttc" id="aclass_player_html_a0c44cf35a1cdf41213f61830f52e9c36"><div class="ttname"><a href="class_player.html#a0c44cf35a1cdf41213f61830f52e9c36">Player::PlaceShip</a></div><div class="ttdeci">bool PlaceShip(int size, int row, int col, char direction)</div><div class="ttdef"><b>Definition:</b> player.cpp:24</div></div>
-<div class="ttc" id="aclass_player_html_a958cf1b99a32ae670162f3646c7f191c"><div class="ttname"><a href="class_player.html#a958cf1b99a32ae670162f3646c7f191c">Player::my_ships</a></div><div class="ttdeci">Board my_ships</div><div class="ttdef"><b>Definition:</b> player.h:11</div></div>
-<div class="ttc" id="aclass_player_html_affe0cc3cb714f6deb4e62f0c0d3f1fd8"><div class="ttname"><a href="class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8">Player::Player</a></div><div class="ttdeci">Player()</div><div class="ttdef"><b>Definition:</b> player.cpp:6</div></div>
-<div class="ttc" id="aclass_player_html_a178a6acb9c68fd2456ebb660f7bd5b0b"><div class="ttname"><a href="class_player.html#a178a6acb9c68fd2456ebb660f7bd5b0b">Player::ClearBoards</a></div><div class="ttdeci">void ClearBoards()</div></div>
-<div class="ttc" id="aclass_player_html_a52922e4d7fb6175c7819fe16dd6511d9"><div class="ttname"><a href="class_player.html#a52922e4d7fb6175c7819fe16dd6511d9">Player::PrintEnemyShips</a></div><div class="ttdeci">void PrintEnemyShips()</div><div class="ttdef"><b>Definition:</b> player.cpp:16</div></div>
-<div class="ttc" id="aclass_player_html_a93a20a5bdc7d0dce52901d7c4ada6e1b"><div class="ttname"><a href="class_player.html#a93a20a5bdc7d0dce52901d7c4ada6e1b">Player::PrintMyShips</a></div><div class="ttdeci">void PrintMyShips()</div><div class="ttdef"><b>Definition:</b> player.cpp:14</div></div>
+<div class="ttc" id="aclass_player_html_a695c1ec79b9403ab66b1b73115853046"><div class="ttname"><a href="class_player.html#a695c1ec79b9403ab66b1b73115853046">Player::SetNumShips</a></div><div class="ttdeci">void SetNumShips(int ships)</div><div class="ttdoc">Set the number of ships per player.</div><div class="ttdef"><b>Definition:</b> player.cpp:15</div></div>
+<div class="ttc" id="aclass_player_html_a55d64fee223634d0b220daae9ba9dc21"><div class="ttname"><a href="class_player.html#a55d64fee223634d0b220daae9ba9dc21">Player::PlaceShipAI</a></div><div class="ttdeci">bool PlaceShipAI(int size, int row, int col, char direction)</div><div class="ttdoc">Attempt to place the ship at the given point for the AI.</div><div class="ttdef"><b>Definition:</b> player.cpp:148</div></div>
+<div class="ttc" id="aclass_player_html_a42596112a3df05c11d32c4980712766e"><div class="ttname"><a href="class_player.html#a42596112a3df05c11d32c4980712766e">Player::CheckHit</a></div><div class="ttdeci">bool CheckHit(int row, int col)</div><div class="ttdoc">Check if a shot at the given coordinate hits a ship.</div><div class="ttdef"><b>Definition:</b> player.cpp:218</div></div>
+<div class="ttc" id="aclass_player_html_a0c44cf35a1cdf41213f61830f52e9c36"><div class="ttname"><a href="class_player.html#a0c44cf35a1cdf41213f61830f52e9c36">Player::PlaceShip</a></div><div class="ttdeci">bool PlaceShip(int size, int row, int col, char direction)</div><div class="ttdoc">Attempt to place the ship at the given point.</div><div class="ttdef"><b>Definition:</b> player.cpp:27</div></div>
+<div class="ttc" id="aclass_player_html_a958cf1b99a32ae670162f3646c7f191c"><div class="ttname"><a href="class_player.html#a958cf1b99a32ae670162f3646c7f191c">Player::my_ships</a></div><div class="ttdeci">Board my_ships</div><div class="ttdef"><b>Definition:</b> player.h:20</div></div>
+<div class="ttc" id="aclass_player_html_a52922e4d7fb6175c7819fe16dd6511d9"><div class="ttname"><a href="class_player.html#a52922e4d7fb6175c7819fe16dd6511d9">Player::PrintEnemyShips</a></div><div class="ttdeci">void PrintEnemyShips()</div><div class="ttdoc">Print the enemy's board hits and misses.</div><div class="ttdef"><b>Definition:</b> player.cpp:19</div></div>
+<div class="ttc" id="aclass_player_html_a93a20a5bdc7d0dce52901d7c4ada6e1b"><div class="ttname"><a href="class_player.html#a93a20a5bdc7d0dce52901d7c4ada6e1b">Player::PrintMyShips</a></div><div class="ttdeci">void PrintMyShips()</div><div class="ttdoc">Print the player's board showing ships and enemy shots.</div><div class="ttdef"><b>Definition:</b> player.cpp:17</div></div>
+<div class="ttc" id="aclass_player_html_a14ec029cce0fa1472de56b9c68c60d02"><div class="ttname"><a href="class_player.html#a14ec029cce0fa1472de56b9c68c60d02">Player::Player</a></div><div class="ttdeci">Player(bool big)</div><div class="ttdoc">Construct a new Player.</div><div class="ttdef"><b>Definition:</b> player.cpp:6</div></div>
 <div class="ttc" id="aclass_board_html"><div class="ttname"><a href="class_board.html">Board</a></div><div class="ttdef"><b>Definition:</b> board.h:8</div></div>
 <div class="ttc" id="aboard_8h_html"><div class="ttname"><a href="board_8h.html">board.h</a></div></div>
-<div class="ttc" id="aclass_player_html_a4342847f2cc0caa6203405db279bda70"><div class="ttname"><a href="class_player.html#a4342847f2cc0caa6203405db279bda70">Player::enemy_ships</a></div><div class="ttdeci">Board enemy_ships</div><div class="ttdef"><b>Definition:</b> player.h:12</div></div>
-<div class="ttc" id="aclass_player_html_ac8f5b2eb8e47847cc989ee5bf014e078"><div class="ttname"><a href="class_player.html#ac8f5b2eb8e47847cc989ee5bf014e078">Player::UpdateEnemyBoard</a></div><div class="ttdeci">void UpdateEnemyBoard(int row, int col, bool hit)</div><div class="ttdef"><b>Definition:</b> player.cpp:18</div></div>
-<div class="ttc" id="aclass_player_html_a749d2c00e1fe0f5c2746f7505a58c062"><div class="ttname"><a href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">Player::~Player</a></div><div class="ttdeci">~Player()</div><div class="ttdef"><b>Definition:</b> player.cpp:10</div></div>
+<div class="ttc" id="aclass_player_html_a4342847f2cc0caa6203405db279bda70"><div class="ttname"><a href="class_player.html#a4342847f2cc0caa6203405db279bda70">Player::enemy_ships</a></div><div class="ttdeci">Board enemy_ships</div><div class="ttdef"><b>Definition:</b> player.h:21</div></div>
+<div class="ttc" id="aclass_player_html_ac8f5b2eb8e47847cc989ee5bf014e078"><div class="ttname"><a href="class_player.html#ac8f5b2eb8e47847cc989ee5bf014e078">Player::UpdateEnemyBoard</a></div><div class="ttdeci">void UpdateEnemyBoard(int row, int col, bool hit)</div><div class="ttdoc">Update the enemy board with a hit or miss at the given location.</div><div class="ttdef"><b>Definition:</b> player.cpp:21</div></div>
+<div class="ttc" id="aclass_player_html_a749d2c00e1fe0f5c2746f7505a58c062"><div class="ttname"><a href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">Player::~Player</a></div><div class="ttdeci">~Player()</div><div class="ttdoc">Destroy the Player.</div><div class="ttdef"><b>Definition:</b> player.cpp:13</div></div>
 <div class="ttc" id="aclass_player_html"><div class="ttname"><a href="class_player.html">Player</a></div><div class="ttdef"><b>Definition:</b> player.h:7</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,4 +1,14 @@
 var searchData=
 [
-  ['hit_86',['hit',['../class_display.html#a497096f93f1f4312297b10a05accc67f',1,'Display']]]
+  ['getchar_104',['getChar',['../_executive_8cpp.html#a21cccc42577b9a4aed255af46a3f9682',1,'Executive.cpp']]],
+  ['getcharinoptions_105',['getCharInOptions',['../_executive_8cpp.html#aaaed0441a1f4cea36aefed576bf7b7b4',1,'Executive.cpp']]],
+  ['getdifficultylevel_106',['getDifficultyLevel',['../class_machine.html#ab0eff6a28e96296393a340c11fe156f6',1,'Machine']]],
+  ['getgamemode_107',['getGameMode',['../class_machine.html#ade779289af584f23849a3d83e6207f22',1,'Machine']]],
+  ['getint_108',['getInt',['../_executive_8cpp.html#a03c38edb4ddf659eea7606d09b251609',1,'Executive.cpp']]],
+  ['getnumcols_109',['getNumCols',['../class_board.html#a7c8b604bd3d20327015f4a88926acb1d',1,'Board']]],
+  ['getnumhits_110',['getNumHits',['../class_board.html#a7fd5330f2443d7c3c465d69778d4f88f',1,'Board']]],
+  ['getnumrows_111',['getNumRows',['../class_board.html#ab0426ff73768669fa8b0a36e2ea1ad48',1,'Board']]],
+  ['getrandomdirection_112',['getRandomDirection',['../class_machine.html#aca91718bf672cf3a167e132e6c379562',1,'Machine']]],
+  ['getshipnum_113',['getShipNum',['../class_board.html#aec97ca96caec9a3a38bbc4ea5de55539',1,'Board']]],
+  ['getvalue_114',['getValue',['../class_board.html#a05bd9deb7532ec0507351a218724ec41',1,'Board']]]
 ];

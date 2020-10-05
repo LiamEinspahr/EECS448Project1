@@ -73,22 +73,31 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae972fffea6f7ca1d627ef48c3d841bb3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#ae972fffea6f7ca1d627ef48c3d841bb3">Display</a> ()</td></tr>
-<tr class="separator:ae972fffea6f7ca1d627ef48c3d841bb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2607a6bb236c55547a4223d40d85d1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#ac2607a6bb236c55547a4223d40d85d1f">~Display</a> ()</td></tr>
-<tr class="separator:ac2607a6bb236c55547a4223d40d85d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8035e51022391e01518bb9bb5c6053a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#a8035e51022391e01518bb9bb5c6053a1">friendlyBoard</a> (char board[][9]) const</td></tr>
-<tr class="separator:a8035e51022391e01518bb9bb5c6053a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e6bc86554ad96bc16822aa35e462688"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#a4e6bc86554ad96bc16822aa35e462688">matchFrame</a> (int playerID, char enemyBrd[][9], char friendlyBrd[][9]) const</td></tr>
-<tr class="separator:a4e6bc86554ad96bc16822aa35e462688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2246858070f9d47b926acda634e81620"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#a2246858070f9d47b926acda634e81620">enemyBoard</a> (<a class="el" href="class_board.html">Board</a> &amp;board, int playerID) const</td></tr>
+<tr class="memdesc:a2246858070f9d47b926acda634e81620"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_display.html">Display</a> the enemy's board according to what is known by the player.  <a href="class_display.html#a2246858070f9d47b926acda634e81620">More...</a><br /></td></tr>
+<tr class="separator:a2246858070f9d47b926acda634e81620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02896f22a5c146af6399cb73bb0f71df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#a02896f22a5c146af6399cb73bb0f71df">Display</a> (bool big)</td></tr>
+<tr class="memdesc:a02896f22a5c146af6399cb73bb0f71df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_display.html">Display</a>.  <a href="class_display.html#a02896f22a5c146af6399cb73bb0f71df">More...</a><br /></td></tr>
+<tr class="separator:a02896f22a5c146af6399cb73bb0f71df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a859eef0b7214a4bcb1b0840a1f4b00c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#a859eef0b7214a4bcb1b0840a1f4b00c7">friendlyBoard</a> (<a class="el" href="class_board.html">Board</a> &amp;board) const</td></tr>
+<tr class="memdesc:a859eef0b7214a4bcb1b0840a1f4b00c7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_display.html">Display</a> the player's ships and the enemy's shots.  <a href="class_display.html#a859eef0b7214a4bcb1b0840a1f4b00c7">More...</a><br /></td></tr>
+<tr class="separator:a859eef0b7214a4bcb1b0840a1f4b00c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc4bf3996b980f40182dc80f19867070"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#acc4bf3996b980f40182dc80f19867070">matchFrame</a> (int playerID, <a class="el" href="class_board.html">Board</a> &amp;enemyBrd, <a class="el" href="class_board.html">Board</a> &amp;friendlyBrd) const</td></tr>
+<tr class="memdesc:acc4bf3996b980f40182dc80f19867070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call both the friendlyBoard and the enemyBoard methods to display the current game state.  <a href="class_display.html#acc4bf3996b980f40182dc80f19867070">More...</a><br /></td></tr>
+<tr class="separator:acc4bf3996b980f40182dc80f19867070"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a497096f93f1f4312297b10a05accc67f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#a497096f93f1f4312297b10a05accc67f">hit</a> () const</td></tr>
+<tr class="memdesc:a497096f93f1f4312297b10a05accc67f"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_display.html">Display</a> the hit message.  <a href="class_display.html#a497096f93f1f4312297b10a05accc67f">More...</a><br /></td></tr>
 <tr class="separator:a497096f93f1f4312297b10a05accc67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73ce0207526eca75785a138d49959350"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#a73ce0207526eca75785a138d49959350">miss</a> () const</td></tr>
+<tr class="memdesc:a73ce0207526eca75785a138d49959350"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_display.html">Display</a> the miss message.  <a href="class_display.html#a73ce0207526eca75785a138d49959350">More...</a><br /></td></tr>
 <tr class="separator:a73ce0207526eca75785a138d49959350"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2607a6bb236c55547a4223d40d85d1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_display.html#ac2607a6bb236c55547a4223d40d85d1f">~Display</a> ()</td></tr>
+<tr class="memdesc:ac2607a6bb236c55547a4223d40d85d1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_display.html">Display</a>.  <a href="class_display.html#ac2607a6bb236c55547a4223d40d85d1f">More...</a><br /></td></tr>
+<tr class="separator:ac2607a6bb236c55547a4223d40d85d1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae972fffea6f7ca1d627ef48c3d841bb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae972fffea6f7ca1d627ef48c3d841bb3">&#9670;&nbsp;</a></span>Display()</h2>
+<a id="a02896f22a5c146af6399cb73bb0f71df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02896f22a5c146af6399cb73bb0f71df">&#9670;&nbsp;</a></span>Display()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -96,12 +105,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">Display::Display </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>big</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section post"><dt>Postcondition</dt><dd>: constructs display obj. </dd></dl>
+
+<p>Construct a new <a class="el" href="class_display.html">Display</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">big</td><td>The user has requested an XL board </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -119,14 +136,51 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>: none </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>: none </dd></dl>
+
+<p>Destroy the <a class="el" href="class_display.html">Display</a>. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8035e51022391e01518bb9bb5c6053a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8035e51022391e01518bb9bb5c6053a1">&#9670;&nbsp;</a></span>friendlyBoard()</h2>
+<a id="a2246858070f9d47b926acda634e81620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2246858070f9d47b926acda634e81620">&#9670;&nbsp;</a></span>enemyBoard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Display::enemyBoard </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_board.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>playerID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_display.html">Display</a> the enemy's board according to what is known by the player. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">board</td><td>The board to display </td></tr>
+    <tr><td class="paramname">playerID</td><td>The player to display </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a859eef0b7214a4bcb1b0840a1f4b00c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a859eef0b7214a4bcb1b0840a1f4b00c7">&#9670;&nbsp;</a></span>friendlyBoard()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -134,17 +188,17 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Display::friendlyBoard </td>
           <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>board</em>[][9]</td><td>)</td>
+          <td class="paramtype"><a class="el" href="class_board.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>board</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>: board must use 'X' and 'S' to denote hits and ships, respectively. </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>: prints state of player's ships </dd></dl>
+
+<p><a class="el" href="class_display.html">Display</a> the player's ships and the enemy's shots. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"></td><td>board, 9x9 array marked with 'X's and/or 'S's </td></tr>
+    <tr><td class="paramname">board</td><td>The board to display </td></tr>
   </table>
   </dd>
 </dl>
@@ -165,12 +219,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section post"><dt>Postcondition</dt><dd>: prints hit message </dd></dl>
+
+<p><a class="el" href="class_display.html">Display</a> the hit message. </p>
 
 </div>
 </div>
-<a id="a4e6bc86554ad96bc16822aa35e462688"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e6bc86554ad96bc16822aa35e462688">&#9670;&nbsp;</a></span>matchFrame()</h2>
+<a id="acc4bf3996b980f40182dc80f19867070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc4bf3996b980f40182dc80f19867070">&#9670;&nbsp;</a></span>matchFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,14 +239,14 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>enemyBrd</em>[][9], </td>
+          <td class="paramtype"><a class="el" href="class_board.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>enemyBrd</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>friendlyBrd</em>[][9]&#160;</td>
+          <td class="paramtype"><a class="el" href="class_board.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>friendlyBrd</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -200,11 +255,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>: boards must use 'X's, 'O's, and 'S's to denote hits, misses, and ships, respectively </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>: prints state of playerID's enemy board and their ships </dd></dl>
+
+<p>Call both the friendlyBoard and the enemyBoard methods to display the current game state. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"></td><td>playerID, either 1 or 2 (to differentiate players), enemyBrd: 9x9 array marked with 'X's and/or 'O's, friendlyBrd: 9x9 array marked with 'X's and/or 'S's </td></tr>
+    <tr><td class="paramname">playerID</td><td>The current player's ID </td></tr>
+    <tr><td class="paramname">enemyBrd</td><td>The enemy player's board </td></tr>
+    <tr><td class="paramname">friendlyBrd</td><td>The current player's board </td></tr>
   </table>
   </dd>
 </dl>
@@ -225,13 +282,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section post"><dt>Postcondition</dt><dd>: prints miss message </dd></dl>
+
+<p><a class="el" href="class_display.html">Display</a> the miss message. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="display_8h_source.html">display.h</a></li>
-<li><a class="el" href="display_8cpp.html">display.cpp</a></li>
+<li>C:/Users/mathe/Documents/Code/EECS_448/EECS448Project1/<a class="el" href="display_8h_source.html">display.h</a></li>
+<li>C:/Users/mathe/Documents/Code/EECS_448/EECS448Project1/<a class="el" href="display_8cpp.html">display.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

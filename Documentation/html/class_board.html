@@ -76,25 +76,61 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9ee491d4fea680cf69b033374a9fdfcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board</a> ()</td></tr>
 <tr class="separator:a9ee491d4fea680cf69b033374a9fdfcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9690a10d8699035fc211ed1f0edff28b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a9690a10d8699035fc211ed1f0edff28b">Board</a> (bool big)</td></tr>
-<tr class="separator:a9690a10d8699035fc211ed1f0edff28b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af73f45730119a1fd8f6670f53f959e68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af73f45730119a1fd8f6670f53f959e68">~Board</a> ()</td></tr>
 <tr class="separator:af73f45730119a1fd8f6670f53f959e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06896de260a6584305a6ab17c890b22c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a06896de260a6584305a6ab17c890b22c">setBig</a> ()</td></tr>
+<tr class="memdesc:a06896de260a6584305a6ab17c890b22c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the board size to big.  <a href="class_board.html#a06896de260a6584305a6ab17c890b22c">More...</a><br /></td></tr>
+<tr class="separator:a06896de260a6584305a6ab17c890b22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca49f093314a104381d05998bbf62f7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#aca49f093314a104381d05998bbf62f7f">printBoard</a> ()</td></tr>
 <tr class="separator:aca49f093314a104381d05998bbf62f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba2bc48e622f98fa5d4472eff42bbd1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#aba2bc48e622f98fa5d4472eff42bbd1d">updateBoard</a> (int row, int col, char c)</td></tr>
-<tr class="separator:aba2bc48e622f98fa5d4472eff42bbd1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e3dbb584e801374c8f753de13ef926"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a51e3dbb584e801374c8f753de13ef926">updateBoard</a> (int row, int col, char c, int shipsize=0)</td></tr>
+<tr class="memdesc:a51e3dbb584e801374c8f753de13ef926"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the board with the given character.  <a href="class_board.html#a51e3dbb584e801374c8f753de13ef926">More...</a><br /></td></tr>
+<tr class="separator:a51e3dbb584e801374c8f753de13ef926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71d61b53d5b037bf52397308936a39b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a71d61b53d5b037bf52397308936a39b2">updateNumShips</a> (int numships)</td></tr>
+<tr class="memdesc:a71d61b53d5b037bf52397308936a39b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the number of ships which are on this board.  <a href="class_board.html#a71d61b53d5b037bf52397308936a39b2">More...</a><br /></td></tr>
+<tr class="separator:a71d61b53d5b037bf52397308936a39b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05bd9deb7532ec0507351a218724ec41"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a05bd9deb7532ec0507351a218724ec41">getValue</a> (int row, int col)</td></tr>
+<tr class="memdesc:a05bd9deb7532ec0507351a218724ec41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value at the given coordinates.  <a href="class_board.html#a05bd9deb7532ec0507351a218724ec41">More...</a><br /></td></tr>
 <tr class="separator:a05bd9deb7532ec0507351a218724ec41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab91542c22966639fa6b527bf14aaf744"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#ab91542c22966639fa6b527bf14aaf744">checkBig</a> ()</td></tr>
+<tr class="memdesc:ab91542c22966639fa6b527bf14aaf744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the board is size XL.  <a href="class_board.html#ab91542c22966639fa6b527bf14aaf744">More...</a><br /></td></tr>
+<tr class="separator:ab91542c22966639fa6b527bf14aaf744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec97ca96caec9a3a38bbc4ea5de55539"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#aec97ca96caec9a3a38bbc4ea5de55539">getShipNum</a> (int row, int col)</td></tr>
+<tr class="memdesc:aec97ca96caec9a3a38bbc4ea5de55539"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Ship Num at the given coordinates.  <a href="class_board.html#aec97ca96caec9a3a38bbc4ea5de55539">More...</a><br /></td></tr>
+<tr class="separator:aec97ca96caec9a3a38bbc4ea5de55539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c9b7eaaaac47b2ebe90107ea992152"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af6c9b7eaaaac47b2ebe90107ea992152">shipNumIsSunk</a> (int shipNum)</td></tr>
+<tr class="memdesc:af6c9b7eaaaac47b2ebe90107ea992152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether a ship of a given number is fully sunk.  <a href="class_board.html#af6c9b7eaaaac47b2ebe90107ea992152">More...</a><br /></td></tr>
+<tr class="separator:af6c9b7eaaaac47b2ebe90107ea992152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cf6e5e89e3688538f7dce04a508c0c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a6cf6e5e89e3688538f7dce04a508c0c5">shipIsSunk</a> (int row, int col)</td></tr>
+<tr class="memdesc:a6cf6e5e89e3688538f7dce04a508c0c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether a ship at a given coordinate is fully sunk.  <a href="class_board.html#a6cf6e5e89e3688538f7dce04a508c0c5">More...</a><br /></td></tr>
+<tr class="separator:a6cf6e5e89e3688538f7dce04a508c0c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89dcf377ff48f124d396b10d922dc7f7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a89dcf377ff48f124d396b10d922dc7f7">allShipsSunk</a> ()</td></tr>
+<tr class="memdesc:a89dcf377ff48f124d396b10d922dc7f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if any ships remain to be sunk.  <a href="class_board.html#a89dcf377ff48f124d396b10d922dc7f7">More...</a><br /></td></tr>
+<tr class="separator:a89dcf377ff48f124d396b10d922dc7f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0426ff73768669fa8b0a36e2ea1ad48"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#ab0426ff73768669fa8b0a36e2ea1ad48">getNumRows</a> ()</td></tr>
+<tr class="memdesc:ab0426ff73768669fa8b0a36e2ea1ad48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of rows.  <a href="class_board.html#ab0426ff73768669fa8b0a36e2ea1ad48">More...</a><br /></td></tr>
+<tr class="separator:ab0426ff73768669fa8b0a36e2ea1ad48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c8b604bd3d20327015f4a88926acb1d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a7c8b604bd3d20327015f4a88926acb1d">getNumCols</a> ()</td></tr>
+<tr class="memdesc:a7c8b604bd3d20327015f4a88926acb1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of columns.  <a href="class_board.html#a7c8b604bd3d20327015f4a88926acb1d">More...</a><br /></td></tr>
+<tr class="separator:a7c8b604bd3d20327015f4a88926acb1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fd5330f2443d7c3c465d69778d4f88f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a7fd5330f2443d7c3c465d69778d4f88f">getNumHits</a> ()</td></tr>
+<tr class="memdesc:a7fd5330f2443d7c3c465d69778d4f88f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of hits on the board.  <a href="class_board.html#a7fd5330f2443d7c3c465d69778d4f88f">More...</a><br /></td></tr>
+<tr class="separator:a7fd5330f2443d7c3c465d69778d4f88f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae87596f8354b23a8e8e7d8f22241f5ae"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#ae87596f8354b23a8e8e7d8f22241f5ae">m_board</a> [9][9]</td></tr>
 <tr class="separator:ae87596f8354b23a8e8e7d8f22241f5ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4336746eb4207ca41d1ea0115e8a6a27"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a4336746eb4207ca41d1ea0115e8a6a27">m_boardXL</a> [20][20]</td></tr>
+<tr class="separator:a4336746eb4207ca41d1ea0115e8a6a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7294900bb7cf701437ddd9acffb235a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#ab7294900bb7cf701437ddd9acffb235a">m_board_ships</a> [9][9]</td></tr>
+<tr class="separator:ab7294900bb7cf701437ddd9acffb235a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a44b72075ebb7893f7a0c00b2fcaa64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a1a44b72075ebb7893f7a0c00b2fcaa64">m_board_shipsXL</a> [20][20]</td></tr>
+<tr class="separator:a1a44b72075ebb7893f7a0c00b2fcaa64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9ee491d4fea680cf69b033374a9fdfcb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ee491d4fea680cf69b033374a9fdfcb">&#9670;&nbsp;</a></span>Board() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee491d4fea680cf69b033374a9fdfcb">&#9670;&nbsp;</a></span>Board()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -107,25 +143,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>: initializes a blank 9x9 board with '-' values </dd></dl>
-
-</div>
-</div>
-<a id="a9690a10d8699035fc211ed1f0edff28b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9690a10d8699035fc211ed1f0edff28b">&#9670;&nbsp;</a></span>Board() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Board::Board </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>big</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>@breif: initializes a blank 9x9 board and a 20x20 board with '-' values </p>
 
 </div>
 </div>
@@ -143,10 +161,153 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>@breif: Delete the board. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a89dcf377ff48f124d396b10d922dc7f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89dcf377ff48f124d396b10d922dc7f7">&#9670;&nbsp;</a></span>allShipsSunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Board::allShipsSunk </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if any ships remain to be sunk. </p>
+<dl class="section return"><dt>Returns</dt><dd>true All ships have been sunk </dd>
+<dd>
+false At least one ship remains floating </dd></dl>
+
+</div>
+</div>
+<a id="ab91542c22966639fa6b527bf14aaf744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91542c22966639fa6b527bf14aaf744">&#9670;&nbsp;</a></span>checkBig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Board::checkBig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return whether the board is size XL. </p>
+<dl class="section return"><dt>Returns</dt><dd>true The board is size XL </dd>
+<dd>
+false The board is not size XL </dd></dl>
+
+</div>
+</div>
+<a id="a7c8b604bd3d20327015f4a88926acb1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c8b604bd3d20327015f4a88926acb1d">&#9670;&nbsp;</a></span>getNumCols()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Board::getNumCols </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of columns. </p>
+<dl class="section return"><dt>Returns</dt><dd>int The number of columns </dd></dl>
+
+</div>
+</div>
+<a id="a7fd5330f2443d7c3c465d69778d4f88f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fd5330f2443d7c3c465d69778d4f88f">&#9670;&nbsp;</a></span>getNumHits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Board::getNumHits </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of hits on the board. </p>
+<dl class="section return"><dt>Returns</dt><dd>int The number of hits on the board </dd></dl>
+
+</div>
+</div>
+<a id="ab0426ff73768669fa8b0a36e2ea1ad48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0426ff73768669fa8b0a36e2ea1ad48">&#9670;&nbsp;</a></span>getNumRows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Board::getNumRows </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the number of rows. </p>
+<dl class="section return"><dt>Returns</dt><dd>int The number of rows </dd></dl>
+
+</div>
+</div>
+<a id="aec97ca96caec9a3a38bbc4ea5de55539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec97ca96caec9a3a38bbc4ea5de55539">&#9670;&nbsp;</a></span>getShipNum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Board::getShipNum </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Ship Num at the given coordinates. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The row to check </td></tr>
+    <tr><td class="paramname">col</td><td>The column to chekc </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int The number of the ship at the given coordinates </dd></dl>
+
+</div>
+</div>
 <a id="a05bd9deb7532ec0507351a218724ec41"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a05bd9deb7532ec0507351a218724ec41">&#9670;&nbsp;</a></span>getValue()</h2>
 
@@ -172,15 +333,17 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>: function to return the value at some coordinates </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>: returns the value at a certain coordinate on the board </dd></dl>
+
+<p>Return the value at the given coordinates. </p>
+<dl class="section post"><dt>Postcondition</dt><dd>returns the value at a certain coordinate on the board </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"></td><td>int row: row to get value at, int col: column to get value at </td></tr>
+    <tr><td class="paramname">row</td><td>row to get value at </td></tr>
+    <tr><td class="paramname">col</td><td>column to get value at </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>: returns the character at the specified value </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>returns the character at the specified value </dd></dl>
 
 </div>
 </div>
@@ -198,13 +361,100 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>: function to print a board, used as a test </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>: prints the 9x9 board specific to the class </dd></dl>
+<dl class="section post"><dt>Postcondition</dt><dd>: prints the board characters </dd></dl>
 
 </div>
 </div>
-<a id="aba2bc48e622f98fa5d4472eff42bbd1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba2bc48e622f98fa5d4472eff42bbd1d">&#9670;&nbsp;</a></span>updateBoard()</h2>
+<a id="a06896de260a6584305a6ab17c890b22c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06896de260a6584305a6ab17c890b22c">&#9670;&nbsp;</a></span>setBig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Board::setBig </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the board size to big. </p>
+
+</div>
+</div>
+<a id="a6cf6e5e89e3688538f7dce04a508c0c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cf6e5e89e3688538f7dce04a508c0c5">&#9670;&nbsp;</a></span>shipIsSunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Board::shipIsSunk </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check whether a ship at a given coordinate is fully sunk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The row to check </td></tr>
+    <tr><td class="paramname">col</td><td>The column to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true Every tile of the associated ship has been hit </dd>
+<dd>
+false At least one tile remains to be hit </dd></dl>
+
+</div>
+</div>
+<a id="af6c9b7eaaaac47b2ebe90107ea992152"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c9b7eaaaac47b2ebe90107ea992152">&#9670;&nbsp;</a></span>shipNumIsSunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Board::shipNumIsSunk </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>shipNum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check whether a ship of a given number is fully sunk. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shipNum</td><td>The shipnumber to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true Every tile of the associated ship has been hit </dd>
+<dd>
+false At least one tile remains to be hit </dd></dl>
+
+</div>
+</div>
+<a id="a51e3dbb584e801374c8f753de13ef926"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e3dbb584e801374c8f753de13ef926">&#9670;&nbsp;</a></span>updateBoard()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -225,7 +475,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>shipsize</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -234,11 +490,40 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section pre"><dt>Precondition</dt><dd>: function to place a hit on the board </dd></dl>
-<dl class="section post"><dt>Postcondition</dt><dd>: updates the board with whatever value is passed in </dd></dl>
+
+<p>Update the board with the given character. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"></td><td>int row: row to update, int col: column to update, char c: character to update row/col with </td></tr>
+    <tr><td class="paramname">row</td><td>The row in which to insert the character </td></tr>
+    <tr><td class="paramname">col</td><td>The column in which to insert the character </td></tr>
+    <tr><td class="paramname">c</td><td>The character to insert </td></tr>
+    <tr><td class="paramname">shipsize</td><td>The size of the associated ship if relevant </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a71d61b53d5b037bf52397308936a39b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71d61b53d5b037bf52397308936a39b2">&#9670;&nbsp;</a></span>updateNumShips()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Board::updateNumShips </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numships</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update the number of ships which are on this board. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numships</td><td>The number of ships </td></tr>
   </table>
   </dd>
 </dl>
@@ -260,9 +545,51 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ab7294900bb7cf701437ddd9acffb235a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7294900bb7cf701437ddd9acffb235a">&#9670;&nbsp;</a></span>m_board_ships</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Board::m_board_ships[9][9]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1a44b72075ebb7893f7a0c00b2fcaa64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a44b72075ebb7893f7a0c00b2fcaa64">&#9670;&nbsp;</a></span>m_board_shipsXL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Board::m_board_shipsXL[20][20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4336746eb4207ca41d1ea0115e8a6a27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4336746eb4207ca41d1ea0115e8a6a27">&#9670;&nbsp;</a></span>m_boardXL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Board::m_boardXL[20][20]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="board_8h_source.html">board.h</a></li>
-<li><a class="el" href="board_8cpp.html">board.cpp</a></li>
+<li>C:/Users/mathe/Documents/Code/EECS_448/EECS448Project1/<a class="el" href="board_8h_source.html">board.h</a></li>
+<li>C:/Users/mathe/Documents/Code/EECS_448/EECS448Project1/<a class="el" href="board_8cpp.html">board.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
