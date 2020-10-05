@@ -45,12 +45,12 @@ int Machine::randomChar(){
 
 	if(gamemode == 'X'){
 		r = rand() % 20;   
-    	c = 'a' + r-1;
+    	c = 'a' + r;
     	charInt = charToInt(c);
 	}
 	else{
 		r = rand() % 9;   
-    	c = 'a' + r-1;
+    	c = 'a' + r;
     	charInt = charToInt(c);
 	}
 	return(charInt);

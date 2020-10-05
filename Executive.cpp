@@ -342,7 +342,7 @@ void Executive::run()
 				}
 				 // decrement row by 1 for indexing array
 				direction = toupper(direction);
-                cout << "Attempting " << row << ", " << col << ", " << direction << " for " << currentShip << "\n";
+                // cout << "Attempting " << row << ", " << col << ", " << direction << " for " << currentShip << "\n";
 				if (currentPlayer->PlaceShipAI(currentShip, row, col, direction))
 				{
 					break;
